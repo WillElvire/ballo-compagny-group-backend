@@ -13,6 +13,8 @@ import { ShoppingModule } from "./modules/shopping.module";
 
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +30,8 @@ import { ShoppingModule } from "./modules/shopping.module";
     TuiAlertModule,
     HttpClientModule,
     ComponentModule,
-    ShoppingModule
+    ShoppingModule,
+
 ],
   providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}],
   bootstrap: [AppComponent]
