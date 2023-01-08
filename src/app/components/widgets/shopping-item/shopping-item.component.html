@@ -1,1 +1,32 @@
-<p>shopping-item works!</p>
+
+
+
+<div class="card">
+
+  <img [src]="item?.images?.image1" width="200" height="200">
+  <div class="money">
+    <span class="price">{{item?.price}} FCFA</span>
+  </div>
+  <h3 class="tui-island__title">{{item?.title}}</h3>
+  <p class="tui-island__paragraph">
+    {{item?.description?.toUpperCase()}}
+  </p>
+
+  <div class="buttons">
+    <button tuiButton type="button"  appearance="custom" size="m" class="detail" (click)="navigate('/Shop/item')">
+      voir +
+    </button>
+    <button tuiButton type="button" appearance="custom" size="m" class="order"  (click)="navigate('/Shop/order')">
+      Commander
+    </button>
+  </div>
+
+  <br>
+  <br>
+</div>
+
+
+
+
+
+

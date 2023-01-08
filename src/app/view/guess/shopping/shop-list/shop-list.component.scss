@@ -1,0 +1,35 @@
+.products {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  .product-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+}
+
+.search{
+  display: flex;
+  margin-top: 3%;
+  justify-content: center;
+  tui-input {
+    width: 20%;
+  }
+  tui-select{
+    margin-left: 1%;
+    width: 15%;
+    margin-top: -0.2px;
+  }
+  button {
+    margin-left: 2%;
+    background-color: rgb(141, 2, 2);
+    color:white;
+  }
+}
+
+@media(min-width:0) and (max-width:900px) {
+  .products{
+    flex-wrap: wrap;
+  }
+}

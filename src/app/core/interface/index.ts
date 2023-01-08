@@ -8,12 +8,14 @@ export interface HttpRequestParams {
 
 export interface IShoppingProduct {
   title       : string ,
+  marque      : string,
+  type       ?: string,
   description : string ,
   price       : number ,
-  reduction   : number,
+  reduction  ?: number,
   stock       : number,
   images      : {
-    image1 : string ,
+    image1 ?: string ,
     image2?: string ,
     image3?: string,
   },

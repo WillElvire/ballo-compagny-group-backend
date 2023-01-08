@@ -1,1 +1,44 @@
-<p>shop-item works!</p>
+<app-navbar></app-navbar>
+<app-back-button [text]="'Retour'"></app-back-button>
+<h1 style="text-align: center;">Detail du produit {{detailProduct.title.toUpperCase()}}</h1>
+<div class="product">
+  <div class="product-image">
+    <img class="main" [src]="detailProduct?.images?.image1" width="200" height="200">
+    <div class="product-other-images">
+      <div>
+        <img [src]="default" width="50" height="40" (click)="setImage('1')">
+        <img [src]="detailProduct?.images?.image2" width="50" height="40" *ngIf="!!detailProduct?.images?.image2"
+          (click)="setImage('2')">
+        <img [src]="detailProduct?.images?.image3" width="50" height="40" *ngIf="!!detailProduct?.images?.image3"
+          (click)="setImage('3')">
+      </div>
+    </div>
+  </div>
+  <div class="product-description">
+    <h1>{{detailProduct?.title?.toUpperCase()}}</h1>
+    <h3>Prix : {{detailProduct?.price}} FCFA</h3>
+    <p>Marque : {{detailProduct?.marque}}</p>
+    <p>Type : {{detailProduct?.type}}</p>
+    <p>
+      Description : {{detailProduct?.description}}
+    </p>
+
+
+    <tui-input-count [min]="1" [max]="detailProduct.stock ? detailProduct.stock : 0 ">
+      Quantité
+      <input tuiTextfield placeholder="1" />
+    </tui-input-count>
+
+
+    <button tuiButton appearance="custom" (click)="activeModal('custom-modal-1')">Commander</button>
+  </div>
+</div>
+
+
+<app-jw-modal id="custom-modal-1" [size]="40">
+  <a (click)="closeModal('custom-modal-1')" style="cursor:pointer;font-weight:bold">X</a>
+  <div class="b-form-item" class="department-form">
+    <h1 style="text-align: center;">Formulaire de commande</h1>
+    <button type="submit" appearance="custom" tuiButton class="jw-submit">Enregister</button>
+  </div>
+</app-jw-modal>

@@ -11,7 +11,7 @@ const routes : Routes = [
     component  : ShopListComponent
   },
   {
-    path : "item",
+    path : "item/:guid",
     component : ShopItemComponent
   },
   {

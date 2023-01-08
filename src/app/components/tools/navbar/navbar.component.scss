@@ -64,7 +64,7 @@ ul {
 		height: $navbarHeight;
 
 		display: flex;
-		justify-content: center;
+		justify-content: space-around;
 		align-items: center;
 
 		transition: 0.4s ease all, 0s ease margin;
@@ -72,17 +72,19 @@ ul {
 		a {
 			text-decoration: none;
 			color: #fff;
+      cursor: pointer;
+
+      &:hover {
+        color: $secondary;
+      }
 		}
 
-		&:hover {
-			background: $secondary;
-			cursor: pointer;
+    .active {
+      color : $secondary;
+    }
 
-			a {
-				color: #080808;
-			}
 
-		}
+
 
 
 	}
@@ -91,3 +93,11 @@ ul {
 
 
 
+@media(min-width:0) and (max-width:900px) {
+  .navbar{
+		a {
+      font-size: 9px;
+    }
+
+  }
+}
