@@ -1,4 +1,4 @@
-import { TuiInputModule } from '@taiga-ui/kit';
+import { TuiInputModule, TuiIslandModule } from '@taiga-ui/kit';
 import { CommonModule } from '@angular/common';
 import { NgModule } from "@angular/core";
 import { ShoppingRoutingModule } from "../view/guess/shopping/routes/shopping.routes";
@@ -6,17 +6,19 @@ import { ShopListComponent } from "../view/guess/shopping/shop-list/shop-list.co
 import { ShopItemComponent } from "../view/guess/shopping/shop-item/shop-item.component";
 import { ShopOrderComponent } from "../view/guess/shopping/shop-order/shop-order.component";
 import { ComponentModule } from "./components.module";
-import {TuiButtonModule, TuiDataListModule} from '@taiga-ui/core';
+import {TuiButtonModule, TuiDataListModule, TuiNotificationModule} from '@taiga-ui/core';
 import {TuiDataListWrapperModule, TuiSelectModule} from '@taiga-ui/kit';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {TuiInputCountModule} from '@taiga-ui/kit';
 import { ServiceModule } from './services.module';
+
 
 @NgModule({
   declarations : [
     ShopListComponent,
     ShopItemComponent,
     ShopOrderComponent,
+
   ],
   imports : [
     ShoppingRoutingModule ,
@@ -30,6 +32,8 @@ import { ServiceModule } from './services.module';
     ReactiveFormsModule,
     TuiButtonModule,
     TuiInputCountModule,
+    TuiIslandModule,
+    TuiNotificationModule,
     ServiceModule
   ],
   providers : [],

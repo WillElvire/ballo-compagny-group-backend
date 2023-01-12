@@ -12,14 +12,10 @@ import { ComponentModule } from "./modules/components.module";
 import { ShoppingModule } from "./modules/shopping.module";
 
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent,
-
   ],
   imports: [
     BrowserModule,

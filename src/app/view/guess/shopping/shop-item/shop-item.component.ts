@@ -1,44 +1,58 @@
-import { IShoppingProduct } from './../../../../core/interface/index';
-import { Component, OnInit } from '@angular/core';
+
+import { IShoppingProduct, IUser, IOrder } from './../../../../core/interface/index';
+import { Component, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map } from 'rxjs';
 import { AppFacades } from 'src/app/facades/app.facades';
+import { Location } from '@angular/common';
+import { ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-shop-item',
   templateUrl: './shop-item.component.html',
-  styleUrls: ['./shop-item.component.scss']
+  styleUrls: ['./shop-item.component.scss'],
+  changeDetection : ChangeDetectionStrategy.OnPush
 })
-export class ShopItemComponent implements OnInit {
+export class ShopItemComponent implements OnInit  {
 
-  detailProduct : IShoppingProduct;
-  default ?:string ;
+  quantity      :  number  = 0;
+  detailProduct :  IShoppingProduct;
+  default      ?: string ;
+  price         :  number  = 0;
 
-  constructor(private route: ActivatedRoute,private router : Router,private appFacade :AppFacades) {
-    const extras :any = this.router.getCurrentNavigation()?.extras.state;
-    this.detailProduct = extras?.product;
-    this.default = extras?.product?.images?.image1;
+  user          :  IUser = {
+    firstname : "",
+    lastname  : "",
+    email     : "",
+    phone     : ""
+  };
+
+  order : IOrder = {
+    user     : this.user,
+    quantity : this.quantity,
+    total    : this.price
   }
+
+  isFoward  : boolean  = false;
+  error     ?: string ;
+
+  constructor(private route: ActivatedRoute,private router : Router,private appFacade :AppFacades , private Location : Location) {
+
+    const extras :any  = this.router.getCurrentNavigation()?.extras.state;
+    this.detailProduct = extras?.product;
+    this.default       = extras?.product?.images?.image1;
+
+  }
+
+
 
   ngOnInit(): void {
 
-  }
-
-  setImage(index :string){
-
-    if(index == "2") {
-      this.detailProduct.images.image1 = this.detailProduct.images?.image2;
-    }
-
-    if(index == "3") {
-      this.detailProduct.images.image1 = this.detailProduct.images?.image3;
-    }
-
-    if(index == "1") {
-      this.detailProduct.images.image1 = this.default;
-    }
+    if(!this.detailProduct?.title)
+    return this.Location.back();
 
   }
+
+
 
   activeModal(modal:any){
     this.appFacade.openModal(modal)
@@ -48,5 +62,30 @@ export class ShopItemComponent implements OnInit {
   closeModal(index:any){
     this.appFacade.closeModal(index)
   }
+
+  generateTotalPriceForProduct(){
+     this.price  = this.detailProduct.price * this.quantity;
+     console.log(this.price)
+  }
+
+
+  submitRequestForm(){
+    console.log(this.quantity);
+
+    const x = [];
+
+  }
+
+  next(){
+
+    if(!!this.user.firstname &&  !!this.user.lastname && !!this.user.email && !!this.user.phone){
+      this.error = "";
+      return this.isFoward = !this.isFoward
+    }
+
+    return this.error = "veuillez remplir le différents champs";
+
+  }
+
 
 }
