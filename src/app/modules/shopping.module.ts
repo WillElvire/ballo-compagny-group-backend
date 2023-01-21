@@ -18,7 +18,6 @@ import { ServiceModule } from './services.module';
     ShopListComponent,
     ShopItemComponent,
     ShopOrderComponent,
-
   ],
   imports : [
     ShoppingRoutingModule ,

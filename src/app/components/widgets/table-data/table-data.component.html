@@ -1,0 +1,25 @@
+<app-table-filter [filterData]="['Suzuki','Madza']" (choosedCategorie)="getCategorie($event)"></app-table-filter>
+<div class="table-responsive">
+  <table class="table table-bordered mt-4 ">
+    <thead class="bg-dark text-light">
+      <tr >
+        <th scope="col" *ngFor="let head of headers">{{head}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngIf="type == 'product'">
+        <tr *ngFor="let data  of datas  | tableFilterPipe:category">
+          <th scope="row">1</th>
+          <td>{{data?.title }}</td>
+          <td>{{data?.price}}</td>
+          <td>{{data?.description}}</td>
+          <td>{{data?.marque}}</td>
+          <td>
+            <button class="btn btn-dark">  {{buttons[0]}}</button>
+            <button class="btn btn-outline-dark" style="margin-left: 2%;" >{{buttons[1]}}</button>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>

@@ -13,6 +13,14 @@ const routes: Routes = [
     pathMatch  : 'full'
   },
   {
+    path : "v1",
+    loadChildren : ()=> import('./modules/auth.module').then(m =>m.AuthModule)
+  },
+  {
+    path : 'dashboard',
+    loadChildren  : ()=> import('./modules/dashboard.module').then(m => m.DashboardModule)
+  },
+  {
     path : "Shop",
     loadChildren : ()=> import('./modules/shopping.module').then(m => m.ShoppingModule)
   }

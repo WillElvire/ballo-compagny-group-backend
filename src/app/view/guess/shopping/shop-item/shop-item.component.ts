@@ -16,10 +16,10 @@ export class ShopItemComponent implements OnInit  {
 
   quantity      :  number  = 0;
   detailProduct :  IShoppingProduct;
-  default      ?: string ;
+  default      !:  string ;
   price         :  number  = 0;
 
-  user          :  IUser = {
+  user : IUser = {
     firstname : "",
     lastname  : "",
     email     : "",
@@ -36,23 +36,15 @@ export class ShopItemComponent implements OnInit  {
   error     ?: string ;
 
   constructor(private route: ActivatedRoute,private router : Router,private appFacade :AppFacades , private Location : Location) {
-
     const extras :any  = this.router.getCurrentNavigation()?.extras.state;
     this.detailProduct = extras?.product;
     this.default       = extras?.product?.images?.image1;
-
   }
-
-
 
   ngOnInit(): void {
-
     if(!this.detailProduct?.title)
     return this.Location.back();
-
   }
-
-
 
   activeModal(modal:any){
     this.appFacade.openModal(modal)
@@ -70,8 +62,8 @@ export class ShopItemComponent implements OnInit  {
 
 
   submitRequestForm(){
-    console.log(this.quantity);
 
+    console.log(this.quantity);
     const x = [];
 
   }
@@ -83,7 +75,7 @@ export class ShopItemComponent implements OnInit  {
       return this.isFoward = !this.isFoward
     }
 
-    return this.error = "veuillez remplir le différents champs";
+    return this.error = "veuillez remplir les différents champs";
 
   }
 

@@ -10,12 +10,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { LandingComponent } from './view/guess/landing/landing.component';
 import { ComponentModule } from "./modules/components.module";
 import { ShoppingModule } from "./modules/shopping.module";
+import { AuthModule } from "./modules/auth.module";
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { DashboardModule } from "./modules/dashboard.module";
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent,
+    AdminLayoutComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -27,6 +33,9 @@ import { ShoppingModule } from "./modules/shopping.module";
     HttpClientModule,
     ComponentModule,
     ShoppingModule,
+    AuthModule,
+    TuiAlertModule,
+    DashboardModule
 
 ],
   providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}],

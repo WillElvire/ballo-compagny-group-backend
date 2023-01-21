@@ -34,4 +34,9 @@ export interface IShoppingProduct {
     image2?: string ,
     image3?: string,
   },
+};
+
+export interface ILoginPayload {
+  email : string ,
+  password : string
 }

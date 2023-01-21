@@ -1,3 +1,4 @@
+import { TableDataComponent } from './../components/widgets/table-data/table-data.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from "@angular/core";
 import { NavbarComponent } from "../components/tools/navbar/navbar.component";
@@ -11,9 +12,11 @@ import { OrderFormComponent } from '../components/modals/order-form/order-form.c
 import { ShoppingDetailComponent } from '../components/widgets/shopping-detail/shopping-detail.component';
 import { ImageComponent } from '../components/widgets/image/image.component';
 import { NgxImageZoomModule } from 'ngx-image-zoom';
+import { TableFilterComponent } from '../components/widgets/table-filter/table-filter.component';
+import { TableFilterPipePipe } from '../pipes/data/table-filter-pipe.pipe';
 
 @NgModule({
-  declarations : [NavbarComponent , ShoppingCardComponent, BackButtonComponent,OrderFormComponent,ShoppingDetailComponent, ImageComponent],
+  declarations : [NavbarComponent , ShoppingCardComponent, BackButtonComponent,OrderFormComponent,ShoppingDetailComponent, ImageComponent , TableDataComponent, TableFilterComponent, TableFilterPipePipe],
   entryComponents : [],
   providers : [],
   imports : [
@@ -31,7 +34,7 @@ import { NgxImageZoomModule } from 'ngx-image-zoom';
       tertiaryColour: "#ffffff",
     }),
   ],
-  exports : [NavbarComponent,ShoppingCardComponent,BackButtonComponent,OrderFormComponent,ShoppingDetailComponent,ImageComponent]
+  exports : [NavbarComponent,ShoppingCardComponent,BackButtonComponent,OrderFormComponent,ShoppingDetailComponent,ImageComponent,TableDataComponent, TableFilterComponent]
 })
 
 export class ComponentModule {
