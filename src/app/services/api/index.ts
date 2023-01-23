@@ -16,46 +16,13 @@ export class Http {
 
     request(httpParams: HttpRequestParams) {
 
-      if (!httpParams?.url) {
-        throw new Error('URL is required');
-      }
-
-      if (!httpParams?.method) {
-        httpParams.method = HttpResponseType.GET;
-      }
-
-      if (httpParams.isEnc) {
-
-        const data = {
-          AuthCode: encrypt(JSON.stringify(httpParams.body)),
-        };
-
-        if (httpParams.method == HttpResponseType.POST) {
-          return new Promise((resolve, reject) => {
-            this.http
-              .post(`${this.server}${httpParams.url}`, data, {headers: HttpHeader})
-              .pipe()
-              .subscribe((response) => {return resolve(response)},
-                (error) => {return reject(error)}
-              );
-          });
-        }
 
 
-        if (httpParams.method == HttpResponseType.GET) {
-          return new Promise((resolve, reject) => {
-            this.http
-              .get(`${this.server}${httpParams.url}`, { headers: HttpHeader })
-              .pipe()
-              .subscribe((response) => {return resolve(response)}
-              ,(error) => {return reject(error)});
-          });
-        }
+      if (!httpParams?.method)
+        return httpParams.method = HttpResponseType.GET;
 
-      }
+      if (httpParams.method == HttpResponseType.GET) {
 
-      if (!httpParams.isEnc) {
-        if (httpParams.method == HttpResponseType.GET) {
           return new Promise((resolve, reject) => {
             this.http
               .get(`${this.server}${httpParams.url}`, { headers: HttpHeader })
@@ -64,40 +31,19 @@ export class Http {
                 (error) => {return reject(error)}
               );
           });
-        }
-
-        if (httpParams.method == HttpResponseType.POST) {
-          return new Promise((resolve, reject) => {
-            this.http
-              .post(`${this.server}${httpParams.url}`, httpParams.body, {headers: HttpHeader})
-              .pipe()
-              .subscribe((response) => {return resolve(response)},
-                (error) => {return reject(error)}
-              );
-          });
-        }
-
+      }
+      else if (httpParams.method == HttpResponseType.POST){
         return new Promise((resolve, reject) => {
           this.http
-            .post(`${this.server}${httpParams.url}`, httpParams.body, {headers: HttpHeader,})
+            .post(`${this.server}${httpParams.url}`, httpParams.body, {headers: HttpHeader})
             .pipe()
             .subscribe((response) => {return resolve(response)},
               (error) => {return reject(error)}
             );
-        });
-      }
-    }
-
-
-
-    getForTestServer(url : string) {
-      return new Promise((resolve, reject) => {
-        this.http
-          .post(`${environment.HttpServers.BASE_API_DEV}${url}`, {}, {headers: HttpHeader})
-          .pipe()
-          .subscribe((response) => {return resolve(response)},
-            (error) => {return reject(error)}
-          );
       });
+    }else{
+      return
     }
+  }
+
 }

@@ -75,12 +75,13 @@ ul {
       cursor: pointer;
 
       &:hover {
-        color: $secondary;
+        color: white;
       }
 		}
 
     .active {
-      color : $secondary;
+      color : white;
+      border-bottom:  1px solid white;
     }
 
 

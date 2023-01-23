@@ -8,7 +8,12 @@ import { StorageService } from '../services/storage';
 @Injectable()
 export class AppFacades {
 
-  constructor( private modalService : ModalService , private alertService : AlertService , private verificationService : VerificationService,private storageService : StorageService){
+  constructor(
+    private modalService : ModalService ,
+    private alertService : AlertService ,
+    private verificationService : VerificationService,
+    private storageService : StorageService
+  ){
 
   }
 

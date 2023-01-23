@@ -14,9 +14,10 @@ import { ImageComponent } from '../components/widgets/image/image.component';
 import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { TableFilterComponent } from '../components/widgets/table-filter/table-filter.component';
 import { TableFilterPipePipe } from '../pipes/data/table-filter-pipe.pipe';
+import { FooterComponent } from '../components/tools/footer/footer.component';
 
 @NgModule({
-  declarations : [NavbarComponent , ShoppingCardComponent, BackButtonComponent,OrderFormComponent,ShoppingDetailComponent, ImageComponent , TableDataComponent, TableFilterComponent, TableFilterPipePipe],
+  declarations : [NavbarComponent , ShoppingCardComponent, BackButtonComponent,OrderFormComponent,ShoppingDetailComponent, ImageComponent , TableDataComponent, TableFilterComponent, TableFilterPipePipe,FooterComponent ],
   entryComponents : [],
   providers : [],
   imports : [
@@ -34,7 +35,7 @@ import { TableFilterPipePipe } from '../pipes/data/table-filter-pipe.pipe';
       tertiaryColour: "#ffffff",
     }),
   ],
-  exports : [NavbarComponent,ShoppingCardComponent,BackButtonComponent,OrderFormComponent,ShoppingDetailComponent,ImageComponent,TableDataComponent, TableFilterComponent]
+  exports : [NavbarComponent,ShoppingCardComponent,BackButtonComponent,OrderFormComponent,ShoppingDetailComponent,ImageComponent,TableDataComponent, TableFilterComponent,FooterComponent]
 })
 
 export class ComponentModule {

@@ -7,19 +7,23 @@
       </tr>
     </thead>
     <tbody>
-      <ng-container *ngIf="type == 'product'">
+
         <tr *ngFor="let data  of datas  | tableFilterPipe:category">
-          <th scope="row">1</th>
-          <td>{{data?.title }}</td>
-          <td>{{data?.price}}</td>
-          <td>{{data?.description}}</td>
-          <td>{{data?.marque}}</td>
-          <td>
-            <button class="btn btn-dark">  {{buttons[0]}}</button>
-            <button class="btn btn-outline-dark" style="margin-left: 2%;" >{{buttons[1]}}</button>
-          </td>
+          <ng-container *ngIf="type == 'product'">
+            <th scope="row">1</th>
+            <td>{{data?.title }}</td>
+            <td>{{data?.price}}</td>
+            <td>{{data?.description}}</td>
+            <td>{{data?.marque}}</td>
+            <td>
+              <button class="btn btn-dark">  {{buttons[0]}}</button>
+              <button class="btn btn-outline-dark" style="margin-left: 2%;" >{{buttons[1]}}</button>
+            </td>
+          </ng-container>
+          <ng-container *ngIf="type == 'history'">
+              <td>{{data}}</td>
+          </ng-container>
         </tr>
-      </ng-container>
     </tbody>
   </table>
 </div>
