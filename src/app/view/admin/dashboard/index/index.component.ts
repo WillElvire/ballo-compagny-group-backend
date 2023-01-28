@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserQuery } from 'src/app/store/users/user.query';
 
 @Component({
   selector: 'app-index',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userQuery : UserQuery) { }
 
   ngOnInit(): void {
+    this.userQuery.allUser$.subscribe((response)=>{
+      console.log(response);
+    });
   }
 
 }

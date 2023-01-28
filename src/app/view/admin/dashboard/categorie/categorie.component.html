@@ -1,5 +1,4 @@
 <div class="container">
-
   <button class="btn btn-outline-dark" (click)="activeModal('custom-modal-1')"> Ajouter une nouvelle categorie</button>
   <h3 class="mt-4">Produit vendu  {{categories.length}}</h3>
   <app-table-data [headers]="['name','marque','status']" [type]="'categorie'"  [datas]="categories" [filter]="false"></app-table-data>

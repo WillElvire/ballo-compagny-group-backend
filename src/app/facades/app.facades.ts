@@ -1,4 +1,4 @@
-import { HttpRequestParams } from './../core/interface/index';
+import { HttpRequestParams, IUser } from './../core/interface/index';
 
 import { Injectable } from '@angular/core';
 import { ModalService } from '../services/modals/jw-modal';
@@ -6,6 +6,7 @@ import { AlertService } from '../utils/alert';
 import { VerificationService } from '../services/data/verification.service';
 import { StorageService } from '../services/storage';
 import { Http } from '../services/api';
+import { UserStateService } from '../services/states/user.state.service';
 
 @Injectable()
 export class AppFacades {
@@ -15,7 +16,8 @@ export class AppFacades {
     private alertService : AlertService ,
     private verificationService : VerificationService,
     private storageService : StorageService,
-    private apiService :  Http
+    private apiService :  Http,
+    private userStateService : UserStateService
   ){
 
   }
@@ -70,5 +72,10 @@ export class AppFacades {
     return this.apiService.request(params);
   }
 
+  // USER STATE
+
+  addUserState(User:IUser) {
+    this.userStateService.addUserState(User);
+  }
 
 }

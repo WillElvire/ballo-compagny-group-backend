@@ -1,5 +1,8 @@
+import { UserStateService } from './../../../../services/states/user.state.service';
 import { Component, OnInit } from '@angular/core';
-import { ILoginPayload } from 'src/app/core/interface';
+import { Router } from '@angular/router';
+import { HttpRequestType } from 'src/app/core/enum';
+import { HttpRequestParams, ILoginPayload } from 'src/app/core/interface';
 import { AppFacades } from 'src/app/facades/app.facades';
 
 @Component({
@@ -17,7 +20,7 @@ export class LoginComponent implements OnInit {
     email : '',
     password : ''
   }
-  constructor(private appFacades : AppFacades) { }
+  constructor(private appFacades : AppFacades , private router : Router  ) { }
 
   ngOnInit(): void {
   }
@@ -29,27 +32,45 @@ export class LoginComponent implements OnInit {
   }
 
   authentification(){
-
     const verification  = this.appFacades.verifyObj(this.login);
     if(verification.count  > 0)
     return this.displayErrors(verification?.index as number[]);
-    if(!this.appFacades.verifyIfEmail(this.login.email))
-    return this.appFacades.alertError(`veuillez renseigner une addresse email valide`)
+    if(!this.appFacades.verifyIfEmail(this.login.email)){
+      return this.appFacades.alertError(`veuillez renseigner une addresse email valide`)
+    }
     return this.connectUser(this.login);
   }
 
-
   connectUser(loginPayload : ILoginPayload){
-    this.startSpinning  = true;
 
-    /*this._authService.login(loginPayload).subscribe((responce : {user ?: JUser , message :string})=>{
-      this.isFilled  = false;
-      if(!!responce.user){
-        this._notification.create('success','',`Bienvenue  ${responce.user.name}`);
-        this.router.navigate(["/project/"]);
+    const request : HttpRequestParams  = {
+      body : loginPayload,
+      url  : '/login',
+      method : HttpRequestType.POST,
+      isEnc : false
+    }
+
+    this.appFacades.request(request).subscribe(
+      {
+        next : (responce : any )=>{
+          this.startSpinning  = false;
+          if(!!responce.user){
+            this.appFacades.alertSuccess(responce.message);
+            this.appFacades.addUserState(responce.user);
+            this.appFacades.set('user',responce.user);
+            this.router.navigate(["/dashboard/v1/"]);
+          }
+        },
+        error : (err) => {
+          this.startSpinning  = false;
+          this.appFacades.alertError(err.error.message ?  err.error.message : err.message);
+          console.log(err);
+        },
+        complete : () =>{
+          this.startSpinning = false;
+        }
       }
-      this._notification.create('error','',responce.message);
-    }); */
+    );
   }
 
   displayErrors(errorTable : number[]) {
