@@ -4,7 +4,6 @@ $navbarHeight: 65px;
 $sidebarWidth: 45vw;
 $primary: #080808;
 $secondary: red;
-
 $bgImage: 'https://images.unsplash.com/photo-1563733758230-a5d441824696?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80';
 
 
@@ -99,6 +98,14 @@ ul {
 		a {
       font-size: 9px;
     }
+  }
 
+  .navbar-collapse {
+    width: 100% !important;
+    background-color: black;
+    z-index: 999;
+    button {
+      display: none;
+    }
   }
 }

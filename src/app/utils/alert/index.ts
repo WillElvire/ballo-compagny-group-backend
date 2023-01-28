@@ -1,5 +1,6 @@
 import { Inject, Injectable } from "@angular/core";
 import { TuiAlertService, TuiNotification } from "@taiga-ui/core";
+import { alert } from "src/app/core/enum";
 
 @Injectable({
   providedIn : 'root'
@@ -15,34 +16,34 @@ export class AlertService {
   }
 
   public error(){
-    return this.buildAlert(this.message as string , 'error');
+    return this.buildAlert(this.message as string ,alert.ERROR);
   }
 
   public success(){
-    return this.buildAlert(this.message as string , 'success');
+    return this.buildAlert(this.message as string ,alert.SUCCESS);
   }
 
   public warning(){
-    return this.buildAlert(this.message as string , 'warning');
+    return this.buildAlert(this.message as string ,alert.WARNING);
   }
 
   public info(){
-    return this.buildAlert(this.message as string , 'info');
+    return this.buildAlert(this.message as string ,alert.INFO);
   }
 
-  private buildAlert(message :string , type : string = 'error' , duration : number = 1000 ) {
+  private buildAlert(message :string , type : string = alert.ERROR , duration : number = 1000 ) {
 
     let status = TuiNotification.Error;
 
-    if(type == 'success') {
+    if(type == alert.SUCCESS) {
       status  =  TuiNotification.Success
     }
 
-    if(type == 'warning') {
+    if(type == alert.WARNING) {
       status = TuiNotification.Warning
     }
 
-    if(type == 'info') {
+    if(type == alert.INFO) {
       status = TuiNotification.Info
     }
 

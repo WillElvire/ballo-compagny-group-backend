@@ -1,42 +1,54 @@
 export interface HttpRequestParams {
-  method : string ,
-  body   : string ,
-  isEnc  : boolean,
-  url    : string
+  method: string;
+  body: {};
+  isEnc: boolean;
+  url: string;
 }
-
 
 export interface IOrder {
-  user     : IUser,
-  product ?: IShoppingProduct,
-  quantity : number,
-  total    : number
+  user: IUser;
+  product?: IShoppingProduct;
+  quantity: number;
+  total: number;
 }
 
-
 export interface IUser {
-  firstname : string ,
-  lastname  : string,
-  email     : string ,
-  phone     : string,
+  firstname: string;
+  lastname: string;
+  email: string;
+  phone: string;
 }
 
 export interface IShoppingProduct {
-  title       : string ,
-  marque      : string,
-  type       ?: string,
-  description : string ,
-  price       : number ,
-  reduction  ?: number,
-  stock       : number,
-  images      : {
-    image1 ?: string ,
-    image2?: string ,
-    image3?: string,
-  },
-};
+  title: string;
+  marque: string;
+  type?: string;
+  description: string;
+  price: number;
+  reduction?: number;
+  stock: number;
+  images: {
+    image1?: string;
+    image2?: string;
+    image3?: string;
+  };
+}
 
 export interface ILoginPayload {
-  email : string ,
-  password : string
+  email: string;
+  password: string;
+}
+
+export interface ICategorie {
+  id: number;
+  name: string;
+  isActive: string | number;
+  marque_name : string ;
+  marque_id : string | number;
+}
+
+export interface IMarque {
+  id: number;
+  name: string;
+  isActive: string | number;
 }

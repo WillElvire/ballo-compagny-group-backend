@@ -31,13 +31,10 @@ export class LoginComponent implements OnInit {
   authentification(){
 
     const verification  = this.appFacades.verifyObj(this.login);
-
     if(verification.count  > 0)
     return this.displayErrors(verification?.index as number[]);
-
     if(!this.appFacades.verifyIfEmail(this.login.email))
     return this.appFacades.alertError(`veuillez renseigner une addresse email valide`)
-
     return this.connectUser(this.login);
   }
 

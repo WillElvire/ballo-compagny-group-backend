@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   HttpServers :{
-    BASE_API_DEV : "localhost:3002"
+    BASE_API_DEV : "http://localhost:3002/api/v1"
   },
   ENC_KEY : ""
 };

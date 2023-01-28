@@ -113,3 +113,69 @@
 
   }
 }
+
+
+@media(min-width:0) and (max-width:900px) {
+
+
+  .banner {
+    .image {
+      height: 45vh;
+    }
+  }
+
+
+
+  .vente  {
+    height: 400px;
+    .images{
+      flex-wrap: wrap;
+      img{
+        margin-top: 3%;
+      }
+     }
+     button {
+      display: none;
+     }
+  }
+  .about{
+    height: auto;
+    width: 100%;
+    .container{
+      display: block !important;
+      .description {
+        text-align: center;
+        margin-left: 5%;
+        p{
+          width: auto;
+        }
+      }
+      .image {
+        img{
+         display: none;
+        }
+      }
+    }
+  }
+
+  .atout {
+    width: auto !important;
+    height: auto !important;
+    .our{
+      flex-wrap: wrap;
+     .description {
+       img {
+         width: 300px !important;
+         height: 200px;
+       }
+       p{
+         text-align: center;
+         font-size: 18px;
+         font-weight: bold;
+
+       }
+     }
+   }
+  }
+
+}

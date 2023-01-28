@@ -6,6 +6,7 @@ import { AdminLayoutComponent } from "src/app/layouts/admin-layout/admin-layout.
 import { ProductComponent } from "../product/product.component";
 import { HistoryComponent } from "../history/history.component";
 import { ParametreComponent } from "../parametre/parametre.component";
+import { CategorieComponent } from "../categorie/categorie.component";
 
 const routes  : Routes = [
   {
@@ -23,6 +24,10 @@ const routes  : Routes = [
       {
         path : 'products',
         component : ProductComponent
+      },
+      {
+        path : 'categorie',
+        component : CategorieComponent
       },
       {
         path : 'history',

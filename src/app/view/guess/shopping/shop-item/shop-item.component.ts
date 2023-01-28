@@ -62,21 +62,17 @@ export class ShopItemComponent implements OnInit  {
 
 
   submitRequestForm(){
-
     console.log(this.quantity);
     const x = [];
-
   }
 
   next(){
-
-    if(!!this.user.firstname &&  !!this.user.lastname && !!this.user.email && !!this.user.phone){
+    const verification = this.appFacade.verifyObj(this.user)
+    if(verification.count == 0){
       this.error = "";
       return this.isFoward = !this.isFoward
     }
-
     return this.error = "veuillez remplir les différents champs";
-
   }
 
 

@@ -1,4 +1,4 @@
-import { TuiInputModule, TuiIslandModule } from '@taiga-ui/kit';
+import { TuiInputModule, TuiIslandModule, TuiToggleModule } from '@taiga-ui/kit';
 import { NgModule } from "@angular/core";
 import { CommandComponent } from "../view/admin/dashboard/command/command.component";
 import { IndexComponent } from "../view/admin/dashboard/index/index.component";
@@ -9,10 +9,13 @@ import { ProductComponent } from '../view/admin/dashboard/product/product.compon
 import { ReportingComponent } from '../view/admin/dashboard/reporting/reporting.component';
 import { TuiButtonModule } from "@taiga-ui/core";
 import { ComponentModule } from './components.module';
+import { CategorieComponent } from '../view/admin/dashboard/categorie/categorie.component';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
-  declarations : [CommandComponent,IndexComponent, ParametreComponent, HistoryComponent, ProductComponent, ReportingComponent],
-  imports : [DashboardRouting, TuiButtonModule,TuiInputModule , TuiIslandModule , ComponentModule],
+  declarations : [CommandComponent,IndexComponent, ParametreComponent, HistoryComponent, ProductComponent, ReportingComponent, CategorieComponent],
+  imports : [DashboardRouting, TuiButtonModule,TuiInputModule , TuiIslandModule , ComponentModule , TuiToggleModule , FormsModule, CommonModule],
   exports : [CommandComponent,IndexComponent],
   entryComponents  : []
 })

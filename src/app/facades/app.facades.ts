@@ -1,9 +1,11 @@
+import { HttpRequestParams } from './../core/interface/index';
 
 import { Injectable } from '@angular/core';
 import { ModalService } from '../services/modals/jw-modal';
 import { AlertService } from '../utils/alert';
 import { VerificationService } from '../services/data/verification.service';
 import { StorageService } from '../services/storage';
+import { Http } from '../services/api';
 
 @Injectable()
 export class AppFacades {
@@ -12,7 +14,8 @@ export class AppFacades {
     private modalService : ModalService ,
     private alertService : AlertService ,
     private verificationService : VerificationService,
-    private storageService : StorageService
+    private storageService : StorageService,
+    private apiService :  Http
   ){
 
   }
@@ -59,6 +62,12 @@ export class AppFacades {
 
   set(key :string , value : string) {
     this.storageService.set(key,value);
+  }
+
+  // API
+
+  request(params : HttpRequestParams) {
+    return this.apiService.request(params);
   }
 
 

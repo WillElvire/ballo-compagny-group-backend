@@ -5,7 +5,7 @@ import { NavbarComponent } from "../components/tools/navbar/navbar.component";
 import { TuiButtonModule } from "@taiga-ui/core";
 import { CommonModule } from "@angular/common";
 import { ShoppingCardComponent } from '../components/widgets/shopping-item/shopping-item.component';
-import {TuiIslandModule} from '@taiga-ui/kit';
+import {TuiIslandModule, TuiToggleModule} from '@taiga-ui/kit';
 import { NgxLoadingModule, ngxLoadingAnimationTypes } from "ngx-loading";
 import { BackButtonComponent } from '../components/shared/back-button/back-button.component';
 import { OrderFormComponent } from '../components/modals/order-form/order-form.component';
@@ -15,6 +15,7 @@ import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { TableFilterComponent } from '../components/widgets/table-filter/table-filter.component';
 import { TableFilterPipePipe } from '../pipes/data/table-filter-pipe.pipe';
 import { FooterComponent } from '../components/tools/footer/footer.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations : [NavbarComponent , ShoppingCardComponent, BackButtonComponent,OrderFormComponent,ShoppingDetailComponent, ImageComponent , TableDataComponent, TableFilterComponent, TableFilterPipePipe,FooterComponent ],
@@ -26,6 +27,8 @@ import { FooterComponent } from '../components/tools/footer/footer.component';
     RouterModule,
     TuiIslandModule,
     NgxImageZoomModule,
+    FormsModule,
+    TuiToggleModule,
     NgxLoadingModule.forRoot({
       animationType: ngxLoadingAnimationTypes.wanderingCubes,
       backdropBackgroundColour: "rgba(0,0,0,0.1)",
