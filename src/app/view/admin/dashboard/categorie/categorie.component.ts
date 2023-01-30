@@ -12,11 +12,12 @@ export class CategorieComponent implements OnInit {
 
   categories : ICategorie[] = [];
   marques    : IMarque[]    = [];
+  marque     : any = {};
+  showCategorieView = true;
   categorie  : Required<{name : string , isActive : number, marque_id : string}> = {
     name : '',
     isActive : 1,
     marque_id : ''
-
   }
   isLoaded : boolean = false;
   error = "";
@@ -72,6 +73,26 @@ export class CategorieComponent implements OnInit {
       }
     )
 
+  }
+
+  addNewMarque(){
+    this.isLoaded = true;
+    const httpRequest = {body  : this.marque,isEnc : false,url : '/marque/add',method : HttpRequestType.POST};
+    this.appFacades.request(httpRequest).subscribe(
+      {
+        next : (response :any )=>{
+          this.isLoaded = false;
+          this.closeModal('custom-modal-2');
+          this.appFacades.alertSuccess(response.message);
+          this.error = "";
+          this.getMarques();
+        },
+        error : (err)=>{
+          this.isLoaded = false;
+          this.error = err.error.message ? err.error.message  : err.message ;
+        }
+      }
+    )
   }
 
 }

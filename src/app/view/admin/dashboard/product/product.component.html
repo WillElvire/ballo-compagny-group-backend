@@ -1,5 +1,53 @@
 <div class="container">
-  <button class="btn btn-dark">Ajouter un produit</button>
-  <app-table-data [datas]="datas" [type]="'product'" [headers]="['Identifiant','Type','Quantité','Prix','Date','Action']"></app-table-data>
-</div>
+  <ng-container *ngIf="!enableProductForm">
+    <button class="btn btn-dark" (click)="enableProductForm = true">Ajouter un produit</button>
+    <app-table-data [datas]="datas" [type]="'product'"
+      [headers]="['Identifiant','Type','Quantité','Prix','Date','Action']"></app-table-data>
+  </ng-container>
+  <ng-container *ngIf="enableProductForm">
+    <h3>Ajout de produit</h3>
 
+    <div class="card">
+      <div class="card-body">
+        <div (click)="enableProductForm = false" style="cursor: pointer;">
+          <span style="float: right;color:red;font-weight: bold;">X</span>
+        </div>
+
+        <div class="mt-2">
+          <label>Nom du produt</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="mt-2">
+          <label>Marque</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="mt-2">
+          <label>Prix</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="mt-2">
+          <label>Quantité</label>
+          <input type="text" class="form-control">
+        </div>
+
+        <div class="mt-2">
+          <tui-input-files label="charger les images du produit" accept="image/*" [multiple]="true" [formControl]="control" (reject)="onReject($event)"
+          (ngModelChange)="control.markAsTouched()"></tui-input-files>
+        </div>
+
+        <tui-files class="tui-space_top-1">
+          <tui-file *ngFor="let file of control.valueChanges | async" [file]="file" [showDelete]="control.enabled"
+            (removed)="removeFile(file)"></tui-file>
+
+          <tui-file *ngFor="let file of rejectedFiles" state="error" [file]="file" [showDelete]="control.enabled"
+            (removed)="clearRejected(file)"></tui-file>
+        </tui-files>
+
+        <br>
+        <button class="btn btn-dark col-md-12" (click)="enableProductForm = false">Ajouter un produit</button>
+      </div>
+    </div>
+
+  </ng-container>
+
+</div>
