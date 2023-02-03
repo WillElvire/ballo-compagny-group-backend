@@ -1,4 +1,4 @@
-import { HttpRequestParams, IUser } from './../core/interface/index';
+import { HttpRequestParams, IProduct, IUser } from './../core/interface/index';
 
 import { Injectable } from '@angular/core';
 import { ModalService } from '../services/modals/jw-modal';
@@ -7,6 +7,7 @@ import { VerificationService } from '../services/data/verification.service';
 import { StorageService } from '../services/storage';
 import { Http } from '../services/api';
 import { UserStateService } from '../services/states/user.state.service';
+import { InteralFunction } from '../services/functions/dataApiFunctions';
 
 @Injectable()
 export class AppFacades {
@@ -17,7 +18,8 @@ export class AppFacades {
     private verificationService : VerificationService,
     private storageService : StorageService,
     private apiService :  Http,
-    private userStateService : UserStateService
+    private userStateService : UserStateService ,
+    private internalFunction : InteralFunction
   ){
 
   }
@@ -76,6 +78,25 @@ export class AppFacades {
 
   addUserState(User:IUser) {
     this.userStateService.addUserState(User);
+  }
+
+
+  // interal function
+
+  getCategories() {
+    return this.internalFunction.getCategories();
+  }
+
+  getMarques() {
+    return this.internalFunction.getMarques();
+  }
+
+  addNewProduct(product : Omit<IProduct,'guid'>) {
+    return this.internalFunction.addNewProduct(product);
+  }
+
+  loadProducts(){
+    return this.internalFunction.loadProducts();
   }
 
 }

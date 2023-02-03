@@ -1,3 +1,4 @@
+import { IProductFullInfo } from './../../../core/interface/index';
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UUID } from 'src/app/core/classes';
@@ -11,7 +12,7 @@ import { IShoppingProduct } from 'src/app/core/interface';
 })
 export class ShoppingCardComponent implements OnInit {
 
-  @Input("shoppingItemData") item?: IShoppingProduct;
+  @Input("shoppingItemData") item?: IShoppingProduct | IProductFullInfo;
   guiid : string  = UUID.getInstance().generate().toString();
 
   constructor(private router: Router) {
@@ -23,7 +24,7 @@ export class ShoppingCardComponent implements OnInit {
 
   navigate(url :string) {
     const verification = url.includes("item");
-    this.router.navigate([verification ?  url+"/"+this.guiid : url ],{state : {product : this.item}})
+    this.router.navigate([verification ?  url+"/"+this.item?.guid : url ],{state : {product : this.item}})
   }
 
 }

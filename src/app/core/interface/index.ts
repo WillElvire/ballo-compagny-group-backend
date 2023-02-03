@@ -19,6 +19,30 @@ export interface IUser {
   phone: string;
 }
 
+export interface IProduct {
+  titre: string;
+  marque_id: string;
+  price: number;
+  quantity: number;
+  dateLivraison: Date;
+  guid: string;
+  description: string;
+}
+
+export interface IProductFullInfo {
+  createdAt: string;
+  createdBy: string;
+  dateLivraison: string;
+  description: string;
+  guid: string;
+  isActive: 1;
+  marque: string;
+  price: string;
+  quantity: number;
+  title: string;
+  images ?:string;
+}
+
 export interface IShoppingProduct {
   title: string;
   marque: string;
@@ -27,6 +51,7 @@ export interface IShoppingProduct {
   price: number;
   reduction?: number;
   stock: number;
+  guid?: string;
   images: {
     image1?: string;
     image2?: string;
@@ -43,8 +68,8 @@ export interface ICategorie {
   id: number;
   name: string;
   isActive: string | number;
-  marque_name : string ;
-  marque_id : string | number;
+  marque_name: string;
+  marque_id: string | number;
 }
 
 export interface IMarque {

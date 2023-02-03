@@ -1,4 +1,4 @@
-import { IShoppingProduct } from 'src/app/core/interface';
+import { IProductFullInfo, IShoppingProduct } from 'src/app/core/interface';
 import { Component, OnInit } from '@angular/core';
 import { fakeProducts } from 'src/app/moocks';
 import { FormControl } from '@angular/forms';
@@ -10,14 +10,13 @@ import { HttpRequestType } from 'src/app/core/enum';
   selector: 'app-shop-list',
   templateUrl: './shop-list.component.html',
   styleUrls: ['./shop-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ShopListComponent implements OnInit {
 
 
   piece  = new FormControl();
   marque = new FormControl();
-  products : IShoppingProduct[] = fakeProducts;
+  products : IProductFullInfo[] = [];
   pieces  : string[] = [] ;
   marques : string[] = [];
 
@@ -26,6 +25,7 @@ export class ShopListComponent implements OnInit {
   ngOnInit(): void {
     this.getCategories();
     this.getMarques();
+    this.loadProducts();
   }
 
   getCategories() {
@@ -46,6 +46,12 @@ export class ShopListComponent implements OnInit {
         this.marques.push(element.name);
       })
     })
+  }
+
+  loadProducts(){
+    this.appFacades.loadProducts().subscribe((response)=>{
+      this.products  = response as IProductFullInfo[];
+    });
   }
 
 }

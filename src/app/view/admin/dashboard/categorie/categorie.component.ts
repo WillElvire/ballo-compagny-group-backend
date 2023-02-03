@@ -29,18 +29,14 @@ export class CategorieComponent implements OnInit {
   }
 
   getCategories() {
-    const httpRequest = {body  : {},isEnc : false,url : '/categorie/gets',method : HttpRequestType.GET};
-    this.appFacades.request(httpRequest)
-    .subscribe((response : any)=>{
+    this.appFacades.getCategories().subscribe((response : any)=>{
       this.categories = response.data as ICategorie[];
-    })
+    });
   }
 
 
   getMarques() {
-    const httpRequest = {body  : {},isEnc : false,url : '/marque/gets',method : HttpRequestType.GET};
-    this.appFacades.request(httpRequest)
-    .subscribe((response :any)=>{
+    this.appFacades.getMarques().subscribe((response :any)=>{
       this.marques  = response.data;
       console.log(this.marques);
     })

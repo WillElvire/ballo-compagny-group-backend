@@ -1,4 +1,4 @@
-<app-table-filter [filterData]="['Suzuki','Madza']" (choosedCategorie)="getCategorie($event)" *ngIf="filter"></app-table-filter>
+<app-table-filter [filterData]="marques" (choosedCategorie)="getCategorie($event)" *ngIf="filter"></app-table-filter>
 <div class="table-responsive">
   <table class="table table-bordered mt-4 ">
     <thead class="bg-dark text-light">
@@ -9,11 +9,14 @@
     <tbody>
         <tr *ngFor="let data  of datas  | tableFilterPipe:category">
           <ng-container *ngIf="type == 'product'">
-            <th scope="row">1</th>
+            <th scope="row">{{data?.guid}}</th>
             <td>{{data?.title }}</td>
-            <td>{{data?.price}}</td>
-            <td>{{data?.description}}</td>
+            <td>{{data?.description }}</td>
+            <td>{{data?.quantity}}</td>
+            <td>{{data?.price | currency : 'XOF'}}</td>
+            <td>{{data?.dateLivraison | date}}</td>
             <td>{{data?.marque}}</td>
+            <td>{{data?.createdAt | date}}</td>
             <td>
               <button class="btn btn-dark">  {{buttons[0]}}</button>
               <button class="btn btn-outline-dark" style="margin-left: 2%;" >{{buttons[1]}}</button>

@@ -2,7 +2,7 @@
   <ng-container *ngIf="!enableProductForm">
     <button class="btn btn-dark" (click)="enableProductForm = true">Ajouter un produit</button>
     <app-table-data [datas]="datas" [type]="'product'"
-      [headers]="['Identifiant','Type','Quantité','Prix','Date','Action']"></app-table-data>
+      [headers]="['Identifiant','intitulé','description','Quantité','Prix','Date de livraison','Marque','Date de creation','Action']" *ngIf="datas.length > 0" ></app-table-data>
   </ng-container>
   <ng-container *ngIf="enableProductForm">
     <h3>Ajout de produit</h3>
@@ -14,37 +14,57 @@
         </div>
 
         <div class="mt-2">
-          <label>Nom du produt</label>
-          <input type="text" class="form-control">
+          <label>Nom du produit</label>
+          <input type="text" class="form-control" [(ngModel)]="product.titre" name="titre">
         </div>
+
+        <div class="mt-2">
+          <label>Description  du produit</label>
+          <input type="text" class="form-control" [(ngModel)]="product.description" name="description">
+        </div>
+
         <div class="mt-2">
           <label>Marque</label>
-          <input type="text" class="form-control">
+          <select type="text" class="form-control" [(ngModel)]="product.marque_id" name="marque">
+            <option></option>
+            <option *ngFor="let marque of marques" value="{{marque.id}}">
+              {{marque.name}}
+            </option>
+          </select>
         </div>
         <div class="mt-2">
-          <label>Prix</label>
-          <input type="text" class="form-control">
+          <label>Prix unitaire</label>
+          <input type="text" class="form-control" [(ngModel)]="product.price" name="price">
         </div>
         <div class="mt-2">
           <label>Quantité</label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" [(ngModel)]="product.quantity" name="quantity">
         </div>
 
         <div class="mt-2">
-          <tui-input-files label="charger les images du produit" accept="image/*" [multiple]="true" [formControl]="control" (reject)="onReject($event)"
-          (ngModelChange)="control.markAsTouched()"></tui-input-files>
+          <label>Date de livraison du produit</label>
+          <input type="date" class="form-control" [(ngModel)]="product.dateLivraison" name="dateLivraison">
         </div>
 
-        <tui-files class="tui-space_top-1">
-          <tui-file *ngFor="let file of control.valueChanges | async" [file]="file" [showDelete]="control.enabled"
-            (removed)="removeFile(file)"></tui-file>
+        <div class="mt-2">
+          <tui-input-files label="charger les images du produit" accept="image/*" [multiple]="true"
+            [formControl]="control" (reject)="onReject($event)"
+            (ngModelChange)="control.markAsTouched()"></tui-input-files>
+        </div>
 
-          <tui-file *ngFor="let file of rejectedFiles" state="error" [file]="file" [showDelete]="control.enabled"
-            (removed)="clearRejected(file)"></tui-file>
-        </tui-files>
+        <ng-container>
+          <tui-files class="tui-space_top-1">
+            <tui-file *ngFor="let file of control.valueChanges | async" [file]="file" [showDelete]="control.enabled"
+              (removed)="removeFile(file)"></tui-file>
+
+            <tui-file *ngFor="let file of rejectedFiles" state="error" [file]="file" [showDelete]="control.enabled"
+              (removed)="clearRejected(file)"></tui-file>
+          </tui-files>
+        </ng-container>
+
 
         <br>
-        <button class="btn btn-dark col-md-12" (click)="enableProductForm = false">Ajouter un produit</button>
+        <button class="btn btn-dark col-md-12" (click)="addNewProduct()">Ajouter un produit</button>
       </div>
     </div>
 
