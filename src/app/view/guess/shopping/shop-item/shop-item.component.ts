@@ -1,79 +1,105 @@
-
-import { IShoppingProduct, IUser, IOrder } from './../../../../core/interface/index';
-import { Component, OnInit, Output } from '@angular/core';
+import {
+  IShoppingProduct,
+  IUser,
+  IOrder,
+} from './../../../../core/interface/index';
+import { Component, Host, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppFacades } from 'src/app/facades/app.facades';
 import { Location } from '@angular/common';
-import { ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-shop-item',
   templateUrl: './shop-item.component.html',
   styleUrls: ['./shop-item.component.scss'],
-  changeDetection : ChangeDetectionStrategy.OnPush
 })
-export class ShopItemComponent implements OnInit  {
+export class ShopItemComponent implements OnInit {
 
-  quantity      :  number  = 0;
-  detailProduct :  IShoppingProduct;
-  default      !:  string ;
-  price         :  number  = 0;
+  detailProduct: IShoppingProduct;
+  default!: string;
+  price: number = 0;
 
-  user : IUser = {
-    firstname : "",
-    lastname  : "",
-    email     : "",
-    phone     : ""
+  user: IUser = {
+    firstname: '',
+    lastname: '',
+    email: '',
+    phone: '',
   };
 
-  order : IOrder = {
-    user     : this.user,
-    quantity : this.quantity,
-    total    : this.price
+  order: IOrder = {
+    user: this.user,
+    quantity: 0,
+    total: 0,
+  };
+
+  isFoward: boolean = false;
+  error?: string;
+
+  size: { width: number; height: number } = {
+    width: window.innerWidth,
+    height: window.innerHeight,
+  };
+
+
+  @HostListener('window:resize', ['$event'])
+  onWindowResize() {
+    this.size.width  = window.innerWidth;
+    this.size.height = window.innerHeight;
   }
 
-  isFoward  : boolean  = false;
-  error     ?: string ;
-
-  constructor(private route: ActivatedRoute,private router : Router,private appFacade :AppFacades , private Location : Location) {
-    const extras :any  = this.router.getCurrentNavigation()?.extras.state;
+  constructor(
+    private router: Router,
+    private appFacade: AppFacades,
+    private Location: Location
+  ) {
+    const extras: any = this.router.getCurrentNavigation()?.extras.state;
     this.detailProduct = extras?.product;
-    this.default       = extras?.product?.images?.image1;
+    this.order.product = this.detailProduct?.idf;
+    this.default = extras?.product?.images?.image1;
   }
 
   ngOnInit(): void {
-    if(!this.detailProduct?.title)
-    return this.Location.back();
+    if (!this.detailProduct?.title) return this.Location.back();
   }
 
-  activeModal(modal:any){
-    this.appFacade.openModal(modal)
+  activeModal(modal: any) {
+    this.appFacade.openModal(modal);
   }
 
-
-  closeModal(index:any){
-    this.appFacade.closeModal(index)
+  closeModal(index: any) {
+    this.appFacade.closeModal(index);
   }
 
-  generateTotalPriceForProduct(){
-     this.price  = this.detailProduct.price * this.quantity;
-     console.log(this.price)
+  generateTotalPriceForProduct() {
+    this.price = this.detailProduct.price * this.order.quantity;
+    this.order.total = this.price;
   }
 
+  submitRequestForm() {
+    const emailVerification = this.appFacade.verifyIfEmail(
+      this.order.user.email
+    );
 
-  submitRequestForm(){
-    console.log(this.quantity);
-    const x = [];
-  }
-
-  next(){
-    const verification = this.appFacade.verifyObj(this.user)
-    if(verification.count == 0){
-      this.error = "";
-      return this.isFoward = !this.isFoward
+    if (emailVerification) {
+      console.log(this.order);
+      return this.appFacade.addNewCommand(this.order).subscribe(
+        (response) => {
+          console.log(response);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
     }
-    return this.error = "veuillez remplir les différents champs";
+    return (this.error = 'Veuillez renseiger une addresse  email valide');
   }
 
-
+  next() {
+    const verification = this.appFacade.verifyObj(this.user);
+    if (verification.count == 0) {
+      this.error = '';
+      return (this.isFoward = !this.isFoward);
+    }
+    return (this.error = 'veuillez remplir les différents champs');
+  }
 }

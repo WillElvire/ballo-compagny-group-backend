@@ -25,7 +25,7 @@
         </ng-container>
         <ng-container *ngIf="type == 'history'">
           <td>{{data.createdAt | date}}</td>
-          <td>{{data.action}}</td>
+          <td><tui-badge status="error" class="tui-space_right-2" value="{{data.action}}"></tui-badge></td>
           <td>{{data.libelle}}</td>
 
         </ng-container>

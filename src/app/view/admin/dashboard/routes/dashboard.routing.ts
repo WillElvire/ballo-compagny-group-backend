@@ -10,7 +10,7 @@ import { CategorieComponent } from "../categorie/categorie.component";
 
 const routes  : Routes = [
   {
-    path :'v1',
+    path :'',
     component : AdminLayoutComponent,
     children : [
       {
@@ -39,9 +39,11 @@ const routes  : Routes = [
       },
       {
         path : '',
-        redirectTo : 'home',
-        pathMatch : 'full'
-      }
+        pathMatch:'full',
+        redirectTo : 'home'
+      },
+
+
     ]
   }
 

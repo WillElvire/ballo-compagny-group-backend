@@ -7,7 +7,7 @@ export interface HttpRequestParams {
 
 export interface IOrder {
   user: IUser;
-  product?: IShoppingProduct;
+  product?: number;
   quantity: number;
   total: number;
 }
@@ -45,6 +45,7 @@ export interface IProductFullInfo {
 }
 
 export interface IShoppingProduct {
+  idf  ?: number;
   title: string;
   marque: string;
   type?: string;

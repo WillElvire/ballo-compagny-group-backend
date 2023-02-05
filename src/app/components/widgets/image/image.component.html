@@ -1,11 +1,11 @@
 
-<img class="main" [src]="images.image1" width="200" height="200">
+<img class="main" [src]="images?.image1" width="200" height="200">
 <div class="product-other-images">
   <div>
     <img [src]="default" width="50" height="40" (click)="setImage('1')">
-    <img [src]="images.image2" width="50" height="40" *ngIf="!!images?.image2"
+    <img [src]="images?.image2" width="50" height="40" *ngIf="!!images?.image2"
       (click)="setImage('2')">
-    <img [src]="images.image3" width="50" height="40" *ngIf="!!images?.image3"
+    <img [src]="images?.image3" width="50" height="40" *ngIf="!!images?.image3"
       (click)="setImage('3')">
   </div>
 </div>

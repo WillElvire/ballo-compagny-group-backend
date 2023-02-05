@@ -1,4 +1,4 @@
-import { HttpRequestParams, IProduct, IUser } from './../core/interface/index';
+import { HttpRequestParams, IOrder, IProduct, IUser } from './../core/interface/index';
 
 import { Injectable } from '@angular/core';
 import { ModalService } from '../services/modals/jw-modal';
@@ -45,6 +45,7 @@ export class AppFacades {
   alertInfo(message : string ){
     return this.alertService.setMessage(message).info();
   }
+
   //verify fields service
   verifyIfEmail(email:string) {
     return this.verificationService.verifyIfEmail(email);
@@ -58,8 +59,8 @@ export class AppFacades {
   verifyFieldLength(field :string , size : number){
     return this.verificationService.verifyFieldLength(field , size);
   }
-  // storage
 
+  // storage
   get(key : string )  {
     return this.storageService.get(key);
   }
@@ -69,42 +70,38 @@ export class AppFacades {
   }
 
   // API
-
   request(params : HttpRequestParams) {
     return this.apiService.request(params);
   }
 
   // USER STATE
-
   addUserState(User:IUser) {
     this.userStateService.addUserState(User);
   }
 
-
   // interal function
-
   getCategories() {
     return this.internalFunction.getCategories();
   }
-
   getMarques() {
     return this.internalFunction.getMarques();
   }
-
   addNewProduct(product : Omit<IProduct,'guid'>) {
     return this.internalFunction.addNewProduct(product);
   }
-
   loadProducts(){
     return this.internalFunction.loadProducts();
   }
-
   deleteProduct(guid : string) {
     return this.internalFunction.deleteProduct(guid);
   }
-
   getHistory(){
     return this.internalFunction.getHistory();
   }
-
+  getStockProduct() {
+    return this.internalFunction.getStockProduct();
+  }
+  addNewCommand(Order : IOrder) {
+    return this.internalFunction.addNewCommand(Order);
+  }
 }

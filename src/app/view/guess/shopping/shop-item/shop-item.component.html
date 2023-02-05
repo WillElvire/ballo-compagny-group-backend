@@ -16,12 +16,12 @@
 </div>
 
 
-<app-jw-modal id="custom-modal-1" [size]="40">
+<app-jw-modal id="custom-modal-1" [size]="size.width > 400 ? 80 : 130">
   <a (click)="closeModal('custom-modal-1')" style="cursor:pointer;font-weight:bold">X</a>
   <div class="b-form-item" class="department-form">
     <h1 style="text-align: center;">Formulaire de commande</h1>
+    <tui-notification status="error" *ngIf="!!error"> {{error}} </tui-notification>
     <div *ngIf="!isFoward">
-      <tui-notification status="error" *ngIf="!!error"> {{error}} </tui-notification>
       <label>Nom</label>
       <input type="text" [(ngModel)]="user.firstname" class="firstname-input" placeholder="votre nom" />
       <label>Prenom</label>
@@ -36,14 +36,15 @@
 
     <div *ngIf="isFoward">
       <label>Quantité</label>
-      <input type="number" [min]="1" [max]="detailProduct.stock ? detailProduct.stock : 0 " [(ngModel)]="quantity"
+      <input type="number" [min]="1" [max]="detailProduct.stock ? detailProduct.stock : 0 " [(ngModel)]="order.quantity"
         (change)="generateTotalPriceForProduct()" class="quantity-input" />
-      <app-shopping-detail [price]="price" [user]="user" [detailProduct]="detailProduct" [quantity]="quantity"
-        *ngIf="!!quantity"></app-shopping-detail>
+      <app-shopping-detail [price]="price" [user]="user" [detailProduct]="detailProduct"
+        [quantity]=" order.quantity > detailProduct.stock ? detailProduct.stock :  order.quantity"
+        *ngIf="!!order.quantity"></app-shopping-detail>
       <div class="buttons">
         <button type="submit" appearance="custom" tuiButton class="jw-back" (click)="isFoward = false">retour</button>
         <button type="submit" appearance="custom" tuiButton class="jw-submit" (click)="submitRequestForm()"
-          [disabled]="!quantity">Confirmer ma commande</button>
+          [disabled]="!order.quantity">Confirmer ma commande</button>
       </div>
     </div>
   </div>
