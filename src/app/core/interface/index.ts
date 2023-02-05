@@ -30,6 +30,7 @@ export interface IProduct {
 }
 
 export interface IProductFullInfo {
+  id :string;
   createdAt: string;
   createdBy: string;
   dateLivraison: string;

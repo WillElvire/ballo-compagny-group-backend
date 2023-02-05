@@ -99,4 +99,12 @@ export class AppFacades {
     return this.internalFunction.loadProducts();
   }
 
+  deleteProduct(guid : string) {
+    return this.internalFunction.deleteProduct(guid);
+  }
+
+  getHistory(){
+    return this.internalFunction.getHistory();
+  }
+
 }

@@ -1,4 +1,4 @@
-import { TuiInputModule, TuiIslandModule } from '@taiga-ui/kit';
+import { TuiBadgeModule, TuiInputModule, TuiIslandModule } from '@taiga-ui/kit';
 import { CommonModule } from '@angular/common';
 import { NgModule } from "@angular/core";
 import { ShoppingRoutingModule } from "../view/guess/shopping/routes/shopping.routes";
@@ -33,6 +33,7 @@ import { ServiceModule } from './services.module';
     TuiInputCountModule,
     TuiIslandModule,
     TuiNotificationModule,
+    TuiBadgeModule,
     ServiceModule
   ],
   providers : [],

@@ -16,9 +16,10 @@ export class ShopListComponent implements OnInit {
 
   piece  = new FormControl();
   marque = new FormControl();
+  searchmarque = new FormControl();
   products : IProductFullInfo[] = [];
   pieces  : string[] = [] ;
-  marques : string[] = [];
+  marques : string[] = ["All"];
 
   constructor(private appFacades : AppFacades) { }
 
@@ -53,5 +54,19 @@ export class ShopListComponent implements OnInit {
       this.products  = response as IProductFullInfo[];
     });
   }
+
+
+  filterElementByMarque(event : any) {
+    console.log(event);
+  }
+
+  openModal(name : string){
+    this.appFacades.openModal(name);
+  }
+
+  closeModal(name  : string) {
+    this.appFacades.closeModal(name);
+  }
+
 
 }

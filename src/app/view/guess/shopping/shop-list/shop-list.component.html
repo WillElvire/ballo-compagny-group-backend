@@ -8,25 +8,22 @@
     </div>
   </div>
 </section>
-
 <app-back-button [text]="'retour'"></app-back-button>
-<section class="search">
-  <tui-select tuiTextfieldSize="m" class="tui-space_vertical-4" [formControl]="piece">
-    Piece
-    <input tuiTextfield placeholder="Choisissez la piece recherché" />
-    <tui-data-list-wrapper *tuiDataList [items]="pieces"></tui-data-list-wrapper>
-  </tui-select>
+<section class="filter">
+  <label>Filter</label>
   <tui-select tuiTextfieldSize="m" class="tui-space_vertical-4" [formControl]="marque">
     Marque
     <input tuiTextfield placeholder="Choisissez la marque du produits" />
-    <tui-data-list-wrapper *tuiDataList [items]="marques"></tui-data-list-wrapper>
+    <tui-data-list-wrapper *tuiDataList [items]="marques"
+      (change)="filterElementByMarque($event)"></tui-data-list-wrapper>
   </tui-select>
-  <button tuiButton  appearance="custom">Rechercher</button>
+  <button tuiButton appearance="custom" (click)="openModal('search-modal-1')">Recherche Avancé</button>
 </section>
-
+<section class="search">
+</section>
 <section class="products">
-  <div *ngFor="let product of products" class="product-list">
-    <app-shopping-card [shoppingItemData]="product" ></app-shopping-card>
+  <div *ngFor="let product of products  | tableFilterPipe : marque.value" class="product-list">
+    <app-shopping-card [shoppingItemData]="product"></app-shopping-card>
   </div>
 </section>
 <br>
@@ -40,4 +37,36 @@
 <br>
 <br>
 
+<app-jw-modal id="search-modal-1" [size]="80" [heigth]="40">
+  <div (click)="closeModal('search-modal-1')" style="cursor: pointer;">
+    <span style="float: right;color:rgb(139, 0, 0);font-weight: bold;">x</span>
+  </div>
+
+  <section class="modals" style="margin-top: 7%;">
+    <h1 style="text-align: center;">Recherche Avancé</h1>
+    <section class="search">
+      <div>
+        <label>Pieces</label>
+        <select class="tui-space_vertical-4">
+          <option></option>
+          <option *ngFor="let piece of pieces">
+            {{piece}}
+          </option>
+        </select>
+      </div>
+      <div>
+        <label>Marque</label>
+        <select class="tui-space_vertical-4">
+
+          <option></option>
+          <option *ngFor="let marque of marques">
+            {{marque}}
+          </option>
+        </select>
+      </div>
+      <button tuiButton appearance="custom">Rechercher</button>
+    </section>
+  </section>
+
+</app-jw-modal>
 <app-footer></app-footer>

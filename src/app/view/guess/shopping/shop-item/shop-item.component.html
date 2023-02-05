@@ -3,13 +3,13 @@
 <h1 style="text-align: center;">Detail du produit {{detailProduct.title.toUpperCase()}}</h1>
 <div class="product">
   <div class="product-image">
-   <app-image [images]="detailProduct.images"></app-image>
+    <app-image [images]="detailProduct.images"></app-image>
   </div>
   <div class="product-description">
     <h1>{{detailProduct.title.toUpperCase()}}</h1>
-    <h3>Prix  : {{detailProduct.price}} FCFA</h3>
+    <h3>Prix : {{detailProduct.price}} FCFA</h3>
     <p>Marque : {{detailProduct.marque}}</p>
-    <p>Type   : {{detailProduct.type}}</p>
+    <p>Type : {{detailProduct.description}}</p>
     <p> Description : {{detailProduct.description}}</p>
     <button tuiButton appearance="custom" (click)="activeModal('custom-modal-1')">Commander</button>
   </div>
@@ -23,25 +23,27 @@
     <div *ngIf="!isFoward">
       <tui-notification status="error" *ngIf="!!error"> {{error}} </tui-notification>
       <label>Nom</label>
-      <input type="text"  [(ngModel)]="user.firstname" class="firstname-input" placeholder="votre nom" />
+      <input type="text" [(ngModel)]="user.firstname" class="firstname-input" placeholder="votre nom" />
       <label>Prenom</label>
-      <input type="text"  [(ngModel)]="user.lastname"  class="lastname-input"  placeholder="votre prenom" />
+      <input type="text" [(ngModel)]="user.lastname" class="lastname-input" placeholder="votre prenom" />
       <label>email</label>
-      <input type="email" [(ngModel)]="user.email"     class="email-input"     placeholder="votre email" />
+      <input type="email" [(ngModel)]="user.email" class="email-input" placeholder="votre email" />
       <label>Telephone</label>
-      <input type="phone" [(ngModel)]="user.phone"     class="phone-input"     placeholder="votre numero de téléphone" />
+      <input type="phone" [(ngModel)]="user.phone" class="phone-input" placeholder="votre numero de téléphone" />
 
       <button type="submit" appearance="custom" tuiButton class="jw-submit" (click)="next()">Suivant</button>
     </div>
 
     <div *ngIf="isFoward">
       <label>Quantité</label>
-      <input type="number" [min]="1" [max]="detailProduct.stock ? detailProduct.stock : 0 " [(ngModel)]="quantity" (change)="generateTotalPriceForProduct()"
-        class="quantity-input" />
-      <app-shopping-detail [price]="price" [user]="user" [detailProduct]="detailProduct" [quantity]="quantity" *ngIf="!!quantity"></app-shopping-detail>
+      <input type="number" [min]="1" [max]="detailProduct.stock ? detailProduct.stock : 0 " [(ngModel)]="quantity"
+        (change)="generateTotalPriceForProduct()" class="quantity-input" />
+      <app-shopping-detail [price]="price" [user]="user" [detailProduct]="detailProduct" [quantity]="quantity"
+        *ngIf="!!quantity"></app-shopping-detail>
       <div class="buttons">
         <button type="submit" appearance="custom" tuiButton class="jw-back" (click)="isFoward = false">retour</button>
-        <button type="submit" appearance="custom" tuiButton class="jw-submit" (click)="submitRequestForm()" [disabled]="!quantity">Confirmer ma commande</button>
+        <button type="submit" appearance="custom" tuiButton class="jw-submit" (click)="submitRequestForm()"
+          [disabled]="!quantity">Confirmer ma commande</button>
       </div>
     </div>
   </div>

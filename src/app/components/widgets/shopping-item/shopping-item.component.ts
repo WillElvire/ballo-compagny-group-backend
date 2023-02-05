@@ -1,7 +1,6 @@
 import { IProductFullInfo } from './../../../core/interface/index';
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UUID } from 'src/app/core/classes';
 import { IShoppingProduct } from 'src/app/core/interface';
 
 @Component({
@@ -13,7 +12,6 @@ import { IShoppingProduct } from 'src/app/core/interface';
 export class ShoppingCardComponent implements OnInit {
 
   @Input("shoppingItemData") item?: IShoppingProduct | IProductFullInfo;
-  guiid : string  = UUID.getInstance().generate().toString();
 
   constructor(private router: Router) {
 

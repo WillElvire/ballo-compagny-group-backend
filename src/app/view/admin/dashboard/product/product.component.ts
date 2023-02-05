@@ -11,24 +11,24 @@ import { maxFilesLength } from 'src/app/services/functions';
   styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent implements OnInit {
-
-  datas: IProductFullInfo[] = []
-  successMessage = "";
+  datas: IProductFullInfo[] = [];
+  successMessage = '';
+  isLoaded: boolean = true;
   enableProductForm: boolean = false;
   readonly control = new FormControl([], [maxFilesLength(3)]);
   rejectedFiles: readonly TuiFileLike[] = [];
-  marques    : Omit<IMarque,'isActive'>[]    = [];
+  marques: Omit<IMarque, 'isActive'>[] = [];
 
-  product  : Omit<IProduct , 'guid'> = {
-   description : '',
-   titre : '',
-   marque_id : '',
-   quantity : 1 ,
-   price : 0,
-   dateLivraison :  new Date()
-  }
+  product: Omit<IProduct, 'guid'> = {
+    description: '',
+    titre: '',
+    marque_id: '',
+    quantity: 1,
+    price: 0,
+    dateLivraison: new Date(),
+  };
 
-  constructor(private AppFacades : AppFacades){
+  constructor(private AppFacades: AppFacades) {
     this.loadProducts();
   }
   ngOnInit(): void {
@@ -57,42 +57,59 @@ export class ProductComponent implements OnInit {
   }
 
   getMarque() {
-    this.AppFacades.getMarques() .subscribe((response :any)=>{
+    this.AppFacades.getMarques().subscribe((response: any) => {
       this.marques = response.data;
-    })
+    });
   }
 
-  addNewProduct(){
+  addNewProduct() {
     const log = this.AppFacades.verifyObj(this.product);
-    if(log.count>0)
-    return this.addError(log.index as number[]);
+    if (log.count > 0) return this.addError(log.index as number[]);
 
-    this.AppFacades.addNewProduct(this.product).subscribe((response : any)=>{
+    this.AppFacades.addNewProduct(this.product).subscribe((response: any) => {
       this.successMessage = response.message;
-      console.log(response)
-      if(response.status == 200) {
+      console.log(response);
+      if (response.status == 200) {
         this.AppFacades.alertSuccess(this.successMessage);
         this.enableProductForm = false;
+        this.resetFields();
         this.loadProducts();
       }
-
-    });
-
-  }
-
-  addError(index : number[]) {
-   return index.forEach((element)=>{
-      this.AppFacades.alertError(`Veuillez renseigner ${Object.keys(this.product)[element]}`);
     });
   }
 
-  loadProducts(){
-    this.AppFacades.loadProducts().subscribe((response)=>{
-      this.datas  = response as IProductFullInfo[];
-      console.log(this.datas);
+  resetFields() {
+    this.product = {
+      description: '',
+      titre: '',
+      marque_id: '',
+      quantity: 1,
+      price: 0,
+      dateLivraison: new Date(),
+    };
+  }
+  addError(index: number[]) {
+    return index.forEach((element) => {
+      this.AppFacades.alertError(
+        `Veuillez renseigner ${Object.keys(this.product)[element]}`
+      );
     });
+  }
+
+  loadProducts() {
+    this.AppFacades.loadProducts().subscribe(
+      (response) => {
+        this.datas = response as IProductFullInfo[];
+        this.isLoaded = false;
+        console.log(this.datas);
+      },
+      (err) => (this.isLoaded = false)
+    );
+  }
+
+  productEvent(event: boolean) {
+    if (event) {
+      this.loadProducts();
+    }
   }
 }
-
-
-

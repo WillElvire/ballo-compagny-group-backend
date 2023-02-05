@@ -1,5 +1,5 @@
 import { animate, transition } from '@angular/animations';
-import { OnDestroy, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, OnDestroy, ViewEncapsulation } from '@angular/core';
 import {
   Component,
   ElementRef,
@@ -15,10 +15,12 @@ import { ModalService } from 'src/app/services/modals/jw-modal';
   templateUrl: './order-form.component.html',
   styleUrls: ['./order-form.component.scss'],
   encapsulation: ViewEncapsulation.None,
+  changeDetection : ChangeDetectionStrategy.OnPush
 })
 export class OrderFormComponent implements OnInit  {
   @Input() id?: string;
   @Input() size = 90;
+  @Input() heigth?:number;
   @ViewChild('modal', { static: false }) modal?: ElementRef;
   private element: any;
 
@@ -69,7 +71,7 @@ export class OrderFormComponent implements OnInit  {
 
   ngAfterViewInit(): void {
     this.render.setStyle(this.modal?.nativeElement, 'width', `${this.size}%`);
-    this.render.setStyle(this.modal?.nativeElement, 'height', `auto`);
+    this.render.setStyle(this.modal?.nativeElement, 'height', `${!!this.heigth ? this.heigth+'%' : 'auto'}`);
   }
 }
 

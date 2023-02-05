@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AppFacades } from 'src/app/facades/app.facades';
+
+export type history  = Required<{action : string , libelle : string , createdAt : any }>;
 
 @Component({
   selector: 'app-history',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoryComponent implements OnInit {
 
-  constructor() { }
+  history : history[] = [];
+  constructor(private appFacades  : AppFacades) { }
 
   ngOnInit(): void {
+    this.getHistory();
+  }
+
+  getHistory() {
+    this.appFacades.getHistory().subscribe((response)=>{
+      this.history = response as history[];
+    });
   }
 
 }

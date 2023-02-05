@@ -7,9 +7,7 @@ export class TableFilterPipePipe implements PipeTransform {
 
   transform(table: any[] , filter : string): any[] {
 
-    console.log(filter);
-
-    if(!filter) return table;
+    if(!filter || ['All','all'].includes(filter)) return table;
 
     return table.filter((value)=>{
       return value.marque == filter

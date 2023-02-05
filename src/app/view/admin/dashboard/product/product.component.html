@@ -1,9 +1,10 @@
 <div class="container">
   <ng-container *ngIf="!enableProductForm">
     <button class="btn btn-dark" (click)="enableProductForm = true">Ajouter un produit</button>
-    <app-table-data [datas]="datas" [type]="'product'"
+    <app-table-data [datas]="datas" [type]="'product'" (updateEvent)="productEvent($event)"
       [headers]="['Identifiant','intitulé','description','Quantité','Prix','Date de livraison','Marque','Date de creation','Action']" *ngIf="datas.length > 0" ></app-table-data>
   </ng-container>
+  <tui-loader [size]="'xl'" *ngIf="isLoaded"></tui-loader>
   <ng-container *ngIf="enableProductForm">
     <h3>Ajout de produit</h3>
 

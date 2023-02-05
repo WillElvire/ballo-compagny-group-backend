@@ -1,6 +1,7 @@
 export enum HttpRequestType  {
   POST = "post",
-  GET  = "get"
+  GET  = "get",
+  DELETE = "delete"
 }
 
 export enum alert  {

@@ -33,5 +33,15 @@ export class InteralFunction {
     return this.appFacades.request(httpRequest)
   }
 
+  deleteProduct(guid : string ){
+    const httpRequest = {body  : {},isEnc : false,url : '/product/delete/'+guid,method : HttpRequestType.DELETE};
+    return this.appFacades.request(httpRequest)
+  }
+
+  getHistory(){
+    const httpRequest = {body  : {},isEnc : false,url : '/history/gets',method : HttpRequestType.GET};
+    return this.appFacades.request(httpRequest)
+  }
+
 
 }

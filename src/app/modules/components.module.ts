@@ -5,7 +5,7 @@ import { NavbarComponent } from "../components/tools/navbar/navbar.component";
 import { TuiButtonModule } from "@taiga-ui/core";
 import { CommonModule } from "@angular/common";
 import { ShoppingCardComponent } from '../components/widgets/shopping-item/shopping-item.component';
-import {TuiIslandModule, TuiToggleModule} from '@taiga-ui/kit';
+import { TuiIslandModule, TuiToggleModule, TuiBadgeModule } from '@taiga-ui/kit';
 import { NgxLoadingModule, ngxLoadingAnimationTypes } from "ngx-loading";
 import { BackButtonComponent } from '../components/shared/back-button/back-button.component';
 import { OrderFormComponent } from '../components/modals/order-form/order-form.component';
@@ -29,6 +29,7 @@ import { FormsModule } from '@angular/forms';
     NgxImageZoomModule,
     FormsModule,
     TuiToggleModule,
+    TuiBadgeModule,
     NgxLoadingModule.forRoot({
       animationType: ngxLoadingAnimationTypes.wanderingCubes,
       backdropBackgroundColour: "rgba(0,0,0,0.1)",
@@ -38,7 +39,7 @@ import { FormsModule } from '@angular/forms';
       tertiaryColour: "#ffffff",
     }),
   ],
-  exports : [NavbarComponent,ShoppingCardComponent,BackButtonComponent,OrderFormComponent,ShoppingDetailComponent,ImageComponent,TableDataComponent, TableFilterComponent,FooterComponent]
+  exports : [NavbarComponent,ShoppingCardComponent,BackButtonComponent,OrderFormComponent,ShoppingDetailComponent,ImageComponent,TableDataComponent, TableFilterComponent,FooterComponent, TableFilterPipePipe]
 })
 
 export class ComponentModule {

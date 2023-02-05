@@ -42,12 +42,11 @@
   }
 }
 
-.search{
+.filter{
   display: flex;
-  margin-top: 3%;
   justify-content: center;
-  tui-input {
-    width: 20%;
+  label{
+    margin-top: 1%;
   }
   tui-select{
     margin-left: 1%;
@@ -56,6 +55,29 @@
   }
   button {
     margin-left: 2%;
+    background-color: rgb(141, 2, 2);
+    color:white;
+  }
+}
+
+.search{
+  display: flex;
+  margin-top: 3%;
+  justify-content: center;
+  tui-input {
+    width: 20%;
+  }
+  select{
+    margin-left: 1%;
+    width: 90%;
+    height: 7vh;
+    margin-top: -0.2px;
+    border:1px solid rgb(141, 2, 2);
+    border-radius: 8px;
+  }
+  button {
+    margin-left: 2%;
+    margin-top: 2%;
     background-color: rgb(141, 2, 2);
     color:white;
   }
