@@ -52,7 +52,7 @@ export interface IShoppingProduct {
   description: string;
   price: number;
   reduction?: number;
-  stock: number;
+  quantity: number;
   guid?: string;
   images: {
     image1?: string;
