@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ICommand } from 'src/app/core/interface';
 import { AppFacades } from 'src/app/facades/app.facades';
 import { UserQuery } from 'src/app/store/users/user.query';
 
@@ -15,11 +16,14 @@ export class IndexComponent implements OnInit {
     weeklyBooking : 0
   }
 
+  lastFiveCommande : ICommand[] = [];
+
   constructor(private userQuery : UserQuery,private appFacades  : AppFacades) { }
 
   ngOnInit(): void {
     this.getUserLoggedIn();
     this.getReport();
+    this.getLastCommand();
   }
 
   getUserLoggedIn() {
@@ -37,5 +41,18 @@ export class IndexComponent implements OnInit {
       })
     });
   }
+
+  getLastCommand() {
+    this.appFacades.getLastFiveCommand().subscribe({
+      next : (responce)=>{
+        this.lastFiveCommande = responce as ICommand[];
+        console.log(responce);
+      },
+      error : (err)=>{
+        console.log(err);
+      }
+    })
+  }
+
 
 }

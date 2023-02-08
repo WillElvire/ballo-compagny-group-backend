@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppFacades } from 'src/app/facades/app.facades';
 
-export type history  = Required<{action : string , libelle : string , createdAt : any }>;
+export type history  = Required<{action : string , libelle : string , date : any }>;
 
 @Component({
   selector: 'app-history',

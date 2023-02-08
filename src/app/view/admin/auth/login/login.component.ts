@@ -1,4 +1,3 @@
-import { UserStateService } from './../../../../services/states/user.state.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpRequestType } from 'src/app/core/enum';
@@ -58,7 +57,7 @@ export class LoginComponent implements OnInit {
             this.appFacades.alertSuccess(responce.message);
             this.appFacades.addUserState(responce.user);
             this.appFacades.set('user',responce.user);
-            this.router.navigate(["/dashboard/v1/"]);
+            this.router.navigate(["/dashboard/"]);
           }
         },
         error : (err) => {

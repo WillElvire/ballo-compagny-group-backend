@@ -104,4 +104,7 @@ export class AppFacades {
   addNewCommand(Order : IOrder) {
     return this.internalFunction.addNewCommand(Order);
   }
+  getLastFiveCommand(){
+    return this.internalFunction.getLastFiveCommand();
+  }
 }

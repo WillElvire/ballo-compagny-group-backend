@@ -1,4 +1,4 @@
-import { TuiInputModule, TuiIslandModule, TuiToggleModule } from '@taiga-ui/kit';
+import { TuiBadgeModule, TuiInputModule, TuiIslandModule, TuiToggleModule } from '@taiga-ui/kit';
 import { NgModule } from "@angular/core";
 import { CommandComponent } from "../view/admin/dashboard/command/command.component";
 import { IndexComponent } from "../view/admin/dashboard/index/index.component";
@@ -16,7 +16,7 @@ import {TuiInputFilesModule} from '@taiga-ui/kit'
 
 @NgModule({
   declarations : [CommandComponent,IndexComponent, ParametreComponent, HistoryComponent, ProductComponent, ReportingComponent, CategorieComponent],
-  imports : [DashboardRouting, TuiButtonModule,TuiInputModule , TuiIslandModule , ComponentModule , TuiToggleModule , FormsModule, CommonModule,TuiInputFilesModule,ReactiveFormsModule,TuiLoaderModule],
+  imports : [DashboardRouting, TuiButtonModule,TuiInputModule , TuiIslandModule , ComponentModule , TuiToggleModule , FormsModule, CommonModule,TuiInputFilesModule,ReactiveFormsModule,TuiLoaderModule , TuiBadgeModule],
   exports : [CommandComponent,IndexComponent],
   entryComponents  : []
 })

@@ -3,8 +3,8 @@ import {
   IUser,
   IOrder,
 } from './../../../../core/interface/index';
-import { Component, Host, HostListener, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component,HostListener, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AppFacades } from 'src/app/facades/app.facades';
 import { Location } from '@angular/common';
 
@@ -14,10 +14,11 @@ import { Location } from '@angular/common';
   styleUrls: ['./shop-item.component.scss'],
 })
 export class ShopItemComponent implements OnInit {
-
   detailProduct: IShoppingProduct;
   default!: string;
   price: number = 0;
+  isLoad: boolean = false;
+ 
 
   user: IUser = {
     firstname: '',
@@ -40,10 +41,9 @@ export class ShopItemComponent implements OnInit {
     height: window.innerHeight,
   };
 
-
   @HostListener('window:resize', ['$event'])
   onWindowResize() {
-    this.size.width  = window.innerWidth;
+    this.size.width = window.innerWidth;
     this.size.height = window.innerHeight;
   }
 
@@ -81,16 +81,20 @@ export class ShopItemComponent implements OnInit {
     );
 
     if (emailVerification) {
-      console.log(this.order);
+      this.isLoad = true;
       return this.appFacade.addNewCommand(this.order).subscribe(
-        (response) => {
-          console.log(response);
+        (response: any) => {
+          this.isLoad = false;
+          this.closeModal("custom-modal-1");
+          this.appFacade.alertSuccess(response.message);
         },
         (err) => {
-          console.log(err);
+          this.isLoad = false;
+          return this.error = err.message;
         }
       );
     }
+    this.isFoward = false;
     return (this.error = 'Veuillez renseiger une addresse  email valide');
   }
 
@@ -102,4 +106,6 @@ export class ShopItemComponent implements OnInit {
     }
     return (this.error = 'veuillez remplir les différents champs');
   }
+
+
 }

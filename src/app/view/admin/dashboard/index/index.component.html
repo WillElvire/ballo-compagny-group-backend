@@ -22,52 +22,36 @@
   </div>
 
   <div class="container mt-5 table-responsive">
-    <h4>Activités recentes</h4>
+    <h4>Activités recentes <tui-badge status="info"   value="{{lastFiveCommande.length}}"></tui-badge> </h4>
     <table class="table table-bordered  ">
       <thead class="bg-dark text-light">
         <tr>
-          <th scope="col">Identifiant</th>
-          <th scope="col">Type</th>
-          <th scope="col">Quantité</th>
-          <th scope="col">Prix</th>
+          <th scope="col"> Identifiant</th>
+          <th scope="col">nom et prenom client</th>
+          <th scope="col">email</th>
+          <th scope="col">telephone</th>
           <th scope="col">Date</th>
+          <th scope="col">Statut</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>@mdo</td>
+        <tr *ngFor="let command of lastFiveCommande">
+
+          <th scope="row">{{command?.guid}}</th>
+          <td >{{command?.nom}}  {{command?.prenom}}</td>
+          <td>{{command?.email}}</td>
+          <td>{{command?.telephone}}</td>
+          <td>{{command?.createdAt | date}}</td>
           <td>
-            <button class="btn btn-dark"> voir +</button>
-            <button class="btn btn-outline-dark" style="margin-left: 2%;" > livrer</button>
+            <span *ngIf="command.delivery == 0" style="color :red;"> en cours ....</span></td>
+            <span *ngIf="command.delivery != 0" style="color :green;"> livré</span>
+          <td>
+            <button class="btn btn-dark" routerLink="/dashoard/detail/command/{{command.guid}}"> detail ></button>
+            <button class="btn btn-outline-dark" style="margin-left: 2%;" *ngIf="command.delivery == 0" > livrer</button>
           </td>
         </tr>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>@mdo</td>
-          <td>
-            <button class="btn btn-dark"> voir +</button>
-            <button class="btn btn-outline-dark" style="margin-left: 2%;" > livrer</button>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>@mdo</td>
-          <td>
-            <button class="btn btn-dark"> voir +</button>
-            <button class="btn btn-outline-dark" style="margin-left: 2%;" > livrer</button>
-          </td>
-        </tr>
+
       </tbody>
     </table>
   </div>

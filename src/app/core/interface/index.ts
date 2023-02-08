@@ -30,7 +30,7 @@ export interface IProduct {
 }
 
 export interface IProductFullInfo {
-  id :string;
+  id: string;
   createdAt: string;
   createdBy: string;
   dateLivraison: string;
@@ -41,11 +41,11 @@ export interface IProductFullInfo {
   price: string;
   quantity: number;
   title: string;
-  images ?:string;
+  images?: string;
 }
 
 export interface IShoppingProduct {
-  idf  ?: number;
+  idf?: number;
   title: string;
   marque: string;
   type?: string;
@@ -78,4 +78,17 @@ export interface IMarque {
   id: number;
   name: string;
   isActive: string | number;
+}
+
+export interface ICommand {
+  delivery: number;
+  email: string;
+  guid: string;
+  id: number;
+  nom: string;
+  prenom: string;
+  quantity: number;
+  telephone: string;
+  total: number;
+  createdAt : Date;
 }

@@ -53,5 +53,10 @@ export class InteralFunction {
     return this.appFacades.request(httpRequest);
   }
 
+  getLastFiveCommand() {
+    const httpRequest = {body  : {},isEnc : false,url : '/command/gets/five',method : HttpRequestType.GET};
+    return this.appFacades.request(httpRequest);
+  }
+
 
 }
