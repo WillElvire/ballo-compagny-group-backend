@@ -44,7 +44,7 @@
           <td>{{command?.telephone}}</td>
           <td>{{command?.createdAt | date}}</td>
           <td>
-            <span *ngIf="command.delivery == 0" style="color :red;"> en cours ....</span></td>
+            <span *ngIf="command.delivery == 0" style="color :red;"> en cours ....</span>
             <span *ngIf="command.delivery != 0" style="color :green;"> livré</span>
           <td>
             <button class="btn btn-dark" routerLink="/dashboard/detail/command/{{command.guid}}"> detail ></button>

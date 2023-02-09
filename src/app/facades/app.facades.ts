@@ -110,4 +110,11 @@ export class AppFacades {
   getCommandUsingGuid(guid  : string) {
     return this.internalFunction.getCommandUsingGuid(guid);
   }
+  deleteCommandFromGuid(guid : string){
+    return this.internalFunction.deleteCommandFromGuid(guid);
+  }
+
+  updateStatusCommand(guid : string) {
+    return this.internalFunction.updateStatusCommand(guid);
+  }
 }

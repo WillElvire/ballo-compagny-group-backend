@@ -63,5 +63,15 @@ export class InteralFunction {
     return this.appFacades.request(httpRequest);
   }
 
+  deleteCommandFromGuid(guid : string) {
+    const httpRequest = {body  : {},isEnc : false,url : '/command/delete/' + guid,method : HttpRequestType.DELETE};
+    return this.appFacades.request(httpRequest);
+  }
+
+  updateStatusCommand(guid  : string) {
+    const httpRequest = {body  : {},isEnc : false,url : '/command/update/status/' + guid,method : HttpRequestType.GET};
+    return this.appFacades.request(httpRequest);
+  }
+
 
 }
