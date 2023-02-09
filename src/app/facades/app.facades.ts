@@ -107,4 +107,7 @@ export class AppFacades {
   getLastFiveCommand(){
     return this.internalFunction.getLastFiveCommand();
   }
+  getCommandUsingGuid(guid  : string) {
+    return this.internalFunction.getCommandUsingGuid(guid);
+  }
 }

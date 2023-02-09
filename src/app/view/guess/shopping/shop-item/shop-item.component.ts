@@ -18,7 +18,7 @@ export class ShopItemComponent implements OnInit {
   default!: string;
   price: number = 0;
   isLoad: boolean = false;
- 
+
 
   user: IUser = {
     firstname: '',
@@ -57,6 +57,7 @@ export class ShopItemComponent implements OnInit {
     this.order.product = this.detailProduct?.idf;
     this.default = extras?.product?.images?.image1;
   }
+
 
   ngOnInit(): void {
     if (!this.detailProduct?.title) return this.Location.back();

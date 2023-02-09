@@ -29,6 +29,22 @@ export interface IProduct {
   description: string;
 }
 
+export interface IFullCommandDetail {
+  createdAt: string;
+  delivery: number;
+  description: string;
+  email: string;
+  guid: string;
+  id: number;
+  marque: string;
+  nom: string;
+  prenom: string;
+  prix: string;
+  quantity: number;
+  telephone: string;
+  titre: string;
+  total: number;
+}
 export interface IProductFullInfo {
   id: string;
   createdAt: string;
@@ -90,5 +106,5 @@ export interface ICommand {
   quantity: number;
   telephone: string;
   total: number;
-  createdAt : Date;
+  createdAt: Date;
 }

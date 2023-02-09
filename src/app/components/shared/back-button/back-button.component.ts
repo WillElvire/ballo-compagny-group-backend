@@ -11,6 +11,7 @@ export class BackButtonComponent implements OnInit {
  @Input() direction?:string ;
  @Input() text?:string;
  @Input() color?:string;
+ @Input() type?:string;
 
   constructor(private location : Location) { }
 

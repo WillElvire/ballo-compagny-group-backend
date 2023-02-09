@@ -1,0 +1,34 @@
+<app-back-button [type]="'bootstrap'" [text]="'Retour'"></app-back-button>
+<div class=" text-center">
+  <button class="btn btn-dark" *ngIf="detailCommand?.delivery == 0">Marquer comme Livré</button>
+  <button class="btn btn-outline-danger" style="margin-left: 2%;">Supprimer</button>
+</div>
+<div class="card w-60 mt-3">
+
+  <div class="card-body">
+    <span style="color : red">Detail client </span>
+    <hr>
+    <p>Date de la commande : {{detailCommand?.createdAt | date}}</p>
+    <p>Nom et prenom du client : {{detailCommand?.nom}} {{detailCommand?.prenom}}</p>
+    <p>Email : {{detailCommand?.email}}</p>
+    <p>Telephone : {{detailCommand?.telephone}}</p>
+    <hr>
+    <span style="color : red">Detail de la commande </span>
+    <hr>
+    <p>Marque : {{detailCommand?.marque}}</p>
+    <p>Prix unitaire : {{detailCommand?.prix | currency : 'XOF'}}</p>
+    <p>Quantité commandé : {{detailCommand?.quantity}}</p>
+    <p>Prix total : {{detailCommand?.total | currency : 'XOF'}}</p>
+    <p>status :
+      <span *ngIf="detailCommand?.delivery == 0" style="color: red">...en cours</span>
+      <span *ngIf="detailCommand?.delivery != 0" style="color:green">Livré</span>
+    </p>
+
+    <p>Description : {{detailCommand?.description}}</p>
+    <p>Titre : {{detailCommand?.titre}}</p>
+    <p>Identifiant : {{detailCommand?.guid}}</p>
+
+
+
+  </div>
+</div>

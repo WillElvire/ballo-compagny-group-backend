@@ -58,5 +58,10 @@ export class InteralFunction {
     return this.appFacades.request(httpRequest);
   }
 
+  getCommandUsingGuid(guid  : string ) {
+    const httpRequest = {body  : {},isEnc : false,url : '/command/get/' + guid,method : HttpRequestType.GET};
+    return this.appFacades.request(httpRequest);
+  }
+
 
 }

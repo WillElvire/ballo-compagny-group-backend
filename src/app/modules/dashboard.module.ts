@@ -12,10 +12,12 @@ import { ComponentModule } from './components.module';
 import { CategorieComponent } from '../view/admin/dashboard/categorie/categorie.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import {TuiInputFilesModule} from '@taiga-ui/kit'
+import {TuiInputFilesModule} from '@taiga-ui/kit';
+import { DetailComponent } from '../view/admin/dashboard/detail/detail.component';
+
 
 @NgModule({
-  declarations : [CommandComponent,IndexComponent, ParametreComponent, HistoryComponent, ProductComponent, ReportingComponent, CategorieComponent],
+  declarations : [CommandComponent,IndexComponent, ParametreComponent, HistoryComponent, ProductComponent, ReportingComponent, CategorieComponent, DetailComponent],
   imports : [DashboardRouting, TuiButtonModule,TuiInputModule , TuiIslandModule , ComponentModule , TuiToggleModule , FormsModule, CommonModule,TuiInputFilesModule,ReactiveFormsModule,TuiLoaderModule , TuiBadgeModule],
   exports : [CommandComponent,IndexComponent],
   entryComponents  : []

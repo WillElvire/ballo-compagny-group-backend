@@ -47,7 +47,7 @@
             <span *ngIf="command.delivery == 0" style="color :red;"> en cours ....</span></td>
             <span *ngIf="command.delivery != 0" style="color :green;"> livré</span>
           <td>
-            <button class="btn btn-dark" routerLink="/dashoard/detail/command/{{command.guid}}"> detail ></button>
+            <button class="btn btn-dark" routerLink="/dashboard/detail/command/{{command.guid}}"> detail ></button>
             <button class="btn btn-outline-dark" style="margin-left: 2%;" *ngIf="command.delivery == 0" > livrer</button>
           </td>
         </tr>
@@ -55,4 +55,5 @@
       </tbody>
     </table>
   </div>
+  <a routerLink="/dashboard/commandes" style="text-decoration : none ; cursor : pointer">Voir plus +</a>
 </div>

@@ -7,6 +7,7 @@ import { ProductComponent } from "../product/product.component";
 import { HistoryComponent } from "../history/history.component";
 import { ParametreComponent } from "../parametre/parametre.component";
 import { CategorieComponent } from "../categorie/categorie.component";
+import { DetailComponent } from "../detail/detail.component";
 
 const routes  : Routes = [
   {
@@ -32,6 +33,10 @@ const routes  : Routes = [
       {
         path : 'history',
         component : HistoryComponent
+      },
+      {
+        path : 'detail/command/:guid',
+        component : DetailComponent
       },
       {
         path : 'parametre',
