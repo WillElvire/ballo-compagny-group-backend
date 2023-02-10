@@ -17,9 +17,12 @@ import { TableFilterPipePipe } from '../pipes/data/table-filter-pipe.pipe';
 import { FooterComponent } from '../components/tools/footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { PieComponent } from '../components/widgets/charts/pie/pie.component';
+import { BarComponent } from '../components/widgets/charts/bar/bar.component';
+import { LineComponent } from '../components/widgets/charts/line/line.component';
 
 @NgModule({
-  declarations : [NavbarComponent , ShoppingCardComponent, BackButtonComponent,OrderFormComponent,ShoppingDetailComponent, ImageComponent , TableDataComponent, TableFilterComponent, TableFilterPipePipe,FooterComponent ],
+  declarations : [NavbarComponent , ShoppingCardComponent, BackButtonComponent,OrderFormComponent,ShoppingDetailComponent, ImageComponent , TableDataComponent, TableFilterComponent, TableFilterPipePipe,FooterComponent, PieComponent, BarComponent, LineComponent ],
   entryComponents : [],
   providers : [],
   imports : [
@@ -41,7 +44,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
       tertiaryColour: "#ffffff",
     }),
   ],
-  exports : [NavbarComponent,ShoppingCardComponent,BackButtonComponent,OrderFormComponent,ShoppingDetailComponent,ImageComponent,TableDataComponent, TableFilterComponent,FooterComponent, TableFilterPipePipe]
+  exports : [NavbarComponent,ShoppingCardComponent,BackButtonComponent,OrderFormComponent,ShoppingDetailComponent,ImageComponent,TableDataComponent, TableFilterComponent,FooterComponent, TableFilterPipePipe,PieComponent, BarComponent, LineComponent]
 })
 
 export class ComponentModule {

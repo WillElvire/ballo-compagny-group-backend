@@ -8,6 +8,7 @@ import { HistoryComponent } from "../history/history.component";
 import { ParametreComponent } from "../parametre/parametre.component";
 import { CategorieComponent } from "../categorie/categorie.component";
 import { DetailComponent } from "../detail/detail.component";
+import { ReportingComponent } from "../reporting/reporting.component";
 
 const routes  : Routes = [
   {
@@ -41,6 +42,10 @@ const routes  : Routes = [
       {
         path : 'parametre',
         component :  ParametreComponent
+      },
+      {
+        path : 'reporting',
+        component :  ReportingComponent
       },
       {
         path : '',

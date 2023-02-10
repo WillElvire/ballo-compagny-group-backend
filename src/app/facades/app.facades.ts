@@ -120,4 +120,8 @@ export class AppFacades {
   getCommand() {
     return this.internalFunction.getCommand();
   }
+
+  getCommandReport() {
+    return this.internalFunction.getCommandReport();
+  }
 }

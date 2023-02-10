@@ -47,13 +47,13 @@
             <span *ngIf="command.delivery == 0" style="color :red;"> en cours ....</span>
             <span *ngIf="command.delivery != 0" style="color :green;"> livré</span>
           <td>
-            <button class="btn btn-dark" routerLink="/dashboard/detail/command/{{command.guid}}"> detail ></button>
-            <button class="btn btn-outline-dark" style="margin-left: 2%;" *ngIf="command.delivery == 0" > livrer</button>
+            <button class="btn btn-dark" routerLink="/dashboard/detail/command/{{command?.guid}}"> detail ></button>
+            <button class="btn btn-outline-dark" style="margin-left: 2%;" *ngIf="command.delivery == 0"  (click)="marqueCommeLivrer(command?.guid)"> livrer</button>
           </td>
         </tr>
 
       </tbody>
     </table>
   </div>
-  <a routerLink="/dashboard/commandes" style="text-decoration : none ; cursor : pointer">Voir plus +</a>
+  <a routerLink="/dashboard/commandes" style="text-decoration : none ; cursor : pointer" class="ml-2">Voir plus +</a>
 </div>

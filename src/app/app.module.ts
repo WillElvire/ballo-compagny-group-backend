@@ -13,7 +13,7 @@ import { ShoppingModule } from "./modules/shopping.module";
 import { AuthModule } from "./modules/auth.module";
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { DashboardModule } from "./modules/dashboard.module";
-
+import { TuiHostedDropdownModule, TuiDataListModule } from '@taiga-ui/core';
 
 
 @NgModule({
@@ -36,7 +36,10 @@ import { DashboardModule } from "./modules/dashboard.module";
     AuthModule,
     TuiAlertModule,
     DashboardModule,
-    TuiButtonModule
+    TuiButtonModule,
+    TuiHostedDropdownModule,
+    TuiDataListModule
+
 
 ],
   providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}],

@@ -54,5 +54,19 @@ export class IndexComponent implements OnInit {
     })
   }
 
+  marqueCommeLivrer(guid: string | undefined) {
+    this.appFacades.updateStatusCommand(guid as string).subscribe(
+      (response: any) => {
+        this.getLastCommand();
+        this.getReport();
+        this.appFacades.alertSuccess(response.message);
+      },
+      (error) => {
+        this.appFacades.alertError(error.message);
+        console.log(error);
+      }
+    );
+  }
+
 
 }
