@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IFullCommandDetail } from 'src/app/core/interface';
+import { AppFacades } from 'src/app/facades/app.facades';
 
 @Component({
   selector: 'app-command',
@@ -7,12 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommandComponent implements OnInit {
 
-  header  : string[]  = ["Numero commande", "Produit","Marque","Quantité","Prix Unitaire","Prix total","Date","Action"];
+  header  : string[]  = ["Identifiant", "nom et prenom client","email","telephone","Date","Statut","Action"];
   buttons : string[]  = ["Voir plus","Livrer"];
-
-  constructor() { }
+  commandes  : IFullCommandDetail [] = [];
+  constructor(private appFacades : AppFacades) { }
 
   ngOnInit(): void {
+   this.getCommandes();
+  }
+
+  getCommandes() {
+    this.appFacades.getCommand().subscribe((response)=>{
+      this.commandes = response as IFullCommandDetail []
+    })
   }
 
 }

@@ -73,5 +73,9 @@ export class InteralFunction {
     return this.appFacades.request(httpRequest);
   }
 
+  getCommand(){
+    const httpRequest = {body  : {},isEnc : false,url : '/command/gets' ,method : HttpRequestType.GET};
+    return this.appFacades.request(httpRequest);
+  }
 
 }

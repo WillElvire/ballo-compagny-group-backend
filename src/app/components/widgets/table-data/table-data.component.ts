@@ -28,6 +28,7 @@ export class TableDataComponent implements OnInit {
 
   category: string = '';
   marques: Omit<IMarque, 'id' | 'isActive'>[] = [];
+  p : number = 1;
 
   constructor(private appFacades: AppFacades) {}
 

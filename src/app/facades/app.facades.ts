@@ -117,4 +117,7 @@ export class AppFacades {
   updateStatusCommand(guid : string) {
     return this.internalFunction.updateStatusCommand(guid);
   }
+  getCommand() {
+    return this.internalFunction.getCommand();
+  }
 }

@@ -1,3 +1,5 @@
+
+
 <app-table-filter [filterData]="marques" (choosedCategorie)="getCategorie($event)" *ngIf="filter"></app-table-filter>
 <div class="table-responsive">
   <table class="table table-bordered mt-4 ">
@@ -7,7 +9,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let data  of datas  | tableFilterPipe:category">
+      <tr *ngFor="let data  of datas | paginate: { itemsPerPage: 5, currentPage: p }  | tableFilterPipe:category">
         <ng-container *ngIf="type == 'product'">
           <th scope="row">{{data?.guid}}</th>
           <td>{{data?.title }}</td>
@@ -29,11 +31,19 @@
           <td>{{data.libelle}}</td>
 
         </ng-container>
-        <ng-container *ngIf="type == 'command'">
-          <td>{{data}}</td>
+        <ng-container *ngIf="type == 'commande'">
+          <td>{{data?.guid}}</td>
+          <td>{{data?.nom}} {{data?.prenom}}</td>
+          <td>{{data?.email}}</td>
+          <td>{{data?.telephone}}</td>
+          <td>{{data?.createdAt | date}}</td>
+          <td> <span *ngIf="data?.delivery == 0" style="color :red;"> en cours ....</span>
+            <span *ngIf="data?.delivery != 0" style="color :green;"> livré</span>
+          </td>
+
           <td>
-            <button class="btn btn-dark"> {{buttons[0]}}</button>
-            <button class="btn btn-outline-dark" style="margin-left: 2%;">{{buttons[1]}}</button>
+            <button class="btn btn-dark" routerLink="/dashboard/detail/command/{{data?.guid}}"> {{buttons[0]}}</button>
+
           </td>
         </ng-container>
         <ng-container *ngIf="type == 'categorie'">
@@ -62,4 +72,7 @@
       </tr>
     </tbody>
   </table>
+  <div style="float: right;">
+    <pagination-controls (pageChange)="p = $event" ></pagination-controls>
+  </div>
 </div>

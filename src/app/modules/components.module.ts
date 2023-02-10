@@ -16,6 +16,7 @@ import { TableFilterComponent } from '../components/widgets/table-filter/table-f
 import { TableFilterPipePipe } from '../pipes/data/table-filter-pipe.pipe';
 import { FooterComponent } from '../components/tools/footer/footer.component';
 import { FormsModule } from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations : [NavbarComponent , ShoppingCardComponent, BackButtonComponent,OrderFormComponent,ShoppingDetailComponent, ImageComponent , TableDataComponent, TableFilterComponent, TableFilterPipePipe,FooterComponent ],
@@ -30,6 +31,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     TuiToggleModule,
     TuiBadgeModule,
+    NgxPaginationModule,
     NgxLoadingModule.forRoot({
       animationType: ngxLoadingAnimationTypes.wanderingCubes,
       backdropBackgroundColour: "rgba(0,0,0,0.1)",
