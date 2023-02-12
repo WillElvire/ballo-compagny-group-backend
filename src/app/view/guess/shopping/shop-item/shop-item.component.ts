@@ -81,19 +81,25 @@ export class ShopItemComponent implements OnInit {
       this.order.user.email
     );
 
-    if (emailVerification) {
-      this.isLoad = true;
-      return this.appFacade.addNewCommand(this.order).subscribe(
-        (response: any) => {
-          this.isLoad = false;
-          this.closeModal("custom-modal-1");
-          this.appFacade.alertSuccess(response.message);
-        },
-        (err) => {
-          this.isLoad = false;
-          return this.error = err.message;
-        }
-      );
+    if (emailVerification && this.order.quantity) {
+
+      if(this.order.quantity <= this.detailProduct.quantity) {
+        this.isLoad = true;
+        return this.appFacade.addNewCommand(this.order).subscribe(
+          (response: any) => {
+            this.isLoad = false;
+            this.closeModal("custom-modal-1");
+            this.appFacade.alertSuccess(response.message);
+          },
+          (err) => {
+            this.isLoad = false;
+            return this.error = err.message;
+          }
+        );
+      }
+      this.isFoward = false;
+      return this.error = "Vous ne pouvez pas commander plus que la quantité en stock";
+
     }
     this.isFoward = false;
     return (this.error = 'Veuillez renseiger une addresse  email valide');

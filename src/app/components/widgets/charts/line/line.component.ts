@@ -23,8 +23,7 @@ export class LineComponent implements OnInit {
       type: 'line', //this denotes tha type of chart
 
       data: {// values on X-Axis
-        labels: ['2022-05-10', '2022-05-11', '2022-05-12','2022-05-13',
-								 '2022-05-14', '2022-05-15', '2022-05-16','2022-05-17', ],
+        labels: [ ],
 	       datasets: [
           {
             label: "Sales",

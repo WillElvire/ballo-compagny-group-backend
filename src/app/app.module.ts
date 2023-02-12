@@ -16,11 +16,13 @@ import { DashboardModule } from "./modules/dashboard.module";
 import { TuiHostedDropdownModule, TuiDataListModule } from '@taiga-ui/core';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent,
     AdminLayoutComponent,
+
 
   ],
   imports: [

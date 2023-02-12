@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Chart } from 'chart.js/auto';
+import { Component, OnInit } from '@angular/core';
 import { AppFacades } from 'src/app/facades/app.facades';
+
 
 @Component({
   selector: 'app-reporting',

@@ -34,11 +34,7 @@ export class AdminLayoutComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    this.Render.setStyle(
-      this.sideBar?.nativeElement,
-      'background',
-      !!this.color ? this.color : 'black'
-    );
+
   }
 
   onClick(): void {

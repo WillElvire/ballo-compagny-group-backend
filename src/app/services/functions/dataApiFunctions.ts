@@ -83,4 +83,9 @@ export class InteralFunction {
     return this.appFacades.request(httpRequest);
   }
 
+  getCommandDailyReport(){
+    const httpRequest = {body  : {},isEnc : false,url : '/command/report' ,method : HttpRequestType.GET};
+    return this.appFacades.request(httpRequest);
+  }
+
 }

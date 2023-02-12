@@ -124,4 +124,8 @@ export class AppFacades {
   getCommandReport() {
     return this.internalFunction.getCommandReport();
   }
+
+  getCommandDailyReport(){
+    return this.internalFunction.getCommandDailyReport();
+  }
 }

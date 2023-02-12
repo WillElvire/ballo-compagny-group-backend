@@ -5,13 +5,12 @@
       <div class="col-md-6">
         <div class="card">
           <div class="card-body">
-            <app-bar [label]="['2022-05-10', '2022-05-11', '2022-05-12','2022-05-13',
-            '2022-05-14', '2022-05-15', '2022-05-16','2022-05-17', ]"></app-bar>
+            <app-bar ></app-bar>
           </div>
         </div>
       </div>
       <div class="col-md-6">
-        <div class="card" *ngIf="report.length == 0">
+        <div class="card" *ngIf="report.length != 0">
           <div class="card-body">
             <app-pie [label]="['Commandes livré','Commande en attente de livraison']" [data]="report" ></app-pie>
           </div>
