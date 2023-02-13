@@ -8,6 +8,8 @@ import { StorageService } from '../services/storage';
 import { Http } from '../services/api';
 import { UserStateService } from '../services/states/user.state.service';
 import { InteralFunction } from '../services/functions/dataApiFunctions';
+import { CookieStorageService } from '../services/storage/cookie';
+import { UserAuthentificationService } from '../services/auth';
 
 @Injectable()
 export class AppFacades {
@@ -19,7 +21,9 @@ export class AppFacades {
     private storageService : StorageService,
     private apiService :  Http,
     private userStateService : UserStateService ,
-    private internalFunction : InteralFunction
+    private internalFunction : InteralFunction,
+    private cookieStorageService : CookieStorageService,
+    private userAuthentificationService : UserAuthentificationService
   ){
 
   }
@@ -69,6 +73,27 @@ export class AppFacades {
     this.storageService.set(key,value);
   }
 
+  //COOKIE
+
+
+  setCookie(key  : string , value : any) {
+   this.cookieStorageService.setCookie(key, value);
+  }
+
+  setCookieWithDuration(key  : string , value : any, duration : number) {
+    this.cookieStorageService.setCookieWithDuration(key, value, duration);
+  }
+
+  getCookie(key : string) {
+    return this.cookieStorageService.getCookie(key);
+  }
+
+  deleteCookie(key:string) {
+    this.cookieStorageService.deleteCookie(key)
+  }
+
+
+
   // API
   request(params : HttpRequestParams) {
     return this.apiService.request(params);
@@ -77,6 +102,16 @@ export class AppFacades {
   // USER STATE
   addUserState(User:IUser) {
     this.userStateService.addUserState(User);
+  }
+
+  //authentification
+
+  isLoggedIn(){
+    return this.userAuthentificationService.isLoggedIn();
+  }
+
+  getUser(){
+    return this.userAuthentificationService.getUser();
   }
 
   // interal function

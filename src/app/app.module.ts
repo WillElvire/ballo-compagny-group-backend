@@ -14,6 +14,7 @@ import { AuthModule } from "./modules/auth.module";
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { DashboardModule } from "./modules/dashboard.module";
 import { TuiHostedDropdownModule, TuiDataListModule } from '@taiga-ui/core';
+import {TuiProgressModule} from '@taiga-ui/kit';
 
 
 
@@ -22,8 +23,6 @@ import { TuiHostedDropdownModule, TuiDataListModule } from '@taiga-ui/core';
     AppComponent,
     LandingComponent,
     AdminLayoutComponent,
-
-
   ],
   imports: [
     BrowserModule,
@@ -40,7 +39,8 @@ import { TuiHostedDropdownModule, TuiDataListModule } from '@taiga-ui/core';
     DashboardModule,
     TuiButtonModule,
     TuiHostedDropdownModule,
-    TuiDataListModule
+    TuiDataListModule,
+    TuiProgressModule
 
 
 ],

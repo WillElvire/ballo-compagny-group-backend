@@ -3,31 +3,34 @@ import { ShopOrderComponent } from '../shop-order/shop-order.component';
 import { ShopItemComponent } from './../shop-item/shop-item.component';
 import { ShopListComponent } from './../shop-list/shop-list.component';
 import { RouterModule, Routes } from '@angular/router';
+import { ShoppingResolverService } from 'src/app/services/resolvers/shopping-resolver.service';
 
-
-const routes : Routes = [
+const routes: Routes = [
   {
-    path  : "list",
-    component  : ShopListComponent
+    path: 'list',
+    component: ShopListComponent,
+
   },
   {
-    path : "item/:guid",
-    component : ShopItemComponent
+    path: 'item/:guid',
+    component: ShopItemComponent,
+    resolve: {
+      shoppinList: ShoppingResolverService,
+    },
   },
   {
-    path : "order",
-    component : ShopOrderComponent
+    path: 'order',
+    component: ShopOrderComponent,
   },
   {
-    path:"",
-    pathMatch : "full",
-    redirectTo : "list"
-  }
-]
-
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'list',
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ShoppingRoutingModule { }
+export class ShoppingRoutingModule {}

@@ -9,6 +9,7 @@ import { ParametreComponent } from "../parametre/parametre.component";
 import { CategorieComponent } from "../categorie/categorie.component";
 import { DetailComponent } from "../detail/detail.component";
 import { ReportingComponent } from "../reporting/reporting.component";
+import { AccessGuard } from "src/app/guards/adminGuards/access.guard";
 
 const routes  : Routes = [
   {
@@ -17,35 +18,43 @@ const routes  : Routes = [
     children : [
       {
         path : 'home',
-        component : IndexComponent
+        component : IndexComponent,
+        canActivate : [AccessGuard]
       },
       {
         path : 'commandes',
-        component : CommandComponent
+        component : CommandComponent,
+        canActivate : [AccessGuard]
       },
       {
         path : 'products',
-        component : ProductComponent
+        component : ProductComponent,
+        canActivate : [AccessGuard]
       },
       {
         path : 'categorie',
-        component : CategorieComponent
+        component : CategorieComponent,
+        canActivate : [AccessGuard]
       },
       {
         path : 'history',
-        component : HistoryComponent
+        component : HistoryComponent,
+        canActivate : [AccessGuard]
       },
       {
         path : 'detail/command/:guid',
-        component : DetailComponent
+        component : DetailComponent,
+        canActivate : [AccessGuard]
       },
       {
         path : 'parametre',
-        component :  ParametreComponent
+        component :  ParametreComponent,
+        canActivate : [AccessGuard]
       },
       {
         path : 'reporting',
-        component :  ReportingComponent
+        component :  ReportingComponent,
+        canActivate : [AccessGuard]
       },
       {
         path : '',

@@ -4,7 +4,7 @@ import {
   IOrder,
 } from './../../../../core/interface/index';
 import { Component,HostListener, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AppFacades } from 'src/app/facades/app.facades';
 import { Location } from '@angular/common';
 
@@ -14,7 +14,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./shop-item.component.scss'],
 })
 export class ShopItemComponent implements OnInit {
-  detailProduct: IShoppingProduct;
+  detailProduct!: IShoppingProduct;
   default!: string;
   price: number = 0;
   isLoad: boolean = false;
@@ -50,17 +50,20 @@ export class ShopItemComponent implements OnInit {
   constructor(
     private router: Router,
     private appFacade: AppFacades,
-    private Location: Location
+    private activatedRoute : ActivatedRoute
   ) {
-    const extras: any = this.router.getCurrentNavigation()?.extras.state;
-    this.detailProduct = extras?.product;
-    this.order.product = this.detailProduct?.idf;
-    this.default = extras?.product?.images?.image1;
+
+
+
   }
 
 
   ngOnInit(): void {
-    if (!this.detailProduct?.title) return this.Location.back();
+    this.activatedRoute.data.subscribe((element:any)=>{
+      this.detailProduct = element?.shoppinList?.product;
+      this.order.product = this.detailProduct?.idf;
+      this.default = this.detailProduct?.images?.image1 as string;
+    })
   }
 
   activeModal(modal: any) {

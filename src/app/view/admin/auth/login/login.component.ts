@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
             this.appFacades.alertSuccess(responce.message);
             this.appFacades.addUserState(responce.user);
             this.appFacades.set('user',responce.user);
-            this.router.navigate(["/dashboard/"]);
+            location.href = "/dashboard/";
           }
         },
         error : (err) => {

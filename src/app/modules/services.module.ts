@@ -6,6 +6,8 @@ import { AppFacades } from '../facades/app.facades';
 import { AlertService } from '../utils/alert';
 import { VerificationService } from '../services/data/verification.service';
 import { StorageService } from '../services/storage';
+import { CookieStorageService } from '../services/storage/cookie';
+import { UserAuthentificationService } from '../services/auth';
 
 
 @NgModule({
@@ -20,6 +22,8 @@ import { StorageService } from '../services/storage';
     AlertService,
     VerificationService,
     StorageService,
+    CookieStorageService,
+    UserAuthentificationService,
     AppFacades,
 
   ],
