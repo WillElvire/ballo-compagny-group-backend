@@ -27,6 +27,7 @@ export interface IProduct {
   dateLivraison: Date;
   guid: string;
   description: string;
+  fileUrl ?: string
 }
 
 export interface IFullCommandDetail {
@@ -57,7 +58,7 @@ export interface IProductFullInfo {
   price: string;
   quantity: number;
   title: string;
-  images?: string;
+  fileUrl?: string;
 }
 
 export interface IShoppingProduct {
@@ -70,6 +71,7 @@ export interface IShoppingProduct {
   reduction?: number;
   quantity: number;
   guid?: string;
+  fileUrl?: string;
   images: {
     image1?: string;
     image2?: string;

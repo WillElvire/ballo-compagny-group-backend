@@ -24,6 +24,8 @@ export class AdminLayoutComponent implements OnInit {
     private Render: Renderer2
   ) {}
   logout() {
+    this.appFacades.logout();
+    this.appFacades.alertSuccess("Vous etes deconnecté");
     this.router.navigate(['/v1/login']);
   }
 

@@ -1,9 +1,7 @@
 import { AppFacades } from 'src/app/facades/app.facades';
 import { IMarque, IProduct, IProductFullInfo } from 'src/app/core/interface';
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { TuiFileLike } from '@taiga-ui/kit';
-import { maxFilesLength } from 'src/app/services/functions';
+
 
 @Component({
   selector: 'app-product',
@@ -15,9 +13,10 @@ export class ProductComponent implements OnInit {
   successMessage = '';
   isLoaded: boolean = true;
   enableProductForm: boolean = false;
-  readonly control = new FormControl([], [maxFilesLength(3)]);
-  rejectedFiles: readonly TuiFileLike[] = [];
+  files = [];
+  confirm : boolean = false;
   marques: Omit<IMarque, 'isActive'>[] = [];
+  fileUrl : string = "";
 
   product: Omit<IProduct, 'guid'> = {
     description: '',
@@ -26,6 +25,7 @@ export class ProductComponent implements OnInit {
     quantity: 1,
     price: 0,
     dateLivraison: new Date(),
+
   };
 
   constructor(private AppFacades: AppFacades) {
@@ -33,27 +33,6 @@ export class ProductComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getMarque();
-
-    this.control.statusChanges.subscribe((response) => {
-      console.info('STATUS', response);
-      console.info('ERRORS', this.control.errors, '\n');
-    });
-  }
-
-  onReject(files: TuiFileLike | readonly TuiFileLike[]): void {
-    this.rejectedFiles = [...this.rejectedFiles, ...(files as TuiFileLike[])];
-  }
-
-  removeFile({ name }: File): void {
-    this.control.setValue(
-      this.control.value?.filter((current: File) => current.name !== name) ?? []
-    );
-  }
-
-  clearRejected({ name }: TuiFileLike): void {
-    this.rejectedFiles = this.rejectedFiles.filter(
-      (rejected) => rejected.name !== name
-    );
   }
 
   getMarque() {
@@ -62,10 +41,30 @@ export class ProductComponent implements OnInit {
     });
   }
 
+
+  onFileSelected(event : any) {
+    const file: File = event.target.files[0];
+    console.log(file);
+    this.AppFacades.addImages(file).then((response : {result : boolean , url :string})=>{
+      this.confirm = response.result as boolean;
+      console.log(response.url);
+      this.fileUrl = response.url;
+    }).catch(
+      (err)=>{
+        console.log(err);
+        this.confirm = false;
+      }
+    );
+    return;
+  }
+
   addNewProduct() {
+
+
     const log = this.AppFacades.verifyObj(this.product);
     if (log.count > 0) return this.addError(log.index as number[]);
 
+    this.product["fileUrl"] = this.fileUrl;
     this.AppFacades.addNewProduct(this.product).subscribe((response: any) => {
       this.successMessage = response.message;
       console.log(response);

@@ -6,7 +6,7 @@ import {
 import { Component,HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppFacades } from 'src/app/facades/app.facades';
-import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-shop-item',
@@ -92,6 +92,7 @@ export class ShopItemComponent implements OnInit {
           (response: any) => {
             this.isLoad = false;
             this.closeModal("custom-modal-1");
+            this.resetField();
             this.appFacade.alertSuccess(response.message);
           },
           (err) => {
@@ -115,6 +116,14 @@ export class ShopItemComponent implements OnInit {
       return (this.isFoward = !this.isFoward);
     }
     return (this.error = 'veuillez remplir les différents champs');
+  }
+
+
+  resetField(){
+    this.user.email = "";
+    this.user.firstname = "";
+    this.user.lastname = "";
+    this.user.phone = "";
   }
 
 

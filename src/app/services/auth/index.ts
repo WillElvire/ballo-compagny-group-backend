@@ -19,6 +19,9 @@ export class UserAuthentificationService {
     return this.user;
   }
 
+  logout(){
+    this.storageService.delete(USER);
+  }
   loadUserData() {
     this.storageService.get(USER).subscribe((response)=>{
       this.user = response as IUser;

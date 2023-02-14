@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpRequestParams } from 'src/app/core/interface';
 import { HttpRequestType } from 'src/app/core/enum';
 import { HttpHeader } from 'src/app/utils/cors/cors';
-import { encrypt } from 'src/app/utils/encrypt';
+
 
 @Injectable({ providedIn: 'root' })
 export class Http {

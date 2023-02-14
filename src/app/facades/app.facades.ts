@@ -114,6 +114,10 @@ export class AppFacades {
     return this.userAuthentificationService.getUser();
   }
 
+  logout(){
+    this.userAuthentificationService.logout();
+  }
+
   // interal function
   getCategories() {
     return this.internalFunction.getCategories();
@@ -162,5 +166,9 @@ export class AppFacades {
 
   getCommandDailyReport(){
     return this.internalFunction.getCommandDailyReport();
+  }
+
+  addImages(images  : any ){
+    return this.internalFunction.addImages(images)
   }
 }

@@ -6,26 +6,16 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./image.component.scss'],
 })
 export class ImageComponent implements OnInit {
-  @Input() images: { image1?: string; image2?: string; image3?: string } = {};
+  @Input() images ?: string;
   default?: string;
 
   constructor() {}
 
   ngOnInit(): void {
-    this.default = this.images?.image1;
+    this.default = this.images;
   }
 
   setImage(index: string) {
-    if (index == '2') {
-      this.images.image1 = this.images?.image2 as string;
-    }
 
-    if (index == '3') {
-      this.images.image1 = this.images?.image3;
-    }
-
-    if (index == '1') {
-      this.images.image1 = this.default;
-    }
   }
 }

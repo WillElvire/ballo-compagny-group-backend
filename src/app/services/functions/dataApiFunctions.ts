@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpRequestType } from 'src/app/core/enum';
 import { Http } from '../api';
 import { IOrder, IProduct } from 'src/app/core/interface';
+import { addImageToTheStorage } from '../firebase/storage';
 
 @Injectable({
   providedIn : 'root'
@@ -86,6 +87,10 @@ export class InteralFunction {
   getCommandDailyReport(){
     const httpRequest = {body  : {},isEnc : false,url : '/command/report' ,method : HttpRequestType.GET};
     return this.appFacades.request(httpRequest);
+  }
+
+  addImages(images :  any) {
+    return addImageToTheStorage(images);
   }
 
 }
