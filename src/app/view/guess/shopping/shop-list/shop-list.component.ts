@@ -2,9 +2,7 @@ import { IProductFullInfo } from 'src/app/core/interface';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { AppFacades } from 'src/app/facades/app.facades';
-import { HttpRequestType } from 'src/app/core/enum';
-import { ActivatedRoute } from '@angular/router';
-
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-shop-list',
@@ -17,11 +15,13 @@ export class ShopListComponent implements OnInit {
   searchmarque = new FormControl();
   products: IProductFullInfo[] = [];
   pieces: string[] = [];
+  keyword!: string;
   marques: string[] = ['All'];
+  searchResult: IProductFullInfo[] = [];
 
   constructor(
     private appFacades: AppFacades,
-    private activatedRoute: ActivatedRoute
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -31,13 +31,7 @@ export class ShopListComponent implements OnInit {
   }
 
   getCategories() {
-    const httpRequest = {
-      body: {},
-      isEnc: false,
-      url: '/categorie/gets',
-      method: HttpRequestType.GET,
-    };
-    this.appFacades.request(httpRequest).subscribe((response: any) => {
+    this.appFacades.getCategories().subscribe((response: any) => {
       response.data.map((element: any) => {
         this.pieces.push(element.name);
       });
@@ -45,22 +39,29 @@ export class ShopListComponent implements OnInit {
   }
 
   getMarques() {
-    const httpRequest = {
-      body: {},
-      isEnc: false,
-      url: '/marque/gets',
-      method: HttpRequestType.GET,
-    };
-    this.appFacades.request(httpRequest).subscribe((response: any) => {
+    this.appFacades.getMarques().subscribe((response: any) => {
       response.data.map((element: any) => {
         this.marques.push(element.name);
       });
     });
   }
 
+  search() {
+    if (!!this.keyword) {
+      console.log(this.keyword);
+      return this.appFacades
+        .searchProduct({ search: this.keyword })
+        .subscribe((response: any) => {
+          console.log(response);
+          this.searchResult = response as IProductFullInfo[];
+        });
+    }
+    return (this.searchResult = []);
+  }
+
   loadProducts() {
-    this.appFacades.loadProducts().subscribe((response)=>{
-      this.products =  response as IProductFullInfo[];
+    this.appFacades.loadProducts().subscribe((response) => {
+      this.products = response as IProductFullInfo[];
     });
   }
 
@@ -74,5 +75,10 @@ export class ShopListComponent implements OnInit {
 
   closeModal(name: string) {
     this.appFacades.closeModal(name);
+  }
+
+  navigate(url :string , item : IProductFullInfo) {
+    const verification = url.includes("item");
+    this.router.navigate([verification ?  url+"/"+item?.guid : url ],{state : {product : item}})
   }
 }

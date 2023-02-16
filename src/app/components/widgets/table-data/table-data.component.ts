@@ -1,4 +1,4 @@
-import { IMarque, IShoppingProduct } from 'src/app/core/interface';
+import { IMarque } from 'src/app/core/interface';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -9,8 +9,7 @@ import {
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { AppFacades } from 'src/app/facades/app.facades';
-import { HttpRequestType } from 'src/app/core/enum';
-import { Subject } from 'rxjs';
+
 
 @Component({
   selector: 'app-table-data',

@@ -18,12 +18,12 @@
         <span class="links_name">Commandes</span>
       </a>
     </li>
-    <li aria-disabled="true">
+    <!--<li aria-disabled="true">
       <a routerLink="/dashboard/commandess" routerLinkActive="active">
         <i class='bx bx-box'></i>
         <span class="links_name">Gestion de stock</span>
       </a>
-    </li>
+    </li>!-->
     <li>
       <a routerLink="/dashboard/products" routerLinkActive="active">
         <i class='bx bx-list-ul'></i>
@@ -42,6 +42,8 @@
         <span class="links_name">Type de produit</span>
       </a>
     </li>
+
+
     <!--<li>
         <a routerLink="/dashboard/verification-cheque" routerLinkActive="active">
           <i class='bx bx-coin-stack' ></i>
@@ -60,12 +62,19 @@
         <span class="links_name">historique</span>
       </a>
     </li>
+
     <li>
+      <a routerLink="/dashboard/users" routerLinkActive="active">
+        <i class='bx bx-grid-alt'></i>
+        <span class="links_name">Utilisateurs</span>
+      </a>
+    </li>
+    <!--<li>
       <a routerLink="/dashboard/parametre" routerLinkActive="active">
         <i class='bx bx-cog'></i>
         <span class="links_name">Parametre</span>
       </a>
-    </li>
+    </li>!-->
 
     <li class="log_out">
       <a (click)="logout()" style="cursor: pointer;">
@@ -88,7 +97,7 @@
       <tui-hosted-dropdown [sided]="false" [content]="dropdown" [(open)]="open">
         <button class="admin_name" tuiButton type="button" appearance="custom" size="m" iconRight="tuiIconChevronDown"
           [pseudoActive]="open || null">
-          Wilfried koua
+         {{user.firstname}} {{user.lastname}}
         </button>
       </tui-hosted-dropdown>
 

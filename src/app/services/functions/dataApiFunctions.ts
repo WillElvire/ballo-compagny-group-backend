@@ -93,4 +93,19 @@ export class InteralFunction {
     return addImageToTheStorage(images);
   }
 
+  searchProduct(keywords  : Required<{search : string}>)  {
+    const httpRequest = {body  : keywords,isEnc : false,url : '/product/search' ,method : HttpRequestType.POST};
+    return this.appFacades.request(httpRequest);
+  }
+
+  getUserList() {
+    const httpRequest = {body  : {} ,isEnc : false,url : '/user/gets' ,method : HttpRequestType.GET};
+    return this.appFacades.request(httpRequest);
+  }
+
+  getUserRole() {
+    const httpRequest = {body  : {} ,isEnc : false,url : '/user/roles' ,method : HttpRequestType.GET};
+    return this.appFacades.request(httpRequest);
+  }
+
 }

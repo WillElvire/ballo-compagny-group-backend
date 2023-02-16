@@ -12,6 +12,19 @@ export interface IOrder {
   total: number;
 }
 
+export interface IFullUser {
+  country: string;
+  email: string;
+  firstname: string;
+  guid: string;
+  id: number;
+  isActive: number;
+  lastname: string;
+  password: string;
+  phone: string;
+  role_id: number;
+}
+
 export interface IUser {
   firstname: string;
   lastname: string;
@@ -27,7 +40,7 @@ export interface IProduct {
   dateLivraison: Date;
   guid: string;
   description: string;
-  fileUrl ?: string
+  fileUrl?: string;
 }
 
 export interface IFullCommandDetail {

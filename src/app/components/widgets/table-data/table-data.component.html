@@ -67,6 +67,25 @@
           <button class="btn btn-outline-dark" style="margin-left: 2%;" >{{buttons[1]}}</button>
         </td>!-->
         </ng-container>
+
+        <ng-container *ngIf="type == 'user'">
+          <td>{{data.firstname}}</td>
+          <td>{{data.lastname}}</td>
+          <td>{{data.email}}</td>
+          <td>{{data.phone}}</td>
+          <td>{{data.title}}</td>
+          <td>
+            <span *ngIf="data.isActive == 0" style="color:red">Désactivé</span>
+            <span *ngIf="data.isActive == 1" style="color:green">Activé</span>
+          </td>
+          <td>
+            <div class="btn-group">
+              <button class="btn btn-outline-primary"> Modifier</button>
+              <button class="btn btn-outline-dark"> Desactiver</button>
+              <button class="btn btn-outline-danger"> Supprimer</button>
+            </div>
+          </td>
+        </ng-container>
       </tr>
     </tbody>
   </table>

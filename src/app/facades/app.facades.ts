@@ -171,4 +171,16 @@ export class AppFacades {
   addImages(images  : any ){
     return this.internalFunction.addImages(images)
   }
+
+  searchProduct(keywords  : Required<{search : string}>) {
+    return this.internalFunction.searchProduct(keywords);
+  }
+
+  getUserList(){
+    return this.internalFunction.getUserList();
+  }
+
+  getUserRole(){
+    return this.internalFunction.getUserRole();
+  }
 }

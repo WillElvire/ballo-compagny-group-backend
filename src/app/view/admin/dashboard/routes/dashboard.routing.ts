@@ -10,6 +10,7 @@ import { CategorieComponent } from "../categorie/categorie.component";
 import { DetailComponent } from "../detail/detail.component";
 import { ReportingComponent } from "../reporting/reporting.component";
 import { AccessGuard } from "src/app/guards/adminGuards/access.guard";
+import { UsersComponent } from "../users/users.component";
 
 const routes  : Routes = [
   {
@@ -19,6 +20,11 @@ const routes  : Routes = [
       {
         path : 'home',
         component : IndexComponent,
+        canActivate : [AccessGuard]
+      },
+      {
+        path : 'users',
+        component : UsersComponent,
         canActivate : [AccessGuard]
       },
       {

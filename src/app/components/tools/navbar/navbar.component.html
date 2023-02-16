@@ -10,7 +10,7 @@
       <li class="nav-item"><a routerLink="/About"   routerLinkActive="active" class="nav-link">A propos</a></li>
       <li class="nav-item"><a routerLink="/Shop"    routerLinkActive="active" class="nav-link">Produits</a></li>
       <li class="nav-item"><a routerLink="/Contact" routerLinkActive="active" class="nav-link">Contact</a></li>
-      <ng-container>
+      <ng-container *ngIf="!!user && [1,2].includes(user.role_id)">
         <li><button tuiButton appearance="custom" style="background-color: brown;color:white;" routerLink="/dashboard/"> dashboard</button></li>
       </ng-container>
     </ul>
