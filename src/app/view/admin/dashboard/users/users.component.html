@@ -3,10 +3,8 @@
     <h1>Liste des utilisateurs <tui-badge value="{{users.length}}" status="primary"></tui-badge> </h1>
     <button class="btn btn-dark" (click)="enableUserForm = true">Ajouter un utilisateur</button>
     <app-table-data [datas]="users" [headers]="['nom','prenom','email','telephone','role','status','action']"
-      [filter]="false" [type]="'user'"></app-table-data>
+      [filter]="false" [type]="'user'"  (updateEvent)="getUpdateEvent($event)"></app-table-data>
   </ng-container>
-
-
 
   <ng-container *ngIf="enableUserForm">
     <h2>Ajouter un nouvel utilisateur</h2>
@@ -15,31 +13,31 @@
         <span style="color:red;font-weight: bold;cursor: pointer;" (click)="enableUserForm = false">x</span>
         <div class="field">
           <label>Nom</label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" [(ngModel)]="user.firstname" name="firstname">
         </div>
         <div class="field">
           <label>Prenom</label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" [(ngModel)]="user.lastname" name="lastname">
         </div>
         <div class="field">
           <label>Email</label>
-          <input type="email" class="form-control">
+          <input type="email" class="form-control" [(ngModel)]="user.email" name="email">
         </div>
         <div class="field">
           <label>Telephone</label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" [(ngModel)]="user.phone" name="phone">
         </div>
 
         <div class="field">
           <label>Role</label>
-          <select class="form-control">
+          <select class="form-control" [(ngModel)]="user.role_id" name="firstname">
             <option></option>
-            <option *ngFor="let role of roles">
+            <option *ngFor="let role of roles" value="{{role.id}}">
               {{role.title}}
             </option>
           </select>
         </div>
-        <button class="btn btn-dark col-md-12 mt-2"> Ajouter un utilisateur</button>
+        <button class="btn btn-dark col-md-12 mt-5" (click)="addNewUser()"> Ajouter un utilisateur</button>
       </div>
     </div>
   </ng-container>

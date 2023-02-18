@@ -80,9 +80,12 @@
           </td>
           <td>
             <div class="btn-group">
-              <button class="btn btn-outline-primary"> Modifier</button>
-              <button class="btn btn-outline-dark"> Desactiver</button>
-              <button class="btn btn-outline-danger"> Supprimer</button>
+              <!--<button class="btn btn-outline-primary"> Modifier</button>!-->
+              <button class="btn btn-outline-dark" (click)="changeUserStatus(data.isActive,data.guid)">
+                <span *ngIf="data.isActive == 1">Désactivé</span>
+                <span *ngIf="data.isActive == 0">Activé !!!   </span>
+              </button>
+              <button class="btn btn-outline-danger" (click)="deleteUser(data?.guid)"> Supprimer</button>
             </div>
           </td>
         </ng-container>

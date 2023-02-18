@@ -11,6 +11,7 @@ import { DetailComponent } from "../detail/detail.component";
 import { ReportingComponent } from "../reporting/reporting.component";
 import { AccessGuard } from "src/app/guards/adminGuards/access.guard";
 import { UsersComponent } from "../users/users.component";
+import { StaffRoleGuard } from "src/app/guards/adminGuards/staffRole.guard";
 
 const routes  : Routes = [
   {
@@ -20,7 +21,7 @@ const routes  : Routes = [
       {
         path : 'home',
         component : IndexComponent,
-        canActivate : [AccessGuard]
+        canActivate : [AccessGuard,StaffRoleGuard]
       },
       {
         path : 'users',

@@ -6,13 +6,13 @@
     <span class="logo_name">BCG admin</span>
   </div>
   <ul class="nav-links">
-    <li>
+    <li *ngIf="user.role_id == 1">
       <a routerLink="/dashboard/home" routerLinkActive="active">
         <i class='bx bx-grid-alt'></i>
         <span class="links_name">Dashboard</span>
       </a>
     </li>
-    <li>
+    <li >
       <a routerLink="/dashboard/commandes" routerLinkActive="active">
         <i class='bx bx-box'></i>
         <span class="links_name">Commandes</span>
@@ -30,13 +30,13 @@
         <span class="links_name">Produits</span>
       </a>
     </li>
-    <li>
+    <li *ngIf="user.role_id == 1">
       <a routerLink="/dashboard/reporting" routerLinkActive="active">
         <i class='bx bx-pie-chart-alt-2'></i>
         <span class="links_name">Reporting</span>
       </a>
     </li>
-    <li>
+    <li >
       <a routerLink="/dashboard/categorie" routerLinkActive="active">
         <i class='bx bx-box'></i>
         <span class="links_name">Type de produit</span>
@@ -56,14 +56,14 @@
           <span class="links_name">Total chequier</span>
         </a>
       </li> !-->
-    <li>
+    <li *ngIf="user.role_id == 1">
       <a routerLink="/dashboard/history" routerLinkActive="active">
         <i class='bx bx-list-ul'></i>
         <span class="links_name">historique</span>
       </a>
     </li>
 
-    <li>
+    <li *ngIf="user.role_id == 1">
       <a routerLink="/dashboard/users" routerLinkActive="active">
         <i class='bx bx-grid-alt'></i>
         <span class="links_name">Utilisateurs</span>

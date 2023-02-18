@@ -172,6 +172,18 @@ export class AppFacades {
     return this.internalFunction.addImages(images)
   }
 
+  addNewUser(user : {}) {
+    return this.internalFunction.addNewUser(user);
+  }
+
+  updateUserStatus(user : Required<{isActive : number , guid : string}>) {
+    return this.internalFunction.updateUserStatus(user);
+  }
+
+  deleteUser(guid : string)  {
+    return this.internalFunction.deleteUser(guid);
+  }
+
   searchProduct(keywords  : Required<{search : string}>) {
     return this.internalFunction.searchProduct(keywords);
   }

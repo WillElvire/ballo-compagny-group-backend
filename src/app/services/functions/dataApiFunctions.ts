@@ -93,6 +93,21 @@ export class InteralFunction {
     return addImageToTheStorage(images);
   }
 
+  addNewUser(user : {}) {
+    const httpRequest = {body  : user,isEnc : false,url : '/register' ,method : HttpRequestType.POST};
+    return this.appFacades.request(httpRequest);
+  }
+
+  updateUserStatus(user : Required<{isActive : number , guid : string}>){
+    const httpRequest = {body  : user,isEnc : false,url : '/user/disable' ,method : HttpRequestType.POST};
+    return this.appFacades.request(httpRequest);
+  }
+
+  deleteUser(guid : string) {
+    const httpRequest = {body  : {},isEnc : false,url : '/user/remove/'+ guid ,method : HttpRequestType.GET};
+    return this.appFacades.request(httpRequest);
+  }
+
   searchProduct(keywords  : Required<{search : string}>)  {
     const httpRequest = {body  : keywords,isEnc : false,url : '/product/search' ,method : HttpRequestType.POST};
     return this.appFacades.request(httpRequest);
