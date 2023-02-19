@@ -1,6 +1,6 @@
 body {
-  margin: 0 !important;
-  padding: 0 !important;
+  margin: 0px !important;
+  padding: 0px !important;
 }
 .banner {
   .image {
@@ -118,6 +118,7 @@ body {
 
 @media (min-width: 0) and (max-width: 900px) {
   .banner {
+    width: 100% !important;
     .image {
       height: 45vh;
     }
