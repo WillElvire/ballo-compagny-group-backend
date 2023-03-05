@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   HttpServers :{
-    BASE_API_DEV : "http://localhost:3002/api/v1"
+    BASE_API_DEV : "http://localhost:3002/api/v1",
+    BASE_API_URL : "http://localhost:3002"
   },
   ENC_KEY : "",
   firebaseConfig : {

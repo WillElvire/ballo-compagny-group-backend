@@ -99,6 +99,10 @@ export class AppFacades {
     return this.apiService.request(params);
   }
 
+  getReceiptFile() {
+    return this.apiService.getReceiptFile();
+  }
+
   // USER STATE
   addUserState(User:IUser) {
     this.userStateService.addUserState(User);

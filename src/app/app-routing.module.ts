@@ -23,6 +23,10 @@ const routes: Routes = [
   {
     path : "Shop",
     loadChildren : ()=> import('./modules/shopping.module').then(m => m.ShoppingModule)
+  },
+  {
+    path : '**',
+    loadComponent : ()=> import('./view/guess/notfound/notfound.component').then(c => c.NotfoundComponent)
   }
 ];
 

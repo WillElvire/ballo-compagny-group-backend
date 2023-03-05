@@ -33,4 +33,16 @@ export class Http {
       });
     }
   }
+
+  getReceiptFile(){
+    return this.http.get("/assets/receipt/receipt.html",{headers : {
+      'Content-Type': 'text/html; charset=utf-8',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT,DELETE',
+      'Accept': 'text/html; charset=utf-8',
+    },
+    responseType : "text",
+    observe : "body"
+  });
+  }
 }

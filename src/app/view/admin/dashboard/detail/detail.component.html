@@ -1,8 +1,5 @@
 <app-back-button [type]="'bootstrap'" [text]="'Retour'"></app-back-button>
-
-<div class="container-fluid">
-
-
+<div class="container-fluid" #pdfTable>
   <div class="grid">
     <div class="row">
       <div class="col-md-6">
@@ -14,18 +11,17 @@
             <p>Nom et prenom du client : {{detailCommand?.nom}} {{detailCommand?.prenom}}</p>
             <p>Email : {{detailCommand?.email}}</p>
             <p>Telephone : {{detailCommand?.telephone}}</p>
-
           </div>
         </div>
         <div class=" text-center mt-3">
           <button class="btn btn-dark" *ngIf="detailCommand?.delivery == 0" (click)="marqueCommeLivrer(detailCommand?.guid)">Marquer comme Livré</button>
           <button class="btn btn-outline-danger" style="margin-left: 2%;" (click)="deleteCommand(detailCommand?.guid)">Supprimer</button>
+          <button class="btn btn-dark" style="margin-left: 2%;"  *ngIf="detailCommand?.delivery == 1" (click)="downloadRceipt('result.pdf')">Telecharger le Recu </button>
         </div>
       </div>
       <div class="col-md-6">
         <div class="card w-60 mt-3">
           <div class="card-body">
-
             <span style="color : red;font-weight: bold;">Detail de la commande </span>
             <hr>
             <p>Marque : <b>{{detailCommand?.marque}}</b></p>
@@ -36,12 +32,9 @@
               <span *ngIf="detailCommand?.delivery == 0" style="color: red;font-weight: bold;">...en cours</span>
               <span *ngIf="detailCommand?.delivery != 0" style="color:green;font-weight: bold;">Livré</span>
             </p>
-
             <p>Description : {{detailCommand?.description}}</p>
             <p>Titre : {{detailCommand?.titre}}</p>
             <p>Identifiant : {{detailCommand?.guid}}</p>
-
-
           </div>
         </div>
       </div>

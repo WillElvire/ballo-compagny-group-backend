@@ -17,8 +17,6 @@ import { TuiHostedDropdownModule, TuiDataListModule } from '@taiga-ui/core';
 import {TuiProgressModule} from '@taiga-ui/kit';
 
 
-
-
 @NgModule({
   declarations: [
     AppComponent,

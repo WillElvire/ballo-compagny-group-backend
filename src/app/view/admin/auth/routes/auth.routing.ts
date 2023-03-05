@@ -5,7 +5,7 @@ import { LoginComponent } from '../login/login.component';
 
 const routes :  Routes = [
   {
-    path : 'v1',
+    path : '',
     children : [
       {
         path:'login',
@@ -14,6 +14,10 @@ const routes :  Routes = [
       {
         path : 'register',
         component : LoginComponent
+      },
+      {
+        path : '**',
+        loadComponent : ()=> import('../../../guess/notfound/notfound.component').then(c => c.NotfoundComponent)
       },
       {
         path:'',
