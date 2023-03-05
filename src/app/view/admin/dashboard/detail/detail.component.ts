@@ -4,6 +4,8 @@ import {
   OnDestroy,
   ViewChild,
   ElementRef,
+  Inject,
+  LOCALE_ID,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -13,6 +15,7 @@ declare var require: any;
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { TDocumentDefinitions } from 'pdfmake/interfaces';
+import { formatDate } from '@angular/common';
 const htmlToPdfmake = require('html-to-pdfmake');
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 
@@ -31,7 +34,8 @@ export class DetailComponent implements OnInit, OnDestroy {
   constructor(
     private router: ActivatedRoute,
     private appFacade: AppFacades,
-    private router$: Router
+    private router$: Router,
+    @Inject(LOCALE_ID) public locale: string
   ) {
     this.subscrption = this.router.params.subscribe((response: any) => {
       this.guid = response?.guid;
@@ -107,7 +111,8 @@ export class DetailComponent implements OnInit, OnDestroy {
   mapReceiptFile(data: string) {
     data = data.replace("[nom]",this.detailCommand?.nom as string);
     data = data.replace("[prenom]",this.detailCommand?.prenom as string);
-    data = data.replace("[date]",this.detailCommand?.createdAt as string);
+    data = data.replace("[date]", formatDate(this.detailCommand!.createdAt.toString(),"dd/MM/yyyy",this.locale).toString());
+    data = data.replace("[now]", formatDate(new Date(),"dd/MM/yyyy",this.locale).toString());
     data = data.replace("[email]",this.detailCommand?.email as string);
     data = data.replace("[phone]",this.detailCommand?.telephone as string);
     data = data.replace("[marque]",this.detailCommand?.marque as string);

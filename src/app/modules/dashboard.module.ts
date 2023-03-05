@@ -1,5 +1,5 @@
 import { TuiBadgeModule, TuiInputModule, TuiIslandModule, TuiToggleModule } from '@taiga-ui/kit';
-import { NgModule } from "@angular/core";
+import { LOCALE_ID, NgModule } from "@angular/core";
 import { CommandComponent } from "../view/admin/dashboard/command/command.component";
 import { IndexComponent } from "../view/admin/dashboard/index/index.component";
 import { DashboardRouting } from "../view/admin/dashboard/routes/dashboard.routing";
