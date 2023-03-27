@@ -33,14 +33,15 @@ export interface IUser {
 }
 
 export interface IProduct {
-  titre: string;
-  marque_id: string;
-  price: number;
-  quantity: number;
-  dateLivraison: Date;
-  guid: string;
-  description: string;
+  title?: string;
+  marque_id?: string;
+  price?: number;
+  quantity?: number;
+  dateLivraison?: Date;
+  guid?: string;
+  description?: string;
   fileUrl?: string;
+  detailId? : string;
 }
 
 export interface IFullCommandDetail {
@@ -60,18 +61,19 @@ export interface IFullCommandDetail {
   total: number;
 }
 export interface IProductFullInfo {
-  id: string;
-  createdAt: string;
-  createdBy: string;
-  dateLivraison: string;
-  description: string;
-  guid: string;
-  isActive: 1;
-  marque: string;
-  price: string;
-  quantity: number;
-  title: string;
+  id?: string;
+  createdAt?: string;
+  createdBy?: string;
+  dateLivraison?: string;
+  description?: string;
+  guid?: string;
+  isActive?: 1;
+  marque?: string;
+  price?: number;
+  quantity?: number;
+  title?: string;
   fileUrl?: string;
+  detailId? : string;
 }
 
 export interface IShoppingProduct {

@@ -1,4 +1,4 @@
-import { HttpRequestParams, IOrder, IProduct, IUser } from './../core/interface/index';
+import { HttpRequestParams, IOrder, IProduct, IProductFullInfo, IUser } from './../core/interface/index';
 
 import { Injectable } from '@angular/core';
 import { ModalService } from '../services/modals/jw-modal';
@@ -182,6 +182,10 @@ export class AppFacades {
 
   updateUserStatus(user : Required<{isActive : number , guid : string}>) {
     return this.internalFunction.updateUserStatus(user);
+  }
+
+  updateProduct(product : IProductFullInfo) {
+    return this.internalFunction.updateProduct(product)
   }
 
   deleteUser(guid : string)  {

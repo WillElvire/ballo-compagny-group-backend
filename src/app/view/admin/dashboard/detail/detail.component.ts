@@ -112,7 +112,7 @@ export class DetailComponent implements OnInit, OnDestroy {
     data = data.replace("[nom]",this.detailCommand?.nom as string);
     data = data.replace("[prenom]",this.detailCommand?.prenom as string);
     data = data.replace("[date]", formatDate(this.detailCommand!.createdAt.toString(),"dd/MM/yyyy",this.locale).toString());
-    data = data.replace("[now]", formatDate(new Date(),"dd/MM/yyyy",this.locale).toString());
+    data = data.replace("[now]", formatDate(new Date(),"dd/MM/yyyy HH:mm:ss",this.locale).toString());
     data = data.replace("[email]",this.detailCommand?.email as string);
     data = data.replace("[phone]",this.detailCommand?.telephone as string);
     data = data.replace("[marque]",this.detailCommand?.marque as string);

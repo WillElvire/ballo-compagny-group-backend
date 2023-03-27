@@ -18,7 +18,7 @@
           <td>{{data?.marque}}</td>
           <td>{{data?.createdAt | date}}</td>
           <td>
-            <!--<button class="btn btn-dark"> {{buttons[0]}}</button>!-->
+            <button class="btn btn-dark" (click)="openModal('updateForm',data)"> {{buttons[0]}}</button>
             <button class="btn btn-outline-dark" style="margin-left: 2%;"
               (click)="delete(data?.id)">{{buttons[1]}}</button>
           </td>
@@ -27,6 +27,7 @@
           <td>{{data.date | date}}</td>
           <td><tui-badge status="error" class="tui-space_right-2" value="{{data.action}}"></tui-badge></td>
           <td>{{data.libelle}}</td>
+
 
         </ng-container>
         <ng-container *ngIf="type == 'commande'">
@@ -41,8 +42,10 @@
 
           <td>
             <button class="btn btn-dark" routerLink="/dashboard/detail/command/{{data?.guid}}"> {{buttons[0]}}</button>
-
           </td>
+
+
+
         </ng-container>
         <ng-container *ngIf="type == 'categorie'">
           <td>{{data.name}}</td>
@@ -89,6 +92,19 @@
             </div>
           </td>
         </ng-container>
+        <app-jw-modal id="updateForm" [size]="60">
+          <button (click)="appFacades.closeModal('updateForm')">Fermer</button>
+          <h2>Modifier le produit</h2>
+          <label>Intitulé</label>
+          <input class="form-control" type="text" value="{{updateData.title}}" [(ngModel)]="updateData.title">
+          <label>Prix</label>
+          <input class="form-control" type="number" value="{{updateData.price}}" [(ngModel)]="updateData.price">
+          <label>Quantité</label>
+          <input class="form-control" type="number" value="{{updateData.quantity}}" [(ngModel)]="updateData.quantity">
+          <br>
+          <br>
+          <button class="btn btn-dark col-md-12" (click)="update()"> Modifier</button>
+        </app-jw-modal>
       </tr>
     </tbody>
   </table>

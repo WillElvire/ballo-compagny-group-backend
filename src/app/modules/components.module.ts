@@ -25,6 +25,7 @@ import { PieComponent } from '../components/widgets/charts/pie/pie.component';
 import { BarComponent } from '../components/widgets/charts/bar/bar.component';
 import { LineComponent } from '../components/widgets/charts/line/line.component';
 import { XlsxDownloaderComponent } from '../components/tools/xlsx-downloader/xlsx-downloader.component';
+import { EditFormComponent } from '../components/modals/edit-form/edit-form.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { XlsxDownloaderComponent } from '../components/tools/xlsx-downloader/xls
     PieComponent,
     BarComponent,
     LineComponent,
-    XlsxDownloaderComponent
+    XlsxDownloaderComponent,
+    EditFormComponent
   ],
   entryComponents: [],
   providers: [],

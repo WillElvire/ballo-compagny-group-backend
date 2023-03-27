@@ -1,4 +1,4 @@
-import { IMarque } from 'src/app/core/interface';
+import { IMarque, IProduct, IProductFullInfo } from 'src/app/core/interface';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { AppFacades } from 'src/app/facades/app.facades';
-
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-table-data',
@@ -25,11 +25,16 @@ export class TableDataComponent implements OnInit {
   @Input() filter: boolean = true;
   @Output() updateEvent = new EventEmitter<boolean>();
 
+  updateData: IProductFullInfo = {
+    title: '',
+    quantity: 0,
+    price: 0,
+  };
   category: string = '';
   marques: Omit<IMarque, 'id' | 'isActive'>[] = [];
-  p : number = 1;
+  p: number = 1;
 
-  constructor(private appFacades: AppFacades) {}
+  constructor(public appFacades: AppFacades) {}
 
   ngOnInit(): void {
     this.getMarques();
@@ -43,43 +48,81 @@ export class TableDataComponent implements OnInit {
     return new FormControl(value == '1' || value == 1 ? true : false);
   }
 
-  changeUserStatus(isActive : number ,guid : string){
-    this.appFacades.updateUserStatus({isActive : isActive == 1 ? 0  : 1 , guid }).subscribe((response : any)=>{
-      console.log(response);
-      this.updateEvent.emit(true);
-    },(error)=> {
-      console.log(error);
-    })
+  changeUserStatus(isActive: number, guid: string) {
+    this.appFacades
+      .updateUserStatus({ isActive: isActive == 1 ? 0 : 1, guid })
+      .pipe(take(1))
+      .subscribe(
+        (response: any) => {
+          console.log(response);
+          this.updateEvent.emit(true);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
   getMarques() {
-    this.appFacades.getMarques().subscribe((response: any) => {
-      response.data.forEach((element: any) => this.marques.push(element.name));
-      console.log(this.marques);
-    });
+    this.appFacades
+      .getMarques()
+      .pipe(take(1))
+      .subscribe((response: any) => {
+        response.data.forEach((element: any) =>
+          this.marques.push(element.name)
+        );
+        console.log(this.marques);
+      });
   }
 
-  deleteUser(guid  : string){
+  deleteUser(guid: string) {
     console.log(guid);
-    this.appFacades.deleteUser(guid).subscribe((response : any)=>{
-      console.log(response);
-      this.updateEvent.emit(true);
-    },(error)=> {
-      console.log(error);
-    })
+    this.appFacades
+      .deleteUser(guid)
+      .pipe(take(1))
+      .subscribe(
+        (response: any) => {
+          console.log(response);
+          this.updateEvent.emit(true);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
+
+  openModal(id: string, data: any) {
+    this.appFacades.openModal(id);
+    this.updateData = data;
   }
 
   delete(guid: string) {
-    this.appFacades.deleteProduct(guid).subscribe({
-      next: (response: any) => {
+    this.appFacades
+      .deleteProduct(guid)
+      .pipe(take(1))
+      .subscribe({
+        next: (response: any) => {
+          this.appFacades.alertSuccess(response.message);
+          this.updateEvent.emit(true);
+        },
+        error: (err: any) => {
+          this.appFacades.alertError(err.message);
+          console.log(err);
+        },
+        complete: () => {},
+      });
+  }
+
+  update() {
+    this.appFacades.updateProduct(this.updateData).subscribe((response :any) => {
+      if(!!response) {
         this.appFacades.alertSuccess(response.message);
         this.updateEvent.emit(true);
-      },
-      error: (err: any) => {
-        this.appFacades.alertError(err.message);
-        console.log(err);
-      },
-      complete: () => {},
+        this.appFacades.closeModal("updateForm");
+      }
+
+      console.log(response);
     });
+    console.log(this.updateData);
   }
 }

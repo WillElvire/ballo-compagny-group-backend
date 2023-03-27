@@ -20,7 +20,7 @@ export class ProductComponent implements OnInit {
 
   product: Omit<IProduct, 'guid'> = {
     description: '',
-    titre: '',
+    title: '',
     marque_id: '',
     quantity: 1,
     price: 0,
@@ -80,7 +80,7 @@ export class ProductComponent implements OnInit {
   resetFields() {
     this.product = {
       description: '',
-      titre: '',
+      title: '',
       marque_id: '',
       quantity: 1,
       price: 0,

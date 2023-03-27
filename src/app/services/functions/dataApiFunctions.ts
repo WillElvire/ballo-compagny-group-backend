@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpRequestType } from 'src/app/core/enum';
 import { Http } from '../api';
-import { IOrder, IProduct } from 'src/app/core/interface';
+import { IOrder, IProduct, IProductFullInfo } from 'src/app/core/interface';
 import { addImageToTheStorage } from '../firebase/storage';
 
 @Injectable({
@@ -100,6 +100,11 @@ export class InteralFunction {
 
   updateUserStatus(user : Required<{isActive : number , guid : string}>){
     const httpRequest = {body  : user,isEnc : false,url : '/user/disable' ,method : HttpRequestType.POST};
+    return this.appFacades.request(httpRequest);
+  }
+
+  updateProduct(product : IProductFullInfo) {
+    const httpRequest = {body  : product,isEnc : false,url : '/product/update' ,method : HttpRequestType.POST};
     return this.appFacades.request(httpRequest);
   }
 
