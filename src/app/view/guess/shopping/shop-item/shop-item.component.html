@@ -9,9 +9,8 @@
     <h1>{{detailProduct.title.toUpperCase()}}</h1>
     <h3>Prix : {{detailProduct.price}} FCFA</h3>
     <p>Marque : {{detailProduct.marque}}</p>
-    <p>Type : {{detailProduct.description}}</p>
     <p> Description : {{detailProduct.description}}</p>
-    <button tuiButton appearance="custom" (click)="activeModal('custom-modal-1')">Commander</button>
+    <button tuiButton appearance="custom" (click)="activeModal('custom-modal-1')">Commander <i class="fa fa-shopping-cart"></i></button>
   </div>
 </div>
 
@@ -32,7 +31,7 @@
       <label>Telephone</label>
       <input type="phone" [(ngModel)]="user.phone" class="phone-input" placeholder="votre numero de téléphone" />
 
-      <button type="submit" appearance="custom" tuiButton class="jw-submit" (click)="next()">Suivant</button>
+      <button type="submit" appearance="custom" tuiButton class="jw-submit" (click)="next()">Suivant <i class="fa fa-arrow-right"></i></button>
     </div>
 
     <div *ngIf="isFoward">
@@ -45,9 +44,9 @@
         [quantity]=" order.quantity > detailProduct.quantity ? detailProduct.quantity :  order.quantity"
         *ngIf="!!order.quantity"></app-shopping-detail>
       <div class="buttons">
-        <button type="submit" appearance="custom" tuiButton class="jw-back" (click)="isFoward = false">retour</button>
+        <button type="submit" appearance="custom" tuiButton class="jw-back" (click)="isFoward = false"> <i class="fa fa-arrow-left"></i> Retour </button>
         <button type="submit" appearance="custom" tuiButton class="jw-submit" (click)="submitRequestForm()"
-          [disabled]="!order.quantity" [showLoader]="isLoad">Confirmer ma commande</button>
+          [disabled]="!order.quantity" [showLoader]="isLoad">Confirmer ma commande <i class="fa fa-check"></i></button>
       </div>
     </div>
   </div>

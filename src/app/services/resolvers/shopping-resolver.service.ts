@@ -13,7 +13,7 @@ export class ShoppingResolverService implements Resolve<any> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const routerExtrasData = this.router.getCurrentNavigation()?.extras.state;
     if(!!routerExtrasData) return routerExtrasData
-    return this.router.navigate(["/Shop/list"]);
+    return this.router.navigate(["/boutique/list"]);
   }
 
 

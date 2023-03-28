@@ -6,10 +6,10 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="links navbar-nav mr-auto">
-      <li class="nav-item"><a routerLink="/Landing" routerLinkActive="active" class="nav-link">Accueil</a></li>
-      <li class="nav-item"><a routerLink="/About"   routerLinkActive="active" class="nav-link">A propos</a></li>
-      <li class="nav-item"><a routerLink="/Shop"    routerLinkActive="active" class="nav-link">Produits</a></li>
-      <li class="nav-item"><a routerLink="/Contact" routerLinkActive="active" class="nav-link">Contact</a></li>
+      <li class="nav-item"><a routerLink="/accueil" routerLinkActive="active" class="nav-link">Accueil</a></li>
+      <li class="nav-item"><a routerLink="/accueil"  class="nav-link">A propos</a></li>
+      <li class="nav-item"><a routerLink="/boutique"    routerLinkActive="active" class="nav-link">Produits</a></li>
+      <li class="nav-item"><a routerLink="/accueil"  class="nav-link">Contact</a></li>
       <ng-container *ngIf="!!user && [1,3].includes(user.role_id)">
         <li><button tuiButton appearance="custom" style="background-color: brown;color:white;" routerLink="/dashboard/"> dashboard</button></li>
       </ng-container>

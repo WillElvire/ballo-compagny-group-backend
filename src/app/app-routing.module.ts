@@ -4,12 +4,12 @@ import { LandingComponent } from './view/guess/landing/landing.component';
 
 const routes: Routes = [
   {
-    path : "Landing",
+    path : "accueil",
     component : LandingComponent
   },
   {
     path : "",
-    redirectTo : "Landing",
+    redirectTo : "accueil",
     pathMatch  : 'full'
   },
   {
@@ -21,7 +21,7 @@ const routes: Routes = [
     loadChildren  : ()=> import('./modules/dashboard.module').then(m => m.DashboardModule)
   },
   {
-    path : "Shop",
+    path : "boutique",
     loadChildren : ()=> import('./modules/shopping.module').then(m => m.ShoppingModule)
   },
   {
