@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   HttpServers :{
-    BASE_API_DEV : "http://localhost:3002/api/v1",
-    BASE_API_URL : "http://localhost:3002"
+    BASE_API_DEV : "https://api.bcgauto.com/api/v1",
+    BASE_API_URL : "https://api.bcgauto.com"
   },
   ENC_KEY : "",
   firebaseConfig : {
