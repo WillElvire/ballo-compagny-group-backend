@@ -60,7 +60,7 @@ import { EditFormComponent } from '../components/modals/edit-form/edit-form.comp
     NgxLoadingModule.forRoot({
       animationType: ngxLoadingAnimationTypes.wanderingCubes,
       backdropBackgroundColour: 'rgba(0,0,0,0.1)',
-      backdropBorderRadius: '4px',
+      backdropBorderRadius: '5px',
       primaryColour: '#ffffff',
       secondaryColour: '#ffffff',
       tertiaryColour: '#ffffff',
