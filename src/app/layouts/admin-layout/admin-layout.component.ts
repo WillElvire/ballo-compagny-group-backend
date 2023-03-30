@@ -16,6 +16,7 @@ export class AdminLayoutComponent implements OnInit {
   @ViewChild('sideBar', { static: false }) sideBar?: ElementRef;
   @ViewChild(TuiHostedDropdownComponent)
   component?: TuiHostedDropdownComponent;
+  isCollapsed = true;
   color?: string;
   readonly items = ['Edit', 'Download', 'Rename', 'Delete'];
   open = false;

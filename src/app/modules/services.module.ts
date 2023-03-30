@@ -8,6 +8,10 @@ import { VerificationService } from '../services/data/verification.service';
 import { StorageService } from '../services/storage';
 import { CookieStorageService } from '../services/storage/cookie';
 import { UserAuthentificationService } from '../services/auth';
+import { NotificationService } from '../core/helpers/notification.service';
+import { MessageService } from '../core/helpers/message.service';
+import { NzNotificationModule } from 'ng-zorro-antd/notification';
+import { NzMessageServiceModule } from 'ng-zorro-antd/message';
 
 
 @NgModule({
@@ -15,7 +19,9 @@ import { UserAuthentificationService } from '../services/auth';
 
   ],
   imports : [
-    CommonModule
+    CommonModule,
+    NzNotificationModule,
+    NzMessageServiceModule,
   ],
   providers : [
     ModalService,
@@ -24,6 +30,8 @@ import { UserAuthentificationService } from '../services/auth';
     StorageService,
     CookieStorageService,
     UserAuthentificationService,
+    NotificationService,
+    MessageService,
     AppFacades,
 
   ],

@@ -10,13 +10,14 @@ import { UserStateService } from '../services/states/user.state.service';
 import { InteralFunction } from '../services/functions/dataApiFunctions';
 import { CookieStorageService } from '../services/storage/cookie';
 import { UserAuthentificationService } from '../services/auth';
+import { MessageService } from '../core/helpers/message.service';
 
 @Injectable()
 export class AppFacades {
 
   constructor(
     private modalService : ModalService ,
-    private alertService : AlertService ,
+    private alertService : MessageService ,
     private verificationService : VerificationService,
     private storageService : StorageService,
     private apiService :  Http,
@@ -38,16 +39,16 @@ export class AppFacades {
 
   // alert service
   alertError(message : string ){
-    return this.alertService.setMessage(message).error();
+    return this.alertService.setMessage(message).buildError();
   }
   alertSuccess(message : string ){
-    return this.alertService.setMessage(message).success();
+    return this.alertService.setMessage(message).buildSuccess();
   }
   alertWarning(message : string ){
-    return this.alertService.setMessage(message).warning();
+    return this.alertService.setMessage(message).buildError();
   }
   alertInfo(message : string ){
-    return this.alertService.setMessage(message).info();
+    return this.alertService.setMessage(message).buildDanger();
   }
 
   //verify fields service

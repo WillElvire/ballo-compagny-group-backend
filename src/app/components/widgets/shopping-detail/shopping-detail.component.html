@@ -1,5 +1,5 @@
-<tui-island *ngIf="!!quantity">
-  <div>
+<div class="card" *ngIf="!!quantity">
+  <div class="card-body">
     <h2>Recapitulatif de la commande</h2>
     <p> Votre nom et prenom : <b>{{user?.firstname}} {{user?.lastname}} </b></p>
     <p> Votre Numéro : <b>{{user?.phone}}</b></p>
@@ -7,4 +7,4 @@
     <p> Quantité choisie : <b>{{quantity}} </b></p>
     <p> Montant à payer : <b>{{price | currency : 'XOF'}} </b></p>
   </div>
-</tui-island>
+</div>

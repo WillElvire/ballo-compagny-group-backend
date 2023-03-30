@@ -1,3 +1,4 @@
+import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NgModule } from "@angular/core";
 import { LoginComponent } from "../view/admin/auth/login/login.component";
 import { AuthRoutingModule } from "../view/admin/auth/routes/auth.routing";
@@ -9,7 +10,7 @@ import { CommonModule } from "@angular/common";
 
 @NgModule({
   declarations : [LoginComponent],
-  imports : [AuthRoutingModule,ServiceModule,ReactiveFormsModule,TuiButtonModule,FormsModule, CommonModule],
+  imports : [AuthRoutingModule,ServiceModule,ReactiveFormsModule,TuiButtonModule,FormsModule, CommonModule , NzButtonModule],
   exports : [],
   entryComponents : []
 

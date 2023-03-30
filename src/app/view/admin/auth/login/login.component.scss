@@ -31,6 +31,10 @@
   border : 1px solid black;;
 }
 
+button{
+  height: 6vh;
+}
+
 .login-form .btn-primary {
   background-color: black;
   color: white;
@@ -40,7 +44,7 @@
 
 .information {
   width: 60%;
-  background: url("https://wallpaper.dog/large/20407842.jpg");
+  background: url("https://bannerstaffing.net/wp-content/uploads/2015/09/Dollarphotoclub_91777727.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
@@ -64,9 +68,7 @@
   .content {
     display: inline;
   }
-  .information {
-    visibility: hidden;
-  }
+
 
   .login-form {
     width: 100% !important;

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, AfterViewInit } from '@angular/core';
+import { ChangeDetectionStrategy, AfterViewInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Component, Input, OnInit } from '@angular/core';
 import { IShoppingProduct, IUser } from 'src/app/core/interface';
 
@@ -6,9 +6,9 @@ import { IShoppingProduct, IUser } from 'src/app/core/interface';
   selector: 'app-shopping-detail',
   templateUrl: './shopping-detail.component.html',
   styleUrls: ['./shopping-detail.component.scss'],
-  changeDetection : ChangeDetectionStrategy.OnPush
+  //changeDetection : ChangeDetectionStrategy.OnPush
 })
-export class ShoppingDetailComponent implements OnInit  , AfterViewInit{
+export class ShoppingDetailComponent implements OnInit  , AfterViewInit, OnChanges{
 
   @Input() user ?:IUser ;
   @Input() detailProduct ?: IShoppingProduct;
@@ -20,6 +20,10 @@ export class ShoppingDetailComponent implements OnInit  , AfterViewInit{
 
   }
 
+
+  ngOnChanges(changes: SimpleChanges): void {
+      console.log(changes);
+  }
   ngOnInit(): void {
 
   }

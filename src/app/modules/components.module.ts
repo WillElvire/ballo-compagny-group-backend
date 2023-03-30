@@ -1,3 +1,4 @@
+import { NzButtonModule } from 'ng-zorro-antd/button';
 import { TableDataComponent } from './../components/widgets/table-data/table-data.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -57,6 +58,7 @@ import { EditFormComponent } from '../components/modals/edit-form/edit-form.comp
     TuiToggleModule,
     TuiBadgeModule,
     NgxPaginationModule,
+    NzButtonModule,
     NgxLoadingModule.forRoot({
       animationType: ngxLoadingAnimationTypes.wanderingCubes,
       backdropBackgroundColour: 'rgba(0,0,0,0.1)',

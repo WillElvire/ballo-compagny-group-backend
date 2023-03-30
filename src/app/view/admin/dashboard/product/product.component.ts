@@ -59,11 +59,8 @@ export class ProductComponent implements OnInit {
   }
 
   addNewProduct() {
-
-
     const log = this.AppFacades.verifyObj(this.product);
     if (log.count > 0) return this.addError(log.index as number[]);
-
     this.product["fileUrl"] = this.fileUrl;
     this.AppFacades.addNewProduct(this.product).subscribe((response: any) => {
       this.successMessage = response.message;

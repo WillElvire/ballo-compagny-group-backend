@@ -1,106 +1,49 @@
-@import url("https://fonts.googleapis.com/css?family=Nunito|Lacquer");
-
-$navbarHeight: 65px;
-$sidebarWidth: 45vw;
-$primary: #080808;
-$secondary: red;
-$bgImage: "https://images.unsplash.com/photo-1563733758230-a5d441824696?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80";
-
-body {
-  margin: 0px !important;
-  padding: 0px !important;
+.navbar{
+  .navbar-brand {
+    color : black;
+    font-weight: bold;
+  }
+  .active {
+    color: black !important;
+    font-weight: bold;
+  }
 }
 
-body,
-button,
-input {
-  font-family: Nunito;
+.fixed {
+  background-color : rgb(24, 23, 23) !important;
+  box-shadow:  0px 10px 10px 0px rbga(0,0,0,1) !important;
+  width: 100%;
+  z-index: 1;
+  position: fixed;
+  button {
+    border-radius: 10px !important;
+  }
+  .navbar-brand {
+    color : white;
+    font-weight: bold;
+  }
+  .nav-link {
+    color :white !important
+  }
 }
 
-* {
-  box-sizing: border-box;
-  transition: 0.4s ease all;
-}
+.not-fixed {
+  background-color : var(--base-colo-light) !important;
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-}
-
-ul {
-  padding: 0;
-  margin: 0;
-}
-
-.navbar {
-  background: $primary;
-  color: #fff;
-  padding: 15px;
-  width:100%;
-  height: $navbarHeight;
-  display: flex;
-  align-items: center;
-}
-
-.navbar .logo {
-  cursor: pointer;
-  font-family: Lacquer;
-}
-
-.navbar ul.links {
-  margin-left: auto;
-  margin-right: 50px;
-  list-style: none;
-  display: flex;
-  align-items: center;
-  transition: 0.4s ease all, 0s ease background;
-  li {
-    text-transform: uppercase;
-    padding: 0 15px;
-    height: $navbarHeight;
-
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-
-    transition: 0.4s ease all, 0s ease margin;
-
-    a {
-      text-decoration: none;
-      color: #fff;
-      cursor: pointer;
-
-      &:hover {
-        color: white;
+  .active {
+    color: black !important;
+    font-weight: bold;
+  }
+  .buttons {
+    button {
+      background-color: var(--base-color) !important;
+      border-radius: 10px !important;
+      &:hover  {
+        color :white !important;
+        border : 1px solid black !important;
       }
     }
-
-    .active {
-      color: white;
-      border-bottom: 1px solid white;
-    }
-  }
-}
-
-@media (min-width: 0) and (max-width: 900px) {
-  .navbar {
-    width: 100% !important;
-    height: auto;
-    a {
-      font-size: 9px;
-    }
   }
 
-  .navbar-collapse {
-    width: 100% !important;
-    background-color: black;
-    z-index: 999;
-    button {
-      display: none;
-    }
-  }
+
 }

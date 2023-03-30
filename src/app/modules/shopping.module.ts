@@ -1,3 +1,5 @@
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { TuiBadgeModule, TuiInputModule, TuiIslandModule } from '@taiga-ui/kit';
 import { CommonModule } from '@angular/common';
 import { NgModule } from "@angular/core";
@@ -11,7 +13,9 @@ import {TuiDataListWrapperModule, TuiSelectModule} from '@taiga-ui/kit';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {TuiInputCountModule} from '@taiga-ui/kit';
 import { ServiceModule } from './services.module';
-
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzAlertModule } from 'ng-zorro-antd/alert';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 
 @NgModule({
   declarations : [
@@ -34,7 +38,12 @@ import { ServiceModule } from './services.module';
     TuiIslandModule,
     TuiNotificationModule,
     TuiBadgeModule,
-    ServiceModule
+    ServiceModule,
+    NzSpinModule,
+    NzButtonModule,
+    NzModalModule,
+    NzAlertModule,
+    NzSelectModule
   ],
   providers : [],
   entryComponents : []

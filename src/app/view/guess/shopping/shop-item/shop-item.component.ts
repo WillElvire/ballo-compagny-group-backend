@@ -18,7 +18,7 @@ export class ShopItemComponent implements OnInit {
   default!: string;
   price: number = 0;
   isLoad: boolean = false;
-
+  isVisible : boolean = false;
 
   user: IUser = {
     firstname: '',
@@ -91,7 +91,7 @@ export class ShopItemComponent implements OnInit {
         return this.appFacade.addNewCommand(this.order).subscribe(
           (response: any) => {
             this.isLoad = false;
-            this.closeModal("custom-modal-1");
+            this.isVisible = false;
             this.resetField();
             this.appFacade.alertSuccess(response.message);
           },
@@ -126,5 +126,16 @@ export class ShopItemComponent implements OnInit {
     this.user.phone = "";
   }
 
+  handleOk(): void {
+    this.error = "";
+    console.log('Button ok clicked!');
+    this.isVisible = false;
+  }
+
+  handleCancel(): void {
+    this.error = "";
+    console.log('Button cancel clicked!');
+    this.isVisible = false;
+  }
 
 }

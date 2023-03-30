@@ -61,7 +61,7 @@
             </div>
           </div>
           <br>
-          <button class="btn btn-dark col-md-12" type="submit">Ajouter un produit</button>
+          <button class="btn btn-dark col-md-12" type="submit" [disabled]="!confirm && !fileUrl">Ajouter un produit</button>
         </form>
       </div>
     </div>

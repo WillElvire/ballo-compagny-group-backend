@@ -1,3 +1,4 @@
+import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NgDompurifySanitizer } from '@tinkoff/ng-dompurify';
 import {
   TuiRootModule,
@@ -21,6 +22,17 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { DashboardModule } from './modules/dashboard.module';
 import { TuiHostedDropdownModule, TuiDataListModule } from '@taiga-ui/core';
 import { TuiProgressModule } from '@taiga-ui/kit';
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { fr_FR } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import fr from '@angular/common/locales/fr';
+import { FormsModule } from '@angular/forms';
+import { IconsProviderModule } from './icons-provider.module';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
+
+registerLocaleData(fr);
 
 @NgModule({
   declarations: [AppComponent, LandingComponent, AdminLayoutComponent],
@@ -41,8 +53,15 @@ import { TuiProgressModule } from '@taiga-ui/kit';
     TuiHostedDropdownModule,
     TuiDataListModule,
     TuiProgressModule,
+    FormsModule,
+    IconsProviderModule,
+    NzLayoutModule,
+    NzMenuModule,
+
+    NzButtonModule,
+    NzSpinModule
   ],
-  providers: [{ provide: TUI_SANITIZER, useClass: NgDompurifySanitizer }],
+  providers: [{ provide: TUI_SANITIZER, useClass: NgDompurifySanitizer }, { provide: NZ_I18N, useValue: fr_FR }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
