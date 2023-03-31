@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
         error : (err) => {
           this.startSpinning  = false;
           this.appFacades.alertError(err.error.message ?  err.error.message : err.message);
-          console.log(err);
+
         },
         complete : () =>{
           this.startSpinning = false;

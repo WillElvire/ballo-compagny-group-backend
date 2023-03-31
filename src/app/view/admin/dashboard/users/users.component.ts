@@ -53,10 +53,10 @@ export class UsersComponent implements OnInit {
       },
       (error) => {
         this.appFacades.alertError(!!error.error.message ? error.error.message : error.message)
-        console.log(error);
+
       }
     );
-    console.log(this.user);
+
   }
 
   addError(index: number[]) {

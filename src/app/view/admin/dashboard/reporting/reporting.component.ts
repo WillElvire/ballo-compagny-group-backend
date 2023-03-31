@@ -27,7 +27,7 @@ export class ReportingComponent implements OnInit {
 
         },
         error :(error)=>{
-          console.log(error);
+
           this.isSpinning = false;
         }
       }

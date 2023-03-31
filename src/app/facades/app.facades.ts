@@ -76,6 +76,9 @@ export class AppFacades {
     this.storageService.set(key,value);
   }
 
+  private delete(key: string) {
+    this.storageService.delete(key);
+  }
   //COOKIE
 
 
@@ -114,7 +117,7 @@ export class AppFacades {
   //authentification
 
   isLoggedIn(){
-    return this.userService.isLoggedIn();
+    return this.userQuery.isLoggedIn;
   }
 
   getUser(){
@@ -123,7 +126,7 @@ export class AppFacades {
 
   logout(){
     this.userQuery.update(defaultUserState());
-    this.userService.logout();
+    this.delete("user");
   }
 
   // interal function

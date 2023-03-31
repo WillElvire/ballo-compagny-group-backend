@@ -56,11 +56,11 @@ export class TableDataComponent implements OnInit {
       .pipe(take(1))
       .subscribe(
         (response: any) => {
-          console.log(response);
+
           this.updateEvent.emit(true);
         },
         (error) => {
-          console.log(error);
+
         }
       );
   }
@@ -73,22 +73,22 @@ export class TableDataComponent implements OnInit {
         response.data.forEach((element: any) =>
           this.marques.push(element.name)
         );
-        console.log(this.marques);
+
       });
   }
 
   deleteUser(guid: string) {
-    console.log(guid);
+
     this.appFacades
       .deleteUser(guid)
       .pipe(take(1))
       .subscribe(
         (response: any) => {
-          console.log(response);
+
           this.updateEvent.emit(true);
         },
         (error) => {
-          console.log(error);
+
         }
       );
   }
@@ -109,7 +109,7 @@ export class TableDataComponent implements OnInit {
         },
         error: (err: any) => {
           this.appFacades.alertError(err.message);
-          console.log(err);
+
         },
         complete: () => {},
       });
@@ -125,7 +125,7 @@ export class TableDataComponent implements OnInit {
       nzOkDanger: true,
       nzOnOk: () => {this.doTheCorrectDeleteAction(guid, type)},
       nzCancelText: 'non',
-      nzOnCancel: () => console.log('Cancel')
+      nzOnCancel: () => ('Cancel')
     });
   }
 
@@ -146,8 +146,8 @@ export class TableDataComponent implements OnInit {
         this.appFacades.closeModal("updateForm");
       }
 
-      console.log(response);
+
     });
-    console.log(this.updateData);
+
   }
 }

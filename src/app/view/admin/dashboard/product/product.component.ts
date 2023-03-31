@@ -47,14 +47,14 @@ export class ProductComponent implements OnInit {
 
   onFileSelected(event : any) {
     const file: File = event.target.files[0];
-    console.log(file);
+
     this.AppFacades.addImages(file).then((response : {result : boolean , url :string})=>{
       this.confirm = response.result as boolean;
-      console.log(response.url);
+
       this.fileUrl = response.url;
     }).catch(
       (err)=>{
-        console.log(err);
+
         this.confirm = false;
       }
     );
@@ -69,7 +69,7 @@ export class ProductComponent implements OnInit {
 
     this.AppFacades.addNewProduct(this.product).subscribe((response: any) => {
       this.successMessage = response.message;
-      console.log(response);
+
       if (response.status == 200) {
         this.AppFacades.alertSuccess(this.successMessage);
         this.enableProductForm = false;
@@ -105,7 +105,7 @@ export class ProductComponent implements OnInit {
         this.isSpinning = false;
         this.datas = response as IProductFullInfo[];
         this.isLoaded = false;
-        console.log(this.datas);
+
       },
       (err) => {
          this.isLoaded = false;

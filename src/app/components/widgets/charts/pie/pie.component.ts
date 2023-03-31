@@ -16,7 +16,7 @@ export class PieComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log(this.data);
+    (this.data);
     this.createChart();
   }
 

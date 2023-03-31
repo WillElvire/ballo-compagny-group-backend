@@ -51,12 +51,10 @@ const routes: Routes = [
       {
         path: 'parametre',
         component: ParametreComponent,
-        canActivate: [AccessGuard],
       },
       {
         path: 'reporting',
         component: ReportingComponent,
-        canActivate: [AccessGuard],
       },
       {
         path: '',

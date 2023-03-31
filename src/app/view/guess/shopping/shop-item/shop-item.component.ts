@@ -128,13 +128,13 @@ export class ShopItemComponent implements OnInit {
 
   handleOk(): void {
     this.error = "";
-    console.log('Button ok clicked!');
+
     this.isVisible = false;
   }
 
   handleCancel(): void {
     this.error = "";
-    console.log('Button cancel clicked!');
+
     this.isVisible = false;
   }
 

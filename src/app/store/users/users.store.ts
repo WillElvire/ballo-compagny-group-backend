@@ -1,16 +1,12 @@
 import { user } from 'src/app/core/interface/user.states';
 import { Injectable } from '@angular/core';
-import { UserState } from './user.state';
+import { UserState, createInitialState } from './user.state';
 import { Store, StoreConfig } from '@datorama/akita';
 import { UserService, userStrict } from 'src/app/services/auth';
 import { StorageService } from 'src/app/services/storage';
 
 
-export function createInitialState(): UserState {
-  return {
-    User :  null
-  };
-}
+
 
 @Injectable({
   providedIn : 'root'
@@ -18,7 +14,7 @@ export function createInitialState(): UserState {
 @StoreConfig({ name: 'User' })
 export class UserStore extends Store<UserState> {
   constructor() {
-    super(createInitialState());
+    super(defaultUserService.getInstance().getUser());
   }
 }
 
@@ -50,6 +46,6 @@ class defaultUserService {
   }
 
   getUser() {
-    return (!!this.userService.user ) ? new userStateAdapter(this.userService.getUser()) : createInitialState();
+    return (!!this.userService.user ) ? new userStateAdapter(this.userService.user) : createInitialState();
   }
 }

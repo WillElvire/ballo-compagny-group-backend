@@ -22,7 +22,7 @@ export class ShoppingDetailComponent implements OnInit  , AfterViewInit, OnChang
 
 
   ngOnChanges(changes: SimpleChanges): void {
-      console.log(changes);
+
   }
   ngOnInit(): void {
 

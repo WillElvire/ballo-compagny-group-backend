@@ -38,7 +38,7 @@ export class CategorieComponent implements OnInit {
   getMarques() {
     this.appFacades.getMarques().subscribe((response :any)=>{
       this.marques  = response.data;
-      console.log(this.marques);
+
     })
   }
 

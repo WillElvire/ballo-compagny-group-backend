@@ -14,7 +14,7 @@ export class TableFilterComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.filterData);
+    (this.filterData);
   }
 
   getChoosedCategorie(event : any) {

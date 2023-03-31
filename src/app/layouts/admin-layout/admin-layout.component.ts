@@ -35,11 +35,10 @@ export class AdminLayoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.appFacades.get('preference').subscribe((response: any) => {
-      this.color = JSON.parse(response).color;
+    this.appFacades.getUser().pipe(take(1)).subscribe((user)=>  {
+      this.user = user;
+      console.log(user);
     });
-
-    this.appFacades.getUser().pipe(take(1)).subscribe((user)=> this.user = user);
   }
 
   ngAfterViewInit(): void {

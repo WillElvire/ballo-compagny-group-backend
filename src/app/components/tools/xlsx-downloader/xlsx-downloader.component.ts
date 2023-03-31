@@ -15,7 +15,7 @@ export class XlsxDownloaderComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log(this.data);
+
   }
 
   downloadCSV(): void {

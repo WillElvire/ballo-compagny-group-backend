@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
@@ -6,16 +6,19 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { Observable, take } from 'rxjs';
+import { Observable, take, Subscription } from 'rxjs';
 import { AppFacades } from 'src/app/facades/app.facades';
+import { userStrict } from 'src/app/services/auth';
 
 @Injectable({
   providedIn: 'root',
 })
-export class StaffRoleGuard implements CanActivate {
-  user : any ;
+export class StaffRoleGuard implements CanActivate , OnDestroy  {
+  user !: userStrict ;
+  subscription  =  new Subscription();
+
   constructor(private appFacades: AppFacades, private router: Router) {
-   this.appFacades.getUser().pipe(take(1)).subscribe((user)=> this.user);
+   this.subscription = this.appFacades.getUser().subscribe((user)=> this.user = user);
   }
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -25,7 +28,14 @@ export class StaffRoleGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (this.user.role_id == 1) return true;
-    return this.router.navigate(['/dashboard/commandes']);
+
+
+    if (this.user.role_id === 1) return true;
+    this.router.navigate(['/dashboard/commandes']);
+    return  false;
+  }
+
+  ngOnDestroy(): void {
+      this.subscription.unsubscribe();
   }
 }

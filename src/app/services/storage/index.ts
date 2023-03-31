@@ -13,7 +13,7 @@ export class StorageService {
   }
 
   get(key :string) {
-    return of(localStorage.getItem(key) as any)
+    return localStorage.getItem(key) as any
   }
 
   delete(key : string) {

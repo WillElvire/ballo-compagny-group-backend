@@ -67,7 +67,7 @@ export class DetailComponent implements OnInit, OnDestroy {
         },
         (error) => {
           this.appFacade.alertError(error.message);
-          console.log(error);
+
         }
       );
   }
@@ -80,14 +80,14 @@ export class DetailComponent implements OnInit, OnDestroy {
       },
       (error) => {
         this.appFacade.alertError(error.message);
-        console.log(error);
+
       }
     );
   }
 
   makePdf(data : string) {
     try{
-      //console.log("make pdf",data);
+
       var html = htmlToPdfmake(this.parseDocToHtml(data));
       const documentDefinition : TDocumentDefinitions = { content: html};
       pdfMake.createPdf(documentDefinition).print();
@@ -100,7 +100,7 @@ export class DetailComponent implements OnInit, OnDestroy {
   parseDocToHtml(data : any){
     let dataToHTML = new DOMParser();
     let dataAfterParsedToHTML = dataToHTML.parseFromString(this.mapReceiptFile(data) , 'text/html');
-    console.log(dataAfterParsedToHTML);
+
     return dataAfterParsedToHTML.documentElement.innerHTML;
   }
 
@@ -129,12 +129,12 @@ export class DetailComponent implements OnInit, OnDestroy {
       {
         next : (response : any)=>{
           if(!!response) {
-            console.log(response);
+
             this.makePdf(response);
           }
         },
         error : (err)=>{
-          console.log(err);
+
         }
       }
     )

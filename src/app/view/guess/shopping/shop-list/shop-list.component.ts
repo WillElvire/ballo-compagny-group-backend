@@ -49,11 +49,11 @@ export class ShopListComponent implements OnInit {
 
   search() {
     if (!!this.keyword) {
-      console.log(this.keyword);
+      (this.keyword);
       return this.appFacades
         .searchProduct({ search: this.keyword })
         .subscribe((response: any) => {
-          console.log(response);
+          (response);
           this.searchResult = response as IProductFullInfo[];
         });
     }
@@ -69,7 +69,7 @@ export class ShopListComponent implements OnInit {
   }
 
   filterElementByMarque(event: any) {
-    console.log(event);
+    (event);
   }
 
   openModal(name: string) {
@@ -87,12 +87,12 @@ export class ShopListComponent implements OnInit {
   }
 
   handleOk(): void {
-    console.log('Button ok clicked!');
+    ('Button ok clicked!');
     this.isVisible = false;
   }
 
   handleCancel(): void {
-    console.log('Button cancel clicked!');
+    ('Button cancel clicked!');
     this.isVisible = false;
   }
 }
