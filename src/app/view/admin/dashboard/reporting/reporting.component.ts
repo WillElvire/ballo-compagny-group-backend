@@ -10,7 +10,7 @@ import { AppFacades } from 'src/app/facades/app.facades';
 export class ReportingComponent implements OnInit {
 
   report : number[] = [];
-
+  isSpinning = true;
   constructor(private appFacades : AppFacades) {}
 
   ngOnInit(): void {
@@ -23,10 +23,12 @@ export class ReportingComponent implements OnInit {
         next :(response : any)=>{
           Object.keys(response)
           this.report = Object.values(response);
+          this.isSpinning = false;
 
         },
         error :(error)=>{
           console.log(error);
+          this.isSpinning = false;
         }
       }
     );

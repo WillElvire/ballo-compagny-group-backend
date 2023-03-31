@@ -60,11 +60,9 @@
   <ng-container *nzModalContent>
     <section class="modals" style="margin-top: 7%">
       <h1 style="text-align: center">Recherche Avancé</h1>
-
       <section class="search">
         <div>
-          <label>Rechercher une piece</label>
-          <input [(ngModel)]="keyword" (change)="search()" name="keyword" />
+          <input placeholder="Rechercher une piece" class="form-control" [(ngModel)]="keyword" (change)="search()" name="keyword" />
           <hr />
         </div>
 

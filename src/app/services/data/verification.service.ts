@@ -19,20 +19,21 @@ export class VerificationService {
     return field.length >= size;
   }
 
-  verifyObj(obj : {}  , typelog = 'log') {
 
-    let tbindex : number[] = [];
-    let count = 0;
 
-    Object.values(obj).forEach((value,index)=>{
-      if(!value) {
-        count  = count + 1 ;
-        tbindex.push(index);
-      }
-    })
-    return  typelog == 'log' ? {index : tbindex , count } : {count};
+}
 
-  }
+export function verifyObj(obj : any  , typelog = 'log') {
 
+  let tbindex : number[] = [];
+  let count = 0;
+
+  Object.values(obj).forEach((value,index)=>{
+    if(!value) {
+      count  = count + 1 ;
+      tbindex.push(index);
+    }
+  })
+  return  typelog == 'log' ? {index : tbindex , count } : {count};
 
 }

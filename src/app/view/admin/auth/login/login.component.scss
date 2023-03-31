@@ -7,6 +7,11 @@
   width: 50% !important;
 }
 
+
+button{
+  height: 6vh;
+}
+
 .login-form h1 {
   text-align: center;
   margin-top: 20%;
@@ -31,9 +36,7 @@
   border : 1px solid black;;
 }
 
-button{
-  height: 6vh;
-}
+
 
 .login-form .btn-primary {
   background-color: black;
@@ -67,7 +70,14 @@ button{
 @media (min-width: 0) and (max-width: 900px) {
   .content {
     display: inline;
+    height: 80vh !important;
   }
+  .information {
+    visibility: hidden;
+    opacity: 0;
+
+  }
+
 
 
   .login-form {

@@ -63,8 +63,8 @@ body {
   display: flex;
   margin-top: 3%;
   justify-content: center;
-  tui-input {
-    width: 20%;
+  input {
+    width: 100% !important;
   }
   select {
     margin-left: 1%;
@@ -116,7 +116,13 @@ app-jw-modal{
     flex-wrap: wrap;
   }
   .filter{
+    display: block;
+    text-align: center;
     margin-top: 15%;
     width: 100%;
+    button{
+      height: 6vh;
+      margin-top: 5%;
+    }
   }
 }

@@ -18,7 +18,7 @@ export class IndexComponent implements OnInit {
     dailyBooking: 0,
     weeklyBooking: 0,
   };
-
+  isSpinning : boolean = true;
   lastFiveCommande: ICommand[] = [];
 
   constructor(private userQuery: UserQuery, private appFacades: AppFacades) {}
@@ -31,7 +31,7 @@ export class IndexComponent implements OnInit {
   }
 
   getUserLoggedIn() {
-    this.userQuery.allUser$.subscribe((response) => {
+    this.userQuery.isLoading$.subscribe((response) => {
       console.log(response);
     });
   }
@@ -50,10 +50,12 @@ export class IndexComponent implements OnInit {
   getLastCommand() {
     this.appFacades.getLastFiveCommand().subscribe({
       next: (responce) => {
+        this.isSpinning = false;
         this.lastFiveCommande = responce as ICommand[];
         console.log(responce);
       },
       error: (err) => {
+        this.isSpinning = false;
         console.log(err);
       },
     });

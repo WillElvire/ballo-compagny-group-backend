@@ -7,11 +7,12 @@ import { AlertService } from '../utils/alert';
 import { VerificationService } from '../services/data/verification.service';
 import { StorageService } from '../services/storage';
 import { CookieStorageService } from '../services/storage/cookie';
-import { UserAuthentificationService } from '../services/auth';
+import { UserService } from '../services/auth';
 import { NotificationService } from '../core/helpers/notification.service';
 import { MessageService } from '../core/helpers/message.service';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { NzMessageServiceModule } from 'ng-zorro-antd/message';
+import { UserQuery } from '../store/users/user.query';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { NzMessageServiceModule } from 'ng-zorro-antd/message';
     VerificationService,
     StorageService,
     CookieStorageService,
-    UserAuthentificationService,
+    UserService,
+    UserQuery,
     NotificationService,
     MessageService,
     AppFacades,

@@ -90,7 +90,7 @@ export class DetailComponent implements OnInit, OnDestroy {
       //console.log("make pdf",data);
       var html = htmlToPdfmake(this.parseDocToHtml(data));
       const documentDefinition : TDocumentDefinitions = { content: html};
-      pdfMake.createPdf(documentDefinition).download();
+      pdfMake.createPdf(documentDefinition).print();
     }
     catch(ex) {
       throw new Error(ex as string)

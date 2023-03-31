@@ -10,6 +10,8 @@ import {
 import { FormControl } from '@angular/forms';
 import { AppFacades } from 'src/app/facades/app.facades';
 import { take } from 'rxjs';
+import { NzModalService } from 'ng-zorro-antd/modal';
+import { uid } from 'chart.js/dist/helpers/helpers.core';
 
 @Component({
   selector: 'app-table-data',
@@ -34,7 +36,7 @@ export class TableDataComponent implements OnInit {
   marques: Omit<IMarque, 'id' | 'isActive'>[] = [];
   p: number = 1;
 
-  constructor(public appFacades: AppFacades) {}
+  constructor(public appFacades: AppFacades, private modal: NzModalService) {}
 
   ngOnInit(): void {
     this.getMarques();
@@ -111,6 +113,29 @@ export class TableDataComponent implements OnInit {
         },
         complete: () => {},
       });
+  }
+
+
+  showDeleteConfirm(guid : string , type : string = "product"): void {
+    this.modal.confirm({
+      nzTitle: 'Voulez vous vraiment supprimer?',
+      nzContent: '<b style="color: red;">Cette action est irreversible</b>',
+      nzOkText: 'Oui',
+      nzOkType: 'primary',
+      nzOkDanger: true,
+      nzOnOk: () => {this.doTheCorrectDeleteAction(guid, type)},
+      nzCancelText: 'non',
+      nzOnCancel: () => console.log('Cancel')
+    });
+  }
+
+  doTheCorrectDeleteAction(guid : string ,type : string) {
+    switch(type) {
+      case 'product' :
+       return this.delete(guid);
+      case 'user' :
+        return this.deleteUser(guid)
+    }
   }
 
   update() {

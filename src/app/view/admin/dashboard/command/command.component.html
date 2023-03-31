@@ -1,6 +1,8 @@
 
 <div class="container">
   <app-xlsx-downloader *ngIf="commandesForCsvFile.length > 0" [data]="commandesForCsvFile" [title]="'commandes'"></app-xlsx-downloader>
-  <h1>Commandes <tui-badge status="info" value="{{commandes.length}}"></tui-badge></h1>
-  <app-table-data [filter]="false" [headers]="header" [buttons]="buttons" [datas]="commandes" [type]="'commande'"></app-table-data>
+  <h3>Commandes <tui-badge status="info" value="{{commandes.length}}"></tui-badge> <i class="fa fa-shop"></i></h3>
+  <nz-spin [nzSpinning]="isSpinning">
+    <app-table-data [filter]="false" [headers]="header" [buttons]="buttons" [datas]="commandes" [type]="'commande'"></app-table-data>
+  </nz-spin>
 </div>

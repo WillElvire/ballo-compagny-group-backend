@@ -6,14 +6,17 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, take } from 'rxjs';
 import { AppFacades } from 'src/app/facades/app.facades';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StaffRoleGuard implements CanActivate {
-  constructor(private appFacades: AppFacades, private router: Router) {}
+  user : any ;
+  constructor(private appFacades: AppFacades, private router: Router) {
+   this.appFacades.getUser().pipe(take(1)).subscribe((user)=> this.user);
+  }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -22,7 +25,7 @@ export class StaffRoleGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (this.appFacades.getUser().role_id == 1) return true;
+    if (this.user.role_id == 1) return true;
     return this.router.navigate(['/dashboard/commandes']);
   }
 }

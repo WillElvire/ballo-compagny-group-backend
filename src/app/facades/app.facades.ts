@@ -1,16 +1,17 @@
+import { UserService } from './../services/auth/index';
+import { UserQuery } from 'src/app/store/users/user.query';
 import { HttpRequestParams, IOrder, IProduct, IProductFullInfo, IUser } from './../core/interface/index';
 
 import { Injectable } from '@angular/core';
 import { ModalService } from '../services/modals/jw-modal';
-import { AlertService } from '../utils/alert';
-import { VerificationService } from '../services/data/verification.service';
+import { VerificationService, verifyObj } from '../services/data/verification.service';
 import { StorageService } from '../services/storage';
 import { Http } from '../services/api';
-import { UserStateService } from '../services/states/user.state.service';
 import { InteralFunction } from '../services/functions/dataApiFunctions';
 import { CookieStorageService } from '../services/storage/cookie';
-import { UserAuthentificationService } from '../services/auth';
 import { MessageService } from '../core/helpers/message.service';
+import { UserStore } from '../store/users/users.store';
+import { defaultUserState } from '../store/users/user.state';
 
 @Injectable()
 export class AppFacades {
@@ -21,10 +22,11 @@ export class AppFacades {
     private verificationService : VerificationService,
     private storageService : StorageService,
     private apiService :  Http,
-    private userStateService : UserStateService ,
+    private userQuery  : UserQuery,
     private internalFunction : InteralFunction,
+    private userStore : UserStore,
     private cookieStorageService : CookieStorageService,
-    private userAuthentificationService : UserAuthentificationService
+    private userService : UserService
   ){
 
   }
@@ -56,7 +58,7 @@ export class AppFacades {
     return this.verificationService.verifyIfEmail(email);
   }
   verifyObj(obj : {}) {
-    return this.verificationService.verifyObj(obj);
+    return verifyObj(obj);
   }
   verifyField(field  : string) {
     return this.verificationService.verifyField(field);
@@ -106,21 +108,22 @@ export class AppFacades {
 
   // USER STATE
   addUserState(User:IUser) {
-    this.userStateService.addUserState(User);
+    this.userStore.update({user : User});
   }
 
   //authentification
 
   isLoggedIn(){
-    return this.userAuthentificationService.isLoggedIn();
+    return this.userService.isLoggedIn();
   }
 
   getUser(){
-    return this.userAuthentificationService.getUser();
+    return this.userQuery.selectUser$;
   }
 
   logout(){
-    this.userAuthentificationService.logout();
+    this.userQuery.update(defaultUserState());
+    this.userService.logout();
   }
 
   // interal function

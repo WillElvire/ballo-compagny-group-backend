@@ -13,7 +13,7 @@ export class CategorieComponent implements OnInit {
   categories : ICategorie[] = [];
   marques    : IMarque[]    = [];
   marque     : any = {};
-  showCategorieView = true;
+  showCategorieView = false;
   categorie  : Required<{name : string , isActive : number, marque_id : string}> = {
     name : '',
     isActive : 1,
@@ -47,6 +47,7 @@ export class CategorieComponent implements OnInit {
   }
   closeModal(modalId: string) {
     this.error = "";
+    this.marque = {};
     this.appFacades.closeModal(modalId);
   }
 

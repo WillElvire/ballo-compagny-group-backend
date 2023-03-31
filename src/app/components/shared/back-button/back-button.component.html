@@ -2,8 +2,8 @@
   <button nz-button appearance="custom" (click)="navigate()" *ngIf="type!='bootstrap'" class="button">
     <i class="fa fa-arrow-left"></i> <span style="margin-left: 10%;">{{text}}</span>
  </button>
- <button   (click)="navigate()" *ngIf="type=='bootstrap'" class="btn btn-dark">
-  <{{text}}
+ <button   nz-button (click)="navigate()" *ngIf="type=='bootstrap'" class="btn btn-dark">
+  <i class="fa fa-arrow-left"></i>  <span style="margin-left: 10%;">{{text}}</span>
 </button>
 </div>
 

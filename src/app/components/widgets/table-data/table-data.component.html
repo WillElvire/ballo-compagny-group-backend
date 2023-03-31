@@ -1,13 +1,13 @@
 <app-table-filter [filterData]="marques" (choosedCategorie)="getCategorie($event)" *ngIf="filter"></app-table-filter>
 <div class="table-responsive">
   <table class="table table-bordered mt-4 ">
-    <thead class="bg-dark text-light">
+    <thead class="bg-light text-dark">
       <tr>
         <th scope="col" *ngFor="let head of headers">{{head}}</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let data  of datas | paginate: { itemsPerPage: 5, currentPage: p }  | tableFilterPipe:category">
+      <tr *ngFor="let data  of datas | paginate: { itemsPerPage: 4, currentPage: p }  | tableFilterPipe:category">
         <ng-container *ngIf="type == 'product'">
           <th scope="row">{{data?.guid}}</th>
           <td>{{data?.title }}</td>
@@ -18,9 +18,9 @@
           <td>{{data?.marque}}</td>
           <td>{{data?.createdAt | date}}</td>
           <td>
-            <button class="btn btn-dark" (click)="openModal('updateForm',data)"> {{buttons[0]}}</button>
+            <button class="btn btn-dark" (click)="openModal('updateForm',data)"> {{buttons[0]}} <i class="fa fa-edit"></i></button>
             <button class="btn btn-outline-dark" style="margin-left: 2%;"
-              (click)="delete(data?.id)">{{buttons[1]}}</button>
+              (click)="showDeleteConfirm(data?.id)">{{buttons[1]}} <i class="fa fa-trash"></i></button>
           </td>
         </ng-container>
         <ng-container *ngIf="type == 'history'">
@@ -41,7 +41,7 @@
           </td>
 
           <td>
-            <button class="btn btn-dark" routerLink="/dashboard/detail/command/{{data?.guid}}"> {{buttons[0]}}</button>
+            <button class="btn btn-dark" routerLink="/dashboard/detail/command/{{data?.guid}}"> {{buttons[0]}}  <i class="fa fa-plus"></i></button>
           </td>
 
 
@@ -62,8 +62,7 @@
         <ng-container *ngIf="type == 'marque'">
           <td>{{data.name}}</td>
           <td>
-            <tui-toggle class="tui-space_left-1" [showIcons]="true" [size]="'l'"
-              [(ngModel)]="data.isActive"></tui-toggle>
+            {{data.isActive ? 'inactif' : 'actif'}}
           </td>
           <!--<td>
           <button class="btn btn-dark">  {{buttons[0]}}</button>
@@ -88,12 +87,12 @@
                 <span *ngIf="data.isActive == 1">Désactivé</span>
                 <span *ngIf="data.isActive == 0">Activé !!!   </span>
               </button>
-              <button class="btn btn-outline-danger" (click)="deleteUser(data?.guid)"> Supprimer</button>
+              <button class="btn btn-outline-danger" (click)="showDeleteConfirm(data?.guid,'user')"> Supprimer</button>
             </div>
           </td>
         </ng-container>
         <app-jw-modal id="updateForm" [size]="60">
-          <button (click)="appFacades.closeModal('updateForm')">Fermer</button>
+          <button nz-button (click)="appFacades.closeModal('updateForm')">Fermer</button>
           <h2>Modifier le produit</h2>
           <label>Intitulé</label>
           <input class="form-control" type="text" value="{{updateData.title}}" [(ngModel)]="updateData.title">

@@ -6,7 +6,7 @@ const  USER : string = "user";
 export type userStrict = Omit<IFullUser,'password'>;
 
 @Injectable()
-export class UserAuthentificationService {
+export class UserService {
 
   user !: userStrict;
   constructor(private storageService : StorageService){
@@ -17,7 +17,7 @@ export class UserAuthentificationService {
     return !!this.user
   }
 
-  getUser() : userStrict {
+    getUser() : userStrict {
     return this.user;
   }
 

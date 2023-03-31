@@ -23,6 +23,7 @@ import { UsersComponent } from '../view/admin/dashboard/users/users.component';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     TuiBadgeModule,
     NzLayoutModule,
     NzMenuModule,
+    NzSpinModule,
     IconsProviderModule,
 
   ],

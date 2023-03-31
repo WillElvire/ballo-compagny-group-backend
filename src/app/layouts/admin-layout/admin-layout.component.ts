@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AfterViewInit, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { TuiHostedDropdownComponent } from '@taiga-ui/core';
+import { take } from 'rxjs';
 import { IFullUser } from 'src/app/core/interface';
 import { AppFacades } from 'src/app/facades/app.facades';
 import { userStrict } from 'src/app/services/auth';
@@ -20,7 +21,7 @@ export class AdminLayoutComponent implements OnInit {
   color?: string;
   readonly items = ['Edit', 'Download', 'Rename', 'Delete'];
   open = false;
-  user  : userStrict = this.appFacades.getUser();
+  user  !: userStrict ;
 
   constructor(
     private router: Router,
@@ -37,6 +38,8 @@ export class AdminLayoutComponent implements OnInit {
     this.appFacades.get('preference').subscribe((response: any) => {
       this.color = JSON.parse(response).color;
     });
+
+    this.appFacades.getUser().pipe(take(1)).subscribe((user)=> this.user = user);
   }
 
   ngAfterViewInit(): void {

@@ -1,6 +1,7 @@
 import { AppFacades } from 'src/app/facades/app.facades';
 import { IMarque, IProduct, IProductFullInfo } from 'src/app/core/interface';
 import { Component, OnInit } from '@angular/core';
+import { NzModalService } from 'ng-zorro-antd/modal';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class ProductComponent implements OnInit {
   enableProductForm: boolean = false;
   files = [];
   confirm : boolean = false;
+  isSpinning : boolean = true;
   marques: Omit<IMarque, 'isActive'>[] = [];
   fileUrl : string = "";
 
@@ -25,6 +27,7 @@ export class ProductComponent implements OnInit {
     quantity: 1,
     price: 0,
     dateLivraison: new Date(),
+
 
   };
 
@@ -61,7 +64,9 @@ export class ProductComponent implements OnInit {
   addNewProduct() {
     const log = this.AppFacades.verifyObj(this.product);
     if (log.count > 0) return this.addError(log.index as number[]);
+
     this.product["fileUrl"] = this.fileUrl;
+
     this.AppFacades.addNewProduct(this.product).subscribe((response: any) => {
       this.successMessage = response.message;
       console.log(response);
@@ -92,14 +97,20 @@ export class ProductComponent implements OnInit {
     });
   }
 
+
+
   loadProducts() {
     this.AppFacades.loadProducts().subscribe(
       (response) => {
+        this.isSpinning = false;
         this.datas = response as IProductFullInfo[];
         this.isLoaded = false;
         console.log(this.datas);
       },
-      (err) => (this.isLoaded = false)
+      (err) => {
+         this.isLoaded = false;
+         this.isSpinning = false;
+      }
     );
   }
 

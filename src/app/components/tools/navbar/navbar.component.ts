@@ -1,4 +1,5 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { AppFacades } from 'src/app/facades/app.facades';
 import { userStrict } from 'src/app/services/auth';
 
@@ -9,7 +10,7 @@ import { userStrict } from 'src/app/services/auth';
 })
 export class NavbarComponent implements OnInit {
 
-  user !: userStrict ;
+  user !: Observable<userStrict> ;
   pageY: number = 0;
   @Input() fixable: boolean = true;
   @HostListener('window:scroll', ['$event']) onScrollEvent($event: any) {

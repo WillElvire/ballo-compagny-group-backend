@@ -1,23 +1,27 @@
 <div class="container">
   <h1>Reporting</h1>
+  <p>Rapport general commande et livraison</p>
   <div class="grid mt-4">
     <div class="row">
-      <div class="col-md-6">
+      <!--<div class="col-md-6">
         <div class="card">
           <div class="card-body">
             <app-bar ></app-bar>
           </div>
         </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card" *ngIf="report.length != 0">
-          <div class="card-body">
-            <app-pie [label]="['Commandes livré','Commande en attente de livraison']" [data]="report" ></app-pie>
+      </div>!-->
+      <nz-spin [nzSpinning]="isSpinning">
+        <div class="col-md-12">
+          <div class="card" *ngIf="report.length != 0">
+            <div class="card-body">
+              <app-pie [label]="['Commandes livré','Commande en attente de livraison']" [data]="report" ></app-pie>
+            </div>
           </div>
         </div>
-      </div>
+      </nz-spin>
+
     </div>
-    <div class="row mt-2">
+   <!-- <div class="row mt-2">
       <div class="grid">
         <div class="card">
           <div class="card-body">
@@ -29,6 +33,6 @@
 
       </div>
     </div>
-  </div>
+  </div>-->
 
 </div>

@@ -17,9 +17,10 @@ export class CommandComponent implements OnInit {
     'Statut',
     'Action',
   ];
-  buttons: string[] = ['Voir plus', 'Livrer'];
+  buttons: string[] = ['Voir', 'Livrer'];
   commandes: IFullCommandDetail[] = [];
   commandesForCsvFile: any[] = [];
+  isSpinning : boolean = true;
 
   constructor(private appFacades: AppFacades) {}
 
@@ -30,8 +31,9 @@ export class CommandComponent implements OnInit {
   getCommandes() {
     this.appFacades.getCommand().subscribe((response) => {
       this.commandes = response as IFullCommandDetail[];
+      this.isSpinning  = false;
       this.formatDataToCsv(this.commandes);
-    });
+    },(err)=> this.isSpinning = false);
   }
 
   formatDataToCsv(commandes:IFullCommandDetail[]) {
